@@ -1,0 +1,358 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		67A4E5D128E3A33D00A1FE89 /* AnimdoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A4E5D028E3A33D00A1FE89 /* AnimdoApp.swift */; };
+		67A4E5D328E3A33D00A1FE89 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A4E5D228E3A33D00A1FE89 /* ContentView.swift */; };
+		67A4E5D528E3A33F00A1FE89 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 67A4E5D428E3A33F00A1FE89 /* Assets.xcassets */; };
+		67A4E5D828E3A33F00A1FE89 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 67A4E5D728E3A33F00A1FE89 /* Preview Assets.xcassets */; };
+		67A4E5DF28E3A4E300A1FE89 /* ScanTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A4E5DE28E3A4E300A1FE89 /* ScanTag.swift */; };
+		67A4E5E128E3A65200A1FE89 /* ScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A4E5E028E3A65200A1FE89 /* ScannerView.swift */; };
+		67A4E5E328E3A88600A1FE89 /* TextRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A4E5E228E3A88600A1FE89 /* TextRecognizer.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		67A4E5CD28E3A33D00A1FE89 /* Animdo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Animdo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		67A4E5D028E3A33D00A1FE89 /* AnimdoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimdoApp.swift; sourceTree = "<group>"; };
+		67A4E5D228E3A33D00A1FE89 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		67A4E5D428E3A33F00A1FE89 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		67A4E5D728E3A33F00A1FE89 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		67A4E5DE28E3A4E300A1FE89 /* ScanTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanTag.swift; sourceTree = "<group>"; };
+		67A4E5E028E3A65200A1FE89 /* ScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerView.swift; sourceTree = "<group>"; };
+		67A4E5E228E3A88600A1FE89 /* TextRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRecognizer.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		67A4E5CA28E3A33D00A1FE89 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		67A4E5C428E3A33D00A1FE89 = {
+			isa = PBXGroup;
+			children = (
+				67A4E5CF28E3A33D00A1FE89 /* Animdo */,
+				67A4E5CE28E3A33D00A1FE89 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		67A4E5CE28E3A33D00A1FE89 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				67A4E5CD28E3A33D00A1FE89 /* Animdo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		67A4E5CF28E3A33D00A1FE89 /* Animdo */ = {
+			isa = PBXGroup;
+			children = (
+				67A4E5D028E3A33D00A1FE89 /* AnimdoApp.swift */,
+				67A4E5D228E3A33D00A1FE89 /* ContentView.swift */,
+				67A4E5D428E3A33F00A1FE89 /* Assets.xcassets */,
+				67A4E5D628E3A33F00A1FE89 /* Preview Content */,
+				67A4E5DE28E3A4E300A1FE89 /* ScanTag.swift */,
+				67A4E5E028E3A65200A1FE89 /* ScannerView.swift */,
+				67A4E5E228E3A88600A1FE89 /* TextRecognizer.swift */,
+			);
+			path = Animdo;
+			sourceTree = "<group>";
+		};
+		67A4E5D628E3A33F00A1FE89 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				67A4E5D728E3A33F00A1FE89 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		67A4E5CC28E3A33D00A1FE89 /* Animdo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 67A4E5DB28E3A33F00A1FE89 /* Build configuration list for PBXNativeTarget "Animdo" */;
+			buildPhases = (
+				67A4E5C928E3A33D00A1FE89 /* Sources */,
+				67A4E5CA28E3A33D00A1FE89 /* Frameworks */,
+				67A4E5CB28E3A33D00A1FE89 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Animdo;
+			productName = Animdo;
+			productReference = 67A4E5CD28E3A33D00A1FE89 /* Animdo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		67A4E5C528E3A33D00A1FE89 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1400;
+				LastUpgradeCheck = 1400;
+				TargetAttributes = {
+					67A4E5CC28E3A33D00A1FE89 = {
+						CreatedOnToolsVersion = 14.0;
+					};
+				};
+			};
+			buildConfigurationList = 67A4E5C828E3A33D00A1FE89 /* Build configuration list for PBXProject "Animdo" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 67A4E5C428E3A33D00A1FE89;
+			productRefGroup = 67A4E5CE28E3A33D00A1FE89 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				67A4E5CC28E3A33D00A1FE89 /* Animdo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		67A4E5CB28E3A33D00A1FE89 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				67A4E5D828E3A33F00A1FE89 /* Preview Assets.xcassets in Resources */,
+				67A4E5D528E3A33F00A1FE89 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		67A4E5C928E3A33D00A1FE89 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				67A4E5D328E3A33D00A1FE89 /* ContentView.swift in Sources */,
+				67A4E5E128E3A65200A1FE89 /* ScannerView.swift in Sources */,
+				67A4E5E328E3A88600A1FE89 /* TextRecognizer.swift in Sources */,
+				67A4E5D128E3A33D00A1FE89 /* AnimdoApp.swift in Sources */,
+				67A4E5DF28E3A4E300A1FE89 /* ScanTag.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		67A4E5D928E3A33F00A1FE89 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		67A4E5DA28E3A33F00A1FE89 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		67A4E5DC28E3A33F00A1FE89 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Animdo/Preview Content\"";
+				DEVELOPMENT_TEAM = 7T5G873XW3;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "$(Product_Name) requires permission to scan tag";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.openwindow.Animdo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		67A4E5DD28E3A33F00A1FE89 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Animdo/Preview Content\"";
+				DEVELOPMENT_TEAM = 7T5G873XW3;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "$(Product_Name) requires permission to scan tag";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.openwindow.Animdo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		67A4E5C828E3A33D00A1FE89 /* Build configuration list for PBXProject "Animdo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				67A4E5D928E3A33F00A1FE89 /* Debug */,
+				67A4E5DA28E3A33F00A1FE89 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		67A4E5DB28E3A33F00A1FE89 /* Build configuration list for PBXNativeTarget "Animdo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				67A4E5DC28E3A33F00A1FE89 /* Debug */,
+				67A4E5DD28E3A33F00A1FE89 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 67A4E5C528E3A33D00A1FE89 /* Project object */;
+}
