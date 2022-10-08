@@ -7,28 +7,45 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		67A4E5D128E3A33D00A1FE89 /* AnimdoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A4E5D028E3A33D00A1FE89 /* AnimdoApp.swift */; };
-		67A4E5D328E3A33D00A1FE89 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A4E5D228E3A33D00A1FE89 /* ContentView.swift */; };
-		67A4E5D528E3A33F00A1FE89 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 67A4E5D428E3A33F00A1FE89 /* Assets.xcassets */; };
-		67A4E5D828E3A33F00A1FE89 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 67A4E5D728E3A33F00A1FE89 /* Preview Assets.xcassets */; };
-		67A4E5DF28E3A4E300A1FE89 /* ScanTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A4E5DE28E3A4E300A1FE89 /* ScanTag.swift */; };
-		67A4E5E128E3A65200A1FE89 /* ScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A4E5E028E3A65200A1FE89 /* ScannerView.swift */; };
-		67A4E5E328E3A88600A1FE89 /* TextRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A4E5E228E3A88600A1FE89 /* TextRecognizer.swift */; };
+		67265FFF28F19B5E003A4E56 /* Intro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67265FFE28F19B5E003A4E56 /* Intro.swift */; };
+		6726600128F1C5A8003A4E56 /* DashboardScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6726600028F1C5A8003A4E56 /* DashboardScreenView.swift */; };
+		672871E728F15963009342DA /* AnimdoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672871E628F15963009342DA /* AnimdoApp.swift */; };
+		672871E928F15963009342DA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672871E828F15963009342DA /* ContentView.swift */; };
+		672871EB28F15964009342DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 672871EA28F15964009342DA /* Assets.xcassets */; };
+		672871EE28F15964009342DA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 672871ED28F15964009342DA /* Preview Assets.xcassets */; };
+		673AE97C28F15C26008D1D01 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 673AE97928F15BCE008D1D01 /* Roboto-Light.ttf */; };
+		673AE97D28F15C29008D1D01 /* Aladin-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 673AE97828F15B98008D1D01 /* Aladin-Regular.ttf */; };
+		673AE98328F15DFA008D1D01 /* JosefinSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 673AE97F28F15DF3008D1D01 /* JosefinSans-Bold.ttf */; };
+		673AE98428F15DFE008D1D01 /* JosefinSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 673AE98028F15DF4008D1D01 /* JosefinSans-Light.ttf */; };
+		673AE98528F15E00008D1D01 /* JosefinSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 673AE98128F15DF4008D1D01 /* JosefinSans-Regular.ttf */; };
+		673AE98628F15E03008D1D01 /* JosefinSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 673AE98228F15DF4008D1D01 /* JosefinSans-SemiBold.ttf */; };
+		673AE98828F160DE008D1D01 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673AE98728F160DE008D1D01 /* SplashScreenView.swift */; };
+		673AE98A28F174D0008D1D01 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673AE98928F174D0008D1D01 /* Onboarding.swift */; };
+		673AE98C28F17596008D1D01 /* OnboardingScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673AE98B28F17596008D1D01 /* OnboardingScreenView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		67A4E5CD28E3A33D00A1FE89 /* Animdo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Animdo.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		67A4E5D028E3A33D00A1FE89 /* AnimdoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimdoApp.swift; sourceTree = "<group>"; };
-		67A4E5D228E3A33D00A1FE89 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		67A4E5D428E3A33F00A1FE89 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		67A4E5D728E3A33F00A1FE89 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		67A4E5DE28E3A4E300A1FE89 /* ScanTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanTag.swift; sourceTree = "<group>"; };
-		67A4E5E028E3A65200A1FE89 /* ScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerView.swift; sourceTree = "<group>"; };
-		67A4E5E228E3A88600A1FE89 /* TextRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRecognizer.swift; sourceTree = "<group>"; };
+		67265FFE28F19B5E003A4E56 /* Intro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Intro.swift; sourceTree = "<group>"; };
+		6726600028F1C5A8003A4E56 /* DashboardScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardScreenView.swift; sourceTree = "<group>"; };
+		672871E328F15963009342DA /* Animdo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Animdo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		672871E628F15963009342DA /* AnimdoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimdoApp.swift; sourceTree = "<group>"; };
+		672871E828F15963009342DA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		672871EA28F15964009342DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		672871ED28F15964009342DA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		673AE97828F15B98008D1D01 /* Aladin-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Aladin-Regular.ttf"; sourceTree = "<group>"; };
+		673AE97928F15BCE008D1D01 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
+		673AE97E28F15CA5008D1D01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		673AE97F28F15DF3008D1D01 /* JosefinSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JosefinSans-Bold.ttf"; sourceTree = "<group>"; };
+		673AE98028F15DF4008D1D01 /* JosefinSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JosefinSans-Light.ttf"; sourceTree = "<group>"; };
+		673AE98128F15DF4008D1D01 /* JosefinSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JosefinSans-Regular.ttf"; sourceTree = "<group>"; };
+		673AE98228F15DF4008D1D01 /* JosefinSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JosefinSans-SemiBold.ttf"; sourceTree = "<group>"; };
+		673AE98728F160DE008D1D01 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
+		673AE98928F174D0008D1D01 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
+		673AE98B28F17596008D1D01 /* OnboardingScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingScreenView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		67A4E5CA28E3A33D00A1FE89 /* Frameworks */ = {
+		672871E028F15963009342DA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -38,54 +55,103 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		67A4E5C428E3A33D00A1FE89 = {
+		672871DA28F15963009342DA = {
 			isa = PBXGroup;
 			children = (
-				67A4E5CF28E3A33D00A1FE89 /* Animdo */,
-				67A4E5CE28E3A33D00A1FE89 /* Products */,
+				672871E528F15963009342DA /* Animdo */,
+				672871E428F15963009342DA /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		67A4E5CE28E3A33D00A1FE89 /* Products */ = {
+		672871E428F15963009342DA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				67A4E5CD28E3A33D00A1FE89 /* Animdo.app */,
+				672871E328F15963009342DA /* Animdo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		67A4E5CF28E3A33D00A1FE89 /* Animdo */ = {
+		672871E528F15963009342DA /* Animdo */ = {
 			isa = PBXGroup;
 			children = (
-				67A4E5D028E3A33D00A1FE89 /* AnimdoApp.swift */,
-				67A4E5D228E3A33D00A1FE89 /* ContentView.swift */,
-				67A4E5D428E3A33F00A1FE89 /* Assets.xcassets */,
-				67A4E5D628E3A33F00A1FE89 /* Preview Content */,
-				67A4E5DE28E3A4E300A1FE89 /* ScanTag.swift */,
-				67A4E5E028E3A65200A1FE89 /* ScannerView.swift */,
-				67A4E5E228E3A88600A1FE89 /* TextRecognizer.swift */,
+				673AE97E28F15CA5008D1D01 /* Info.plist */,
+				673AE97728F15ADF008D1D01 /* Fonts */,
+				673AE97628F15AD6008D1D01 /* Views */,
+				673AE97528F15ACF008D1D01 /* Models */,
+				673AE97428F15AC0008D1D01 /* Services */,
+				673AE97328F15AB7008D1D01 /* Screens */,
+				672871E628F15963009342DA /* AnimdoApp.swift */,
+				672871E828F15963009342DA /* ContentView.swift */,
+				672871EA28F15964009342DA /* Assets.xcassets */,
+				672871EC28F15964009342DA /* Preview Content */,
 			);
 			path = Animdo;
 			sourceTree = "<group>";
 		};
-		67A4E5D628E3A33F00A1FE89 /* Preview Content */ = {
+		672871EC28F15964009342DA /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				67A4E5D728E3A33F00A1FE89 /* Preview Assets.xcassets */,
+				672871ED28F15964009342DA /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		673AE97328F15AB7008D1D01 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				673AE98728F160DE008D1D01 /* SplashScreenView.swift */,
+				6726600028F1C5A8003A4E56 /* DashboardScreenView.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		673AE97428F15AC0008D1D01 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		673AE97528F15ACF008D1D01 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				673AE98928F174D0008D1D01 /* Onboarding.swift */,
+				67265FFE28F19B5E003A4E56 /* Intro.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		673AE97628F15AD6008D1D01 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				673AE98B28F17596008D1D01 /* OnboardingScreenView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		673AE97728F15ADF008D1D01 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				673AE97F28F15DF3008D1D01 /* JosefinSans-Bold.ttf */,
+				673AE98028F15DF4008D1D01 /* JosefinSans-Light.ttf */,
+				673AE98128F15DF4008D1D01 /* JosefinSans-Regular.ttf */,
+				673AE98228F15DF4008D1D01 /* JosefinSans-SemiBold.ttf */,
+				673AE97928F15BCE008D1D01 /* Roboto-Light.ttf */,
+				673AE97828F15B98008D1D01 /* Aladin-Regular.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		67A4E5CC28E3A33D00A1FE89 /* Animdo */ = {
+		672871E228F15963009342DA /* Animdo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 67A4E5DB28E3A33F00A1FE89 /* Build configuration list for PBXNativeTarget "Animdo" */;
+			buildConfigurationList = 672871F128F15964009342DA /* Build configuration list for PBXNativeTarget "Animdo" */;
 			buildPhases = (
-				67A4E5C928E3A33D00A1FE89 /* Sources */,
-				67A4E5CA28E3A33D00A1FE89 /* Frameworks */,
-				67A4E5CB28E3A33D00A1FE89 /* Resources */,
+				672871DF28F15963009342DA /* Sources */,
+				672871E028F15963009342DA /* Frameworks */,
+				672871E128F15963009342DA /* Resources */,
 			);
 			buildRules = (
 			);
@@ -93,25 +159,25 @@
 			);
 			name = Animdo;
 			productName = Animdo;
-			productReference = 67A4E5CD28E3A33D00A1FE89 /* Animdo.app */;
+			productReference = 672871E328F15963009342DA /* Animdo.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		67A4E5C528E3A33D00A1FE89 /* Project object */ = {
+		672871DB28F15963009342DA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1400;
 				LastUpgradeCheck = 1400;
 				TargetAttributes = {
-					67A4E5CC28E3A33D00A1FE89 = {
+					672871E228F15963009342DA = {
 						CreatedOnToolsVersion = 14.0;
 					};
 				};
 			};
-			buildConfigurationList = 67A4E5C828E3A33D00A1FE89 /* Build configuration list for PBXProject "Animdo" */;
+			buildConfigurationList = 672871DE28F15963009342DA /* Build configuration list for PBXProject "Animdo" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -119,45 +185,53 @@
 				en,
 				Base,
 			);
-			mainGroup = 67A4E5C428E3A33D00A1FE89;
-			productRefGroup = 67A4E5CE28E3A33D00A1FE89 /* Products */;
+			mainGroup = 672871DA28F15963009342DA;
+			productRefGroup = 672871E428F15963009342DA /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				67A4E5CC28E3A33D00A1FE89 /* Animdo */,
+				672871E228F15963009342DA /* Animdo */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		67A4E5CB28E3A33D00A1FE89 /* Resources */ = {
+		672871E128F15963009342DA /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				67A4E5D828E3A33F00A1FE89 /* Preview Assets.xcassets in Resources */,
-				67A4E5D528E3A33F00A1FE89 /* Assets.xcassets in Resources */,
+				672871EE28F15964009342DA /* Preview Assets.xcassets in Resources */,
+				672871EB28F15964009342DA /* Assets.xcassets in Resources */,
+				673AE97C28F15C26008D1D01 /* Roboto-Light.ttf in Resources */,
+				673AE98628F15E03008D1D01 /* JosefinSans-SemiBold.ttf in Resources */,
+				673AE98428F15DFE008D1D01 /* JosefinSans-Light.ttf in Resources */,
+				673AE98528F15E00008D1D01 /* JosefinSans-Regular.ttf in Resources */,
+				673AE97D28F15C29008D1D01 /* Aladin-Regular.ttf in Resources */,
+				673AE98328F15DFA008D1D01 /* JosefinSans-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		67A4E5C928E3A33D00A1FE89 /* Sources */ = {
+		672871DF28F15963009342DA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				67A4E5D328E3A33D00A1FE89 /* ContentView.swift in Sources */,
-				67A4E5E128E3A65200A1FE89 /* ScannerView.swift in Sources */,
-				67A4E5E328E3A88600A1FE89 /* TextRecognizer.swift in Sources */,
-				67A4E5D128E3A33D00A1FE89 /* AnimdoApp.swift in Sources */,
-				67A4E5DF28E3A4E300A1FE89 /* ScanTag.swift in Sources */,
+				6726600128F1C5A8003A4E56 /* DashboardScreenView.swift in Sources */,
+				672871E928F15963009342DA /* ContentView.swift in Sources */,
+				672871E728F15963009342DA /* AnimdoApp.swift in Sources */,
+				67265FFF28F19B5E003A4E56 /* Intro.swift in Sources */,
+				673AE98A28F174D0008D1D01 /* Onboarding.swift in Sources */,
+				673AE98828F160DE008D1D01 /* SplashScreenView.swift in Sources */,
+				673AE98C28F17596008D1D01 /* OnboardingScreenView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		67A4E5D928E3A33F00A1FE89 /* Debug */ = {
+		672871EF28F15964009342DA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -217,7 +291,7 @@
 			};
 			name = Debug;
 		};
-		67A4E5DA28E3A33F00A1FE89 /* Release */ = {
+		672871F028F15964009342DA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -271,7 +345,7 @@
 			};
 			name = Release;
 		};
-		67A4E5DC28E3A33F00A1FE89 /* Debug */ = {
+		672871F228F15964009342DA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -282,7 +356,7 @@
 				DEVELOPMENT_TEAM = 7T5G873XW3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSCameraUsageDescription = "$(Product_Name) requires permission to scan tag";
+				INFOPLIST_FILE = Animdo/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -301,7 +375,7 @@
 			};
 			name = Debug;
 		};
-		67A4E5DD28E3A33F00A1FE89 /* Release */ = {
+		672871F328F15964009342DA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -312,7 +386,7 @@
 				DEVELOPMENT_TEAM = 7T5G873XW3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSCameraUsageDescription = "$(Product_Name) requires permission to scan tag";
+				INFOPLIST_FILE = Animdo/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -334,25 +408,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		67A4E5C828E3A33D00A1FE89 /* Build configuration list for PBXProject "Animdo" */ = {
+		672871DE28F15963009342DA /* Build configuration list for PBXProject "Animdo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				67A4E5D928E3A33F00A1FE89 /* Debug */,
-				67A4E5DA28E3A33F00A1FE89 /* Release */,
+				672871EF28F15964009342DA /* Debug */,
+				672871F028F15964009342DA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		67A4E5DB28E3A33F00A1FE89 /* Build configuration list for PBXNativeTarget "Animdo" */ = {
+		672871F128F15964009342DA /* Build configuration list for PBXNativeTarget "Animdo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				67A4E5DC28E3A33F00A1FE89 /* Debug */,
-				67A4E5DD28E3A33F00A1FE89 /* Release */,
+				672871F228F15964009342DA /* Debug */,
+				672871F328F15964009342DA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 67A4E5C528E3A33D00A1FE89 /* Project object */;
+	rootObject = 672871DB28F15963009342DA /* Project object */;
 }

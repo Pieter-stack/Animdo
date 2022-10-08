@@ -2,48 +2,16 @@
 //  ContentView.swift
 //  Animdo
 //
-//  Created by Pieter Venter on 2022/09/27.
+//  Created by Pieter Venter on 2022/10/08.
 //
 
 import SwiftUI
 
 struct ContentView: View {
-    
-    //scantag here
-    @State private var showScannerSheet = false
-    @State private var texts:[ScanTag] = []
-    
-    
-    
-    
     var body: some View {
         NavigationView{
-            VStack{
-                
-            }
-            .navigationTitle("Scan Tag")
-            .navigationBarItems(trailing: Button(action: {
-                self.showScannerSheet = true
-            }, label: {
-                Image(systemName: "doc.text.viewfinder")
-                    .font(.title)
-            })
-                .sheet(isPresented: $showScannerSheet, content: {
-                    makeScannerView()
-                })
-            )
+            SplashScreenView()
         }
-    }
-    
-    private func makeScannerView()-> ScannerView{
-        ScannerView(completion: {
-            textPerPage in
-            if let outputText = textPerPage?.joined(separator: "\n").trimmingCharacters(in: .whitespacesAndNewlines){
-                let newScanData = ScanTag(content: outputText)
-                self.texts.append(newScanData)
-            }
-            self.showScannerSheet = false
-        })
     }
 }
 

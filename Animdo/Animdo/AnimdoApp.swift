@@ -2,7 +2,7 @@
 //  AnimdoApp.swift
 //  Animdo
 //
-//  Created by Pieter Venter on 2022/09/27.
+//  Created by Pieter Venter on 2022/10/08.
 //
 
 import SwiftUI
@@ -12,6 +12,7 @@ struct AnimdoApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .navigationBarBackButtonHidden(true)
         }
     }
 }
