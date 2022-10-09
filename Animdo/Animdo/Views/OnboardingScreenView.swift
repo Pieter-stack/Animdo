@@ -9,12 +9,14 @@ import SwiftUI
 
 struct OnboardingScreenView: View {
     
-//Intros
- @State var intros: [Intro] = [
-    Intro(title: "Location Tracking", description: "To protect the animals, Animdo will not share live locations for their safety. Only YOU will be able to know exactly where your animal was tagged for the first time.", picture: "OnboardingImgOne", background: "OnboardingBGOne"),
-    Intro(title: "Adopt a wild Animal", description: "By adopting one ofC these animals: Elephant, Lion, Polar Bear, Penguin, Shark, Sea Turtle you help save them. All of the funds goes to non profit organizations.", picture: "OnboardingImgTwo", background: "OnboardingBGTwo"),
-    Intro(title: "Name your animal", description: "When adopting an animal to be rescued you will then have access to give them a name and also see more details about your animal, you will also be able to donate more to help your little friend out!", picture: "OnboardingImgThree", background: "OnboardingBGThree")
-    ]
+//Data Models
+    @State var boardingScreens: [Onboarding] = [
+        Onboarding(title: "Location Tracking", description: "To protect the animals, Animdo will not share live locations for their safety. Only YOU will be able to know exactly where your animal was tagged for the first time.", picture: "OnboardingImgOne", background: "OnboardingBGOne"),
+        Onboarding(title: "Adopt a wild Animal", description: "By adopting one of these animals: Elephant, Lion, Polar Bear, Penguin, Shark, Sea Turtle you help save them. All of the funds goes to non profit organizations.", picture: "OnboardingImgTwo", background: "OnboardingBGTwo"),
+        Onboarding(title: "Name your animal", description: "When adopting an animal to be rescued you will then have access to give them a name and also see more details about your animal, you will also be able to donate more to help your little friend out!", picture: "OnboardingImgThree", background: "OnboardingBGThree")
+        ]
+    
+
     
     //Gesture Properties
     @GestureState var isDragging: Bool = false
@@ -24,11 +26,11 @@ struct OnboardingScreenView: View {
     
     var body: some View {
             ZStack{
-                ForEach(intros.indices.reversed(), id: \.self) { index in
-                    //intro view
-                    IntroView(intro: intros[index])
+                ForEach(boardingScreens.indices.reversed(), id: \.self) { index in
+                    //onboard view
+                    IntroView(onboard: boardingScreens[index])
                     //Custom Liquid shape
-                        .clipShape(LiquidShape(offset: intros[index].offset, curvePoint: fakeIndex == index ? 50 : 0))
+                        .clipShape(LiquidShape(offset: boardingScreens[index].offset, curvePoint: fakeIndex == index ? 50 : 0))
                     
                         .ignoresSafeArea()
                     
@@ -44,7 +46,7 @@ struct OnboardingScreenView: View {
                     
                     
                     //INDICATORS
-                    ForEach(0..<intros.count - 2, id: \.self){index in
+                    ForEach(0..<boardingScreens.count - 2, id: \.self){index in
                         Image(currentIndex == index ? "PawPrintOne" : "PawPrintTwo")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
@@ -97,23 +99,23 @@ struct OnboardingScreenView: View {
                                     //updating offset
                                     withAnimation(.interactiveSpring(response: 0.7, dampingFraction: 0.6, blendDuration: 0.6)){
                                         
-                                        intros[fakeIndex].offset = value.translation
+                                        boardingScreens[fakeIndex].offset = value.translation
                                     }
                                     
                                 })//onchange
                                 .onEnded({value in
                                     withAnimation(.spring()){
                                         //checking
-                                        if -intros[fakeIndex].offset.width > getRect().width / 2{
+                                        if -boardingScreens[fakeIndex].offset.width > getRect().width / 2{
                                             
                                             //setting width to height
-                                            intros[fakeIndex].offset.width = -getRect().height * 1.5
+                                            boardingScreens[fakeIndex].offset.width = -getRect().height * 1.5
                                             
                                             //Updating Index
                                             fakeIndex += 1
                                             
                                             //updating orignal index
-                                            if currentIndex == intros.count - 3{
+                                            if currentIndex == boardingScreens.count - 3{
                                                 currentIndex = 0
                                             }else{
                                                 currentIndex += 1
@@ -121,9 +123,9 @@ struct OnboardingScreenView: View {
                                             
                                             //delay to finish swipe animation
                                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.4){
-                                                if fakeIndex == (intros.count - 2){
-                                                    for index in 0..<intros.count - 2{
-                                                        intros[index].offset = .zero
+                                                if fakeIndex == (boardingScreens.count - 2){
+                                                    for index in 0..<boardingScreens.count - 2{
+                                                        boardingScreens[index].offset = .zero
                                                     }
                                                     
                                                     fakeIndex = 0
@@ -132,7 +134,7 @@ struct OnboardingScreenView: View {
                                             
                                             
                                         }else{
-                                            intros[fakeIndex].offset = .zero
+                                            boardingScreens[fakeIndex].offset = .zero
                                         }
                                     }
                                 })//on ended
@@ -148,18 +150,18 @@ struct OnboardingScreenView: View {
                 //Inserting last element to first when onboarding process complete
                 //and first to last to create a feel like infinite carousel
                 
-                guard let first = intros.first else {
+                guard let first = boardingScreens.first else {
                     return
                 }
                 
-                guard var last = intros.last else {
+                guard var last = boardingScreens.last else {
                     return
                 }
                 
                 last.offset.width = -getRect().height * 1.5
                 
-                intros.append(first)
-                intros.insert(last, at: 0)
+                boardingScreens.append(first)
+                boardingScreens.insert(last, at: 0)
                 
                 //updating fake index
                 fakeIndex = 1
@@ -169,20 +171,20 @@ struct OnboardingScreenView: View {
     
     //View builder
     @ViewBuilder
-    func IntroView(intro: Intro)-> some View{
+    func IntroView(onboard: Onboarding)-> some View{
         GeometryReader{metrics in
             VStack{
                 
-                Image(intro.picture)
+                Image(onboard.picture)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: metrics.size.width/1.2)
                 
                 VStack(alignment: .leading, spacing: 0){
-                    Text(intro.title)
+                    Text(onboard.title)
                         .foregroundColor(.white)
                         .font(Font.custom("Aladin-regular", size: metrics.size.width/9))
-                    Text(intro.description)
+                    Text(onboard.description)
                         .foregroundColor(.white)
                         .font(Font.custom("Roboto-Light", size: metrics.size.width/20))
                         .padding(.top)
@@ -198,7 +200,7 @@ struct OnboardingScreenView: View {
             }//Vstack
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(
-                Image(intro.background)
+                Image(onboard.background)
                     .resizable()
                     .ignoresSafeArea()
             )

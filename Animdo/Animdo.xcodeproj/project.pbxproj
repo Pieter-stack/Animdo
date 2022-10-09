@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		67265FFF28F19B5E003A4E56 /* Intro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67265FFE28F19B5E003A4E56 /* Intro.swift */; };
 		6726600128F1C5A8003A4E56 /* DashboardScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6726600028F1C5A8003A4E56 /* DashboardScreenView.swift */; };
 		672871E728F15963009342DA /* AnimdoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672871E628F15963009342DA /* AnimdoApp.swift */; };
 		672871E928F15963009342DA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672871E828F15963009342DA /* ContentView.swift */; };
@@ -25,7 +24,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		67265FFE28F19B5E003A4E56 /* Intro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Intro.swift; sourceTree = "<group>"; };
 		6726600028F1C5A8003A4E56 /* DashboardScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardScreenView.swift; sourceTree = "<group>"; };
 		672871E328F15963009342DA /* Animdo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Animdo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		672871E628F15963009342DA /* AnimdoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimdoApp.swift; sourceTree = "<group>"; };
@@ -116,7 +114,6 @@
 			isa = PBXGroup;
 			children = (
 				673AE98928F174D0008D1D01 /* Onboarding.swift */,
-				67265FFE28F19B5E003A4E56 /* Intro.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -221,7 +218,6 @@
 				6726600128F1C5A8003A4E56 /* DashboardScreenView.swift in Sources */,
 				672871E928F15963009342DA /* ContentView.swift in Sources */,
 				672871E728F15963009342DA /* AnimdoApp.swift in Sources */,
-				67265FFF28F19B5E003A4E56 /* Intro.swift in Sources */,
 				673AE98A28F174D0008D1D01 /* Onboarding.swift in Sources */,
 				673AE98828F160DE008D1D01 /* SplashScreenView.swift in Sources */,
 				673AE98C28F17596008D1D01 /* OnboardingScreenView.swift in Sources */,

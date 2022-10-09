@@ -12,7 +12,6 @@ struct AnimdoApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .navigationBarBackButtonHidden(true)
         }
     }
 }
