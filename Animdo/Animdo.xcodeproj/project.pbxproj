@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		6726600128F1C5A8003A4E56 /* DashboardScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6726600028F1C5A8003A4E56 /* DashboardScreenView.swift */; };
+		6726600328F2BCB9003A4E56 /* OnboardingRegisterScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6726600228F2BCB9003A4E56 /* OnboardingRegisterScreenView.swift */; };
+		6726600528F2BCF4003A4E56 /* OnRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6726600428F2BCF4003A4E56 /* OnRegister.swift */; };
+		6726600728F2C19F003A4E56 /* OffsetPageTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6726600628F2C19F003A4E56 /* OffsetPageTabView.swift */; };
 		672871E728F15963009342DA /* AnimdoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672871E628F15963009342DA /* AnimdoApp.swift */; };
 		672871E928F15963009342DA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672871E828F15963009342DA /* ContentView.swift */; };
 		672871EB28F15964009342DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 672871EA28F15964009342DA /* Assets.xcassets */; };
@@ -21,10 +24,15 @@
 		673AE98828F160DE008D1D01 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673AE98728F160DE008D1D01 /* SplashScreenView.swift */; };
 		673AE98A28F174D0008D1D01 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673AE98928F174D0008D1D01 /* Onboarding.swift */; };
 		673AE98C28F17596008D1D01 /* OnboardingScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673AE98B28F17596008D1D01 /* OnboardingScreenView.swift */; };
+		676F3BFF28F420B500EF9C4A /* LoginScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676F3BFE28F420B500EF9C4A /* LoginScreenView.swift */; };
+		676F3C0328F435FC00EF9C4A /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676F3C0228F435FC00EF9C4A /* ImagePicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		6726600028F1C5A8003A4E56 /* DashboardScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardScreenView.swift; sourceTree = "<group>"; };
+		6726600228F2BCB9003A4E56 /* OnboardingRegisterScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingRegisterScreenView.swift; sourceTree = "<group>"; };
+		6726600428F2BCF4003A4E56 /* OnRegister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnRegister.swift; sourceTree = "<group>"; };
+		6726600628F2C19F003A4E56 /* OffsetPageTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffsetPageTabView.swift; sourceTree = "<group>"; };
 		672871E328F15963009342DA /* Animdo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Animdo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		672871E628F15963009342DA /* AnimdoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimdoApp.swift; sourceTree = "<group>"; };
 		672871E828F15963009342DA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -40,6 +48,8 @@
 		673AE98728F160DE008D1D01 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 		673AE98928F174D0008D1D01 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 		673AE98B28F17596008D1D01 /* OnboardingScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingScreenView.swift; sourceTree = "<group>"; };
+		676F3BFE28F420B500EF9C4A /* LoginScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenView.swift; sourceTree = "<group>"; };
+		676F3C0228F435FC00EF9C4A /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,8 +107,11 @@
 		673AE97328F15AB7008D1D01 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				6726600228F2BCB9003A4E56 /* OnboardingRegisterScreenView.swift */,
+				673AE98B28F17596008D1D01 /* OnboardingScreenView.swift */,
 				673AE98728F160DE008D1D01 /* SplashScreenView.swift */,
 				6726600028F1C5A8003A4E56 /* DashboardScreenView.swift */,
+				676F3BFE28F420B500EF9C4A /* LoginScreenView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -114,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				673AE98928F174D0008D1D01 /* Onboarding.swift */,
+				6726600428F2BCF4003A4E56 /* OnRegister.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -121,7 +135,8 @@
 		673AE97628F15AD6008D1D01 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				673AE98B28F17596008D1D01 /* OnboardingScreenView.swift */,
+				6726600628F2C19F003A4E56 /* OffsetPageTabView.swift */,
+				676F3C0228F435FC00EF9C4A /* ImagePicker.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -215,10 +230,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				676F3BFF28F420B500EF9C4A /* LoginScreenView.swift in Sources */,
 				6726600128F1C5A8003A4E56 /* DashboardScreenView.swift in Sources */,
 				672871E928F15963009342DA /* ContentView.swift in Sources */,
 				672871E728F15963009342DA /* AnimdoApp.swift in Sources */,
+				6726600728F2C19F003A4E56 /* OffsetPageTabView.swift in Sources */,
 				673AE98A28F174D0008D1D01 /* Onboarding.swift in Sources */,
+				6726600328F2BCB9003A4E56 /* OnboardingRegisterScreenView.swift in Sources */,
+				6726600528F2BCF4003A4E56 /* OnRegister.swift in Sources */,
+				676F3C0328F435FC00EF9C4A /* ImagePicker.swift in Sources */,
 				673AE98828F160DE008D1D01 /* SplashScreenView.swift in Sources */,
 				673AE98C28F17596008D1D01 /* OnboardingScreenView.swift in Sources */,
 			);
@@ -363,6 +383,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.openwindow.Animdo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -393,6 +414,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.openwindow.Animdo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
