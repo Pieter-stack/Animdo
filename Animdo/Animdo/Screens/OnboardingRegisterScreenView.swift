@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct OnboardingRegisterScreenView: View {
-      
+  
     var device = UIDevice.current.name
     @State var offset: CGFloat = 0
     
@@ -579,8 +579,6 @@ struct OnboardingRegisterScreenView: View {
                             
                         }else{
                             AllFields = 0
-                            
-                            
                         }
                         
                     }, label: {
@@ -601,7 +599,6 @@ struct OnboardingRegisterScreenView: View {
                             Text("Already have an account?")
                                 .foregroundColor(.white)
                                 .font(Font.custom("JosefinSans-Light", size: getScreenBounds().width/23))
-                            
                             Button(action: {
                                 presentationMode.wrappedValue.dismiss()
                             }, label: {

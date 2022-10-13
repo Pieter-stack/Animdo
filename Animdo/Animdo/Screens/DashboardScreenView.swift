@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct DashboardScreenView: View {
-   
     var body: some View {
         VStack{
   
@@ -26,6 +25,5 @@ struct DashboardScreenView: View {
 struct DashboardScreenView_Previews: PreviewProvider {
     static var previews: some View {
         DashboardScreenView()
-            
     }
 }

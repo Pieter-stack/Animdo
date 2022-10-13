@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct LoginScreenView: View {
+
     var device = UIDevice.current.name
     //Input fields
     @State private var email: String = ""
@@ -17,7 +18,7 @@ struct LoginScreenView: View {
     @State private var showForgotPassword = false
     
     
-    
+   
     var body: some View {
         GeometryReader{metrics in
             ZStack{
@@ -47,7 +48,7 @@ struct LoginScreenView: View {
                     })
                     
                     
-                    
+    
                     
                     ZStack(alignment: .leading){
                         if email.isEmpty{
