@@ -26,6 +26,15 @@
 		673AE98C28F17596008D1D01 /* OnboardingScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673AE98B28F17596008D1D01 /* OnboardingScreenView.swift */; };
 		676F3BFF28F420B500EF9C4A /* LoginScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676F3BFE28F420B500EF9C4A /* LoginScreenView.swift */; };
 		676F3C0328F435FC00EF9C4A /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676F3C0228F435FC00EF9C4A /* ImagePicker.swift */; };
+		676F3C1228F4A62800EF9C4A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 676F3C1128F4A62800EF9C4A /* GoogleService-Info.plist */; };
+		676F3C1628F4BB2400EF9C4A /* ForgotPasswordScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676F3C1528F4BB2400EF9C4A /* ForgotPasswordScreenView.swift */; };
+		67A69F3128F5EA9A00D7BEE3 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 67A69F3028F5EA9A00D7BEE3 /* FirebaseAnalytics */; };
+		67A69F3328F5EA9A00D7BEE3 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 67A69F3228F5EA9A00D7BEE3 /* FirebaseAppCheck */; };
+		67A69F3528F5EA9A00D7BEE3 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 67A69F3428F5EA9A00D7BEE3 /* FirebaseAuth */; };
+		67A69F3728F5EA9A00D7BEE3 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 67A69F3628F5EA9A00D7BEE3 /* FirebaseCrashlytics */; };
+		67A69F3928F5EA9A00D7BEE3 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 67A69F3828F5EA9A00D7BEE3 /* FirebaseDatabase */; };
+		67A69F3B28F5EA9A00D7BEE3 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 67A69F3A28F5EA9A00D7BEE3 /* FirebaseFirestore */; };
+		67A69F3D28F5EA9A00D7BEE3 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 67A69F3C28F5EA9A00D7BEE3 /* FirebaseStorage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +59,8 @@
 		673AE98B28F17596008D1D01 /* OnboardingScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingScreenView.swift; sourceTree = "<group>"; };
 		676F3BFE28F420B500EF9C4A /* LoginScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenView.swift; sourceTree = "<group>"; };
 		676F3C0228F435FC00EF9C4A /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		676F3C1128F4A62800EF9C4A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		676F3C1528F4BB2400EF9C4A /* ForgotPasswordScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordScreenView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +68,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67A69F3928F5EA9A00D7BEE3 /* FirebaseDatabase in Frameworks */,
+				67A69F3328F5EA9A00D7BEE3 /* FirebaseAppCheck in Frameworks */,
+				67A69F3728F5EA9A00D7BEE3 /* FirebaseCrashlytics in Frameworks */,
+				67A69F3528F5EA9A00D7BEE3 /* FirebaseAuth in Frameworks */,
+				67A69F3D28F5EA9A00D7BEE3 /* FirebaseStorage in Frameworks */,
+				67A69F3128F5EA9A00D7BEE3 /* FirebaseAnalytics in Frameworks */,
+				67A69F3B28F5EA9A00D7BEE3 /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,6 +100,8 @@
 		672871E528F15963009342DA /* Animdo */ = {
 			isa = PBXGroup;
 			children = (
+				676F3C1428F4B04400EF9C4A /* Components */,
+				676F3C1128F4A62800EF9C4A /* GoogleService-Info.plist */,
 				673AE97E28F15CA5008D1D01 /* Info.plist */,
 				673AE97728F15ADF008D1D01 /* Fonts */,
 				673AE97628F15AD6008D1D01 /* Views */,
@@ -112,6 +132,7 @@
 				673AE98728F160DE008D1D01 /* SplashScreenView.swift */,
 				6726600028F1C5A8003A4E56 /* DashboardScreenView.swift */,
 				676F3BFE28F420B500EF9C4A /* LoginScreenView.swift */,
+				676F3C1528F4BB2400EF9C4A /* ForgotPasswordScreenView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -154,6 +175,13 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		676F3C1428F4B04400EF9C4A /* Components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -164,12 +192,22 @@
 				672871DF28F15963009342DA /* Sources */,
 				672871E028F15963009342DA /* Frameworks */,
 				672871E128F15963009342DA /* Resources */,
+				676F3C1328F4A83F00EF9C4A /* Crashylitics Run Script */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = Animdo;
+			packageProductDependencies = (
+				67A69F3028F5EA9A00D7BEE3 /* FirebaseAnalytics */,
+				67A69F3228F5EA9A00D7BEE3 /* FirebaseAppCheck */,
+				67A69F3428F5EA9A00D7BEE3 /* FirebaseAuth */,
+				67A69F3628F5EA9A00D7BEE3 /* FirebaseCrashlytics */,
+				67A69F3828F5EA9A00D7BEE3 /* FirebaseDatabase */,
+				67A69F3A28F5EA9A00D7BEE3 /* FirebaseFirestore */,
+				67A69F3C28F5EA9A00D7BEE3 /* FirebaseStorage */,
+			);
 			productName = Animdo;
 			productReference = 672871E328F15963009342DA /* Animdo.app */;
 			productType = "com.apple.product-type.application";
@@ -198,6 +236,9 @@
 				Base,
 			);
 			mainGroup = 672871DA28F15963009342DA;
+			packageReferences = (
+				67A69F2F28F5EA9A00D7BEE3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = 672871E428F15963009342DA /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -216,6 +257,7 @@
 				672871EB28F15964009342DA /* Assets.xcassets in Resources */,
 				673AE97C28F15C26008D1D01 /* Roboto-Light.ttf in Resources */,
 				673AE98628F15E03008D1D01 /* JosefinSans-SemiBold.ttf in Resources */,
+				676F3C1228F4A62800EF9C4A /* GoogleService-Info.plist in Resources */,
 				673AE98428F15DFE008D1D01 /* JosefinSans-Light.ttf in Resources */,
 				673AE98528F15E00008D1D01 /* JosefinSans-Regular.ttf in Resources */,
 				673AE97D28F15C29008D1D01 /* Aladin-Regular.ttf in Resources */,
@@ -224,6 +266,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		676F3C1328F4A83F00EF9C4A /* Crashylitics Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(BUILT_PRODUCTS_DIR)?$(INFOPLIST_PATH)",
+			);
+			name = "Crashylitics Run Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		672871DF28F15963009342DA /* Sources */ = {
@@ -234,6 +298,7 @@
 				6726600128F1C5A8003A4E56 /* DashboardScreenView.swift in Sources */,
 				672871E928F15963009342DA /* ContentView.swift in Sources */,
 				672871E728F15963009342DA /* AnimdoApp.swift in Sources */,
+				676F3C1628F4BB2400EF9C4A /* ForgotPasswordScreenView.swift in Sources */,
 				6726600728F2C19F003A4E56 /* OffsetPageTabView.swift in Sources */,
 				673AE98A28F174D0008D1D01 /* Onboarding.swift in Sources */,
 				6726600328F2BCB9003A4E56 /* OnboardingRegisterScreenView.swift in Sources */,
@@ -280,9 +345,10 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -343,6 +409,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -368,9 +435,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"Animdo/Preview Content\"";
 				DEVELOPMENT_TEAM = 7T5G873XW3;
 				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Animdo/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -402,6 +471,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Animdo/Preview Content\"";
 				DEVELOPMENT_TEAM = 7T5G873XW3;
 				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Animdo/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -445,6 +515,55 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		67A69F2F28F5EA9A00D7BEE3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		67A69F3028F5EA9A00D7BEE3 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 67A69F2F28F5EA9A00D7BEE3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		67A69F3228F5EA9A00D7BEE3 /* FirebaseAppCheck */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 67A69F2F28F5EA9A00D7BEE3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAppCheck;
+		};
+		67A69F3428F5EA9A00D7BEE3 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 67A69F2F28F5EA9A00D7BEE3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		67A69F3628F5EA9A00D7BEE3 /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 67A69F2F28F5EA9A00D7BEE3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		67A69F3828F5EA9A00D7BEE3 /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 67A69F2F28F5EA9A00D7BEE3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		67A69F3A28F5EA9A00D7BEE3 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 67A69F2F28F5EA9A00D7BEE3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		67A69F3C28F5EA9A00D7BEE3 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 67A69F2F28F5EA9A00D7BEE3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 672871DB28F15963009342DA /* Project object */;
 }

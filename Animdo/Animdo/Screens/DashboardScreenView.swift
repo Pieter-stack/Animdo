@@ -8,13 +8,24 @@
 import SwiftUI
 
 struct DashboardScreenView: View {
+   
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack{
+  
+            
+            
+            Button(action: {
+               
+            }, label: {
+                Text("Logout")
+            })
+        }
     }
 }
 
 struct DashboardScreenView_Previews: PreviewProvider {
     static var previews: some View {
         DashboardScreenView()
+            
     }
 }
