@@ -9,16 +9,7 @@ import SwiftUI
 
 struct DashboardScreenView: View {
     var body: some View {
-        VStack{
-  
-            
-            
-            Button(action: {
-               
-            }, label: {
-                Text("Logout")
-            })
-        }
+        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
     }
 }
 

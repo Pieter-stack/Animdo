@@ -15,10 +15,13 @@ struct LoginScreenView: View {
     @State private var password: String = ""
     @State private var AllFields: Int = 0
     
+<<<<<<< HEAD
     @State private var showForgotPassword = false
     
     
    
+=======
+>>>>>>> parent of 3104061 ([X] Small tweaks to frontend)
     var body: some View {
         GeometryReader{metrics in
             ZStack{
@@ -38,6 +41,7 @@ struct LoginScreenView: View {
                     .underline()
                     .padding(.bottom,getScreenBounds().width/130 )
                     
+<<<<<<< HEAD
                     //TODO: forgot pw need to move to correct area
                     Button(action: {
                         //TODO: Handle presentation to forgot password
@@ -49,6 +53,8 @@ struct LoginScreenView: View {
                     
                     
     
+=======
+>>>>>>> parent of 3104061 ([X] Small tweaks to frontend)
                     
                     ZStack(alignment: .leading){
                         if email.isEmpty{
@@ -187,9 +193,6 @@ struct LoginScreenView: View {
                 }//VStack
             }//ZStack
         }//georeader
-        .sheet(isPresented: $showForgotPassword, content: {
-            ForgotPasswordScreenView()
-        })
     }//body
 }//loginscreenview
 
