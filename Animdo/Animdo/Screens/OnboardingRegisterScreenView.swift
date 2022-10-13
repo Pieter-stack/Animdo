@@ -5,12 +5,16 @@
 //  Created by Pieter Venter on 2022/10/09.
 //
 
+///make all components for better layout
 import SwiftUI
 
 struct OnboardingRegisterScreenView: View {
   
     var device = UIDevice.current.name
     @State var offset: CGFloat = 0
+    
+    //pop screen for navigation instead of stacking nav on eachother
+    @Environment(\.presentationMode) var presentationMode
     
     //Image data
     @State private var showSheet: Bool = false
@@ -387,11 +391,13 @@ struct OnboardingRegisterScreenView: View {
                             Text("Already have an account?")
                                 .foregroundColor(.white)
                                 .font(Font.custom("JosefinSans-Light", size: getScreenBounds().width/23))
-                            NavigationLink(destination: LoginScreenView().navigationBarBackButtonHidden(true)){
+                            Button(action: {
+                                presentationMode.wrappedValue.dismiss()
+                            }, label: {
                                 Text("Login here")
                                     .foregroundColor(.white)
                                     .font(Font.custom("JosefinSans-Regular", size: getScreenBounds().width/23))
-                            }//NavigationLink
+                            })
                         }//Hstack
                         .padding(.top, 5)
                         .padding(.bottom, device == "iPod touch (7th generation)" || device == "iPhone SE (3rd generation)" || device == "iPhone 8" || device == "iPhone 8 Plus" || device == "iPhone 13 mini" ? 10 : 0 )
@@ -593,17 +599,13 @@ struct OnboardingRegisterScreenView: View {
                             Text("Already have an account?")
                                 .foregroundColor(.white)
                                 .font(Font.custom("JosefinSans-Light", size: getScreenBounds().width/23))
-<<<<<<< HEAD
                             Button(action: {
                                 presentationMode.wrappedValue.dismiss()
                             }, label: {
-=======
-                            NavigationLink(destination: LoginScreenView().navigationBarBackButtonHidden(true)){
->>>>>>> parent of 3104061 ([X] Small tweaks to frontend)
                                 Text("Login here")
                                     .foregroundColor(.white)
                                     .font(Font.custom("JosefinSans-Regular", size: getScreenBounds().width/23))
-                            }//NavigationLink
+                            })
                         }//Hstack
                         .padding(.top, 5)
                         .padding(.bottom, device == "iPod touch (7th generation)" || device == "iPhone SE (3rd generation)" || device == "iPhone 8" || device == "iPhone 8 Plus" || device == "iPhone 13 mini" ? 10 : 0 )

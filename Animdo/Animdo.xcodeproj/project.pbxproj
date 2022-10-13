@@ -68,7 +68,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-<<<<<<< HEAD
 				670E83A628F891AC00054E02 /* FirebaseDatabase in Frameworks */,
 				670E83A028F891AC00054E02 /* FirebaseAppCheck in Frameworks */,
 				670E83A428F891AC00054E02 /* FirebaseCrashlytics in Frameworks */,
@@ -76,8 +75,6 @@
 				670E83AA28F891AC00054E02 /* FirebaseStorage in Frameworks */,
 				670E839E28F891AC00054E02 /* FirebaseAnalytics in Frameworks */,
 				670E83A828F891AC00054E02 /* FirebaseFirestore in Frameworks */,
-=======
->>>>>>> parent of 3104061 ([X] Small tweaks to frontend)
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,7 +105,6 @@
 				673AE97728F15ADF008D1D01 /* Fonts */,
 				673AE97628F15AD6008D1D01 /* Views */,
 				673AE97528F15ACF008D1D01 /* Models */,
-				673AE97428F15AC0008D1D01 /* Services */,
 				673AE97328F15AB7008D1D01 /* Screens */,
 				672871E628F15963009342DA /* AnimdoApp.swift */,
 				672871E828F15963009342DA /* ContentView.swift */,
@@ -134,19 +130,9 @@
 				673AE98728F160DE008D1D01 /* SplashScreenView.swift */,
 				6726600028F1C5A8003A4E56 /* DashboardScreenView.swift */,
 				676F3BFE28F420B500EF9C4A /* LoginScreenView.swift */,
-<<<<<<< HEAD
 				670E839A28F890A500054E02 /* ForgotPasswordScreenView.swift */,
-=======
->>>>>>> parent of 3104061 ([X] Small tweaks to frontend)
 			);
 			path = Screens;
-			sourceTree = "<group>";
-		};
-		673AE97428F15AC0008D1D01 /* Services */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Services;
 			sourceTree = "<group>";
 		};
 		673AE97528F15ACF008D1D01 /* Models */ = {
@@ -190,17 +176,13 @@
 				672871DF28F15963009342DA /* Sources */,
 				672871E028F15963009342DA /* Frameworks */,
 				672871E128F15963009342DA /* Resources */,
-<<<<<<< HEAD
 				670E83AD28F8930F00054E02 /* Crashlytics Run Script */,
-=======
->>>>>>> parent of 3104061 ([X] Small tweaks to frontend)
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = Animdo;
-<<<<<<< HEAD
 			packageProductDependencies = (
 				670E839D28F891AC00054E02 /* FirebaseAnalytics */,
 				670E839F28F891AC00054E02 /* FirebaseAppCheck */,
@@ -210,8 +192,6 @@
 				670E83A728F891AC00054E02 /* FirebaseFirestore */,
 				670E83A928F891AC00054E02 /* FirebaseStorage */,
 			);
-=======
->>>>>>> parent of 3104061 ([X] Small tweaks to frontend)
 			productName = Animdo;
 			productReference = 672871E328F15963009342DA /* Animdo.app */;
 			productType = "com.apple.product-type.application";
@@ -240,12 +220,9 @@
 				Base,
 			);
 			mainGroup = 672871DA28F15963009342DA;
-<<<<<<< HEAD
 			packageReferences = (
 				670E839C28F891AB00054E02 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
-=======
->>>>>>> parent of 3104061 ([X] Small tweaks to frontend)
 			productRefGroup = 672871E428F15963009342DA /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -274,7 +251,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-<<<<<<< HEAD
 /* Begin PBXShellScriptBuildPhase section */
 		670E83AD28F8930F00054E02 /* Crashlytics Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -297,8 +273,6 @@
 		};
 /* End PBXShellScriptBuildPhase section */
 
-=======
->>>>>>> parent of 3104061 ([X] Small tweaks to frontend)
 /* Begin PBXSourcesBuildPhase section */
 		672871DF28F15963009342DA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -308,10 +282,7 @@
 				6726600128F1C5A8003A4E56 /* DashboardScreenView.swift in Sources */,
 				672871E928F15963009342DA /* ContentView.swift in Sources */,
 				672871E728F15963009342DA /* AnimdoApp.swift in Sources */,
-<<<<<<< HEAD
 				670E839B28F890A500054E02 /* ForgotPasswordScreenView.swift in Sources */,
-=======
->>>>>>> parent of 3104061 ([X] Small tweaks to frontend)
 				6726600728F2C19F003A4E56 /* OffsetPageTabView.swift in Sources */,
 				673AE98A28F174D0008D1D01 /* Onboarding.swift in Sources */,
 				6726600328F2BCB9003A4E56 /* OnboardingRegisterScreenView.swift in Sources */,
@@ -358,7 +329,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -448,6 +419,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"Animdo/Preview Content\"";
 				DEVELOPMENT_TEAM = 7T5G873XW3;
 				ENABLE_PREVIEWS = YES;
@@ -526,7 +498,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-<<<<<<< HEAD
 
 /* Begin XCRemoteSwiftPackageReference section */
 		670E839C28F891AB00054E02 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
@@ -576,8 +547,6 @@
 			productName = FirebaseStorage;
 		};
 /* End XCSwiftPackageProductDependency section */
-=======
->>>>>>> parent of 3104061 ([X] Small tweaks to frontend)
 	};
 	rootObject = 672871DB28F15963009342DA /* Project object */;
 }

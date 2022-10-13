@@ -65,7 +65,7 @@ struct OnboardingScreenView: View {
                                 .padding(.trailing, 30)
                                 .cornerRadius(30)
                                 .padding(.trailing, -30)
-                            NavigationLink(destination: OnboardingRegisterScreenView().navigationBarBackButtonHidden(true)){
+                            NavigationLink(destination: LoginScreenView().navigationBarBackButtonHidden(true)){
                                 Text("Done")
                                     .foregroundColor(.black)
                                     .font(Font.custom("Aladin-regular", size: 32))
