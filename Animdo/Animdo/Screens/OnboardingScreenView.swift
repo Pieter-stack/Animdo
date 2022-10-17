@@ -17,7 +17,7 @@ struct OnboardingScreenView: View {
         ]
     
 
-    
+    @AppStorage("isOnboarding") var isOnboarding: Bool = true
     //Gesture Properties
     @GestureState var isDragging: Bool = false
     var device = UIDevice.current.name
@@ -33,8 +33,6 @@ struct OnboardingScreenView: View {
                         .clipShape(LiquidShape(offset: boardingScreens[index].offset, curvePoint: fakeIndex == index ? 50 : 0))
                     
                         .ignoresSafeArea()
-                    
-                    
                 }//Foreach
                 HStack(spacing: 8){
                     if currentIndex == 2{
@@ -42,9 +40,6 @@ struct OnboardingScreenView: View {
                         Spacer()
                         Spacer()
                     }
-                    
-                    
-                    
                     //INDICATORS
                     ForEach(0..<boardingScreens.count - 2, id: \.self){index in
                         Image(currentIndex == index ? "PawPrintOne" : "PawPrintTwo")
@@ -55,25 +50,23 @@ struct OnboardingScreenView: View {
                             .opacity(currentIndex == index ? 1 : 0.85)
                     }
                     if currentIndex == 2{
-                        
-                        
                         Spacer()
-                        ZStack{
-                            Rectangle()
-                                .frame(width: 100, height: 50)
-                                .foregroundColor(Color("CustomBrownLight"))
-                                .padding(.trailing, 30)
-                                .cornerRadius(30)
-                                .padding(.trailing, -30)
-                            NavigationLink(destination: LoginScreenView().navigationBarBackButtonHidden(true)){
+                        NavigationLink(destination: LoginScreenView().navigationBarBackButtonHidden(true)){
+                            ZStack{
+                                Rectangle()
+                                    .frame(width: 100, height: 50)
+                                    .foregroundColor(Color("CustomBrownLight"))
+                                    .padding(.trailing, 30)
+                                    .cornerRadius(30)
+                                    .padding(.trailing, -30)
                                 Text("Done")
                                     .foregroundColor(.black)
                                     .font(Font.custom("Aladin-regular", size: 32))
-                                
-                            }//Navigation Link
- 
-                        }//ZStack
-                        
+                            }
+                            .onTapGesture{
+                                isOnboarding = false
+                            }
+                        }
                     }//foreach
                 }//HStack
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
@@ -224,9 +217,6 @@ struct LiquidShape: Shape{
     var curvePoint: CGFloat
     
     // Multiple AnimatingTable data
-    
-    
-    
     //Animating Shapes
     var animatableData: AnimatablePair<CGSize.AnimatableData, CGFloat>{
         get{

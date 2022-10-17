@@ -6,9 +6,12 @@
 //
 
 import SwiftUI
+import Firebase
+import FirebaseAuth
 
 struct LoginScreenView: View {
-
+    @State var userIsLoggedIn: Bool = false
+    @StateObject var authManager = AuthManager()
     var device = UIDevice.current.name
     //Input fields
     @State private var email: String = ""
@@ -20,6 +23,14 @@ struct LoginScreenView: View {
     
    
     var body: some View {
+        if userIsLoggedIn{
+                DashboardScreenView()
+        }else{
+                content
+        }
+    }//body
+    
+    var content: some View{
         GeometryReader{metrics in
             ZStack{
                 Image("LoginBG")
@@ -36,109 +47,33 @@ struct LoginScreenView: View {
                     .foregroundColor(.white)
                     .font(Font.custom("Aladin-regular", size: getScreenBounds().width/9))
                     .underline()
-                    .padding(.bottom,getScreenBounds().width/130 )
+                    .padding(.bottom,getScreenBounds().width/100 )
+                    .padding(.top, 30)
                     
+                    
+
+                    
+                    
+                    LogRegInputs(input: $email, keyboardType: .default, placeholder: "Email")
+                    LogRegInputs(input: $password, keyboardType: .default, placeholder: "Password")
                     //TODO: forgot pw need to move to correct area
-                    Button(action: {
-                        //TODO: Handle presentation to forgot password
-                        showForgotPassword.toggle()
-                        
-                    }, label: {
-                        Text("forgot password?")
-                    })
-                    
-                    
-    
-                    
-                    ZStack(alignment: .leading){
-                        if email.isEmpty{
-                            Text("Email")
-                                .padding(.all, 20)
-                                .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/20))
-                                .foregroundColor(.white).opacity(0.5)
-                                .padding(.bottom, -50)
-                        }
-                        TextField("", text: $email)
-                            .padding(.all, 20)
-                            .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/20))
-                            .foregroundColor(.white)
-                            .padding(.bottom, -50)
-                    }//ZStack
-            
-                    if email.isEmpty{
-                        HStack{
-                            Text("")
-                                .padding(.all, 20)
-                            RoundedRectangle(cornerRadius: 25)
-                                .fill(Color("CustomBlueLight"))
-                                .frame(height: 5)
-                                .padding()
-                                .padding(.leading, -50)
-                        }//HStack
-                    }else{
-                        HStack{
-                            RoundedRectangle(cornerRadius: 25)
-                                .fill(Color("CustomBlueLight"))
-                                .frame(width: 30, height: 5)
-                                .padding(.leading)
-                                
-                            Text("Email")
-                                .padding(.all, 20)
-                                .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/29))
-                                .foregroundColor(.white.opacity(0.5))
-                                .padding(.horizontal, -20)
+                    VStack(alignment: .trailing){
+                        Button(action: {
+                            //TODO: Handle presentation to forgot password
+                            showForgotPassword.toggle()
                             
-                            RoundedRectangle(cornerRadius: 25)
-                                .fill(Color("CustomBlueLight"))
-                                .frame(height: 5)
-                                .padding(.trailing)
-                        }//HStack
-                    }//Custom Input Line
+                        }, label: {
+                            Text("Forgot password?")
+                                .foregroundColor(.white)
+                                .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/25))
+                        })
+                        .padding(.top, -20)
+                        .padding(.trailing)
+                    }
+                    .frame(width: getScreenBounds().width, alignment: .trailing)
                     
-                    ZStack(alignment: .leading){
-                        if password.isEmpty{
-                            Text("Password")
-                                .padding(.all, 20)
-                                .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/20))
-                                .foregroundColor(.white).opacity(0.5)
-                                .padding(.bottom, -50)
-                        }
-                        TextField("", text: $password)
-                            .padding(.all, 20)
-                            .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/20))
-                            .foregroundColor(.white)
-                            .padding(.bottom, -50)
-                    }//ZStack
-            
-                    if password.isEmpty{
-                        HStack{
-                            Text("")
-                                .padding(.all, 20)
-                            RoundedRectangle(cornerRadius: 25)
-                                .fill(Color("CustomBlueLight"))
-                                .frame(height: 5)
-                                .padding()
-                                .padding(.leading, -50)
-                        }//HStack
-                    }else{
-                        HStack{
-                            RoundedRectangle(cornerRadius: 25)
-                                .fill(Color("CustomBlueLight"))
-                                .frame(width: 30, height: 5)
-                                .padding(.leading)
-                                
-                            Text("Password")
-                                .padding(.all, 20)
-                                .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/29))
-                                .foregroundColor(.white.opacity(0.5))
-                                .padding(.horizontal, -20)
-                            
-                            RoundedRectangle(cornerRadius: 25)
-                                .fill(Color("CustomBlueLight"))
-                                .frame(height: 5)
-                                .padding(.trailing)
-                        }//HStack
-                    }//Custom Input Line
+                    
+                    
                 Spacer()
                 
                     VStack{
@@ -146,6 +81,14 @@ struct LoginScreenView: View {
                             Text("Please fill in all the fields!")
                                 .foregroundColor(.yellow)
                                 .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/25))
+                                .padding(.horizontal)
+                                .multilineTextAlignment(.center)
+                        }else{
+                            Text("\(authManager.message == "There is no user record corresponding to this identifier. The user may have been deleted." ? "Email does not exist or does not match with password" : authManager.message )")
+                                .foregroundColor(.yellow)
+                                .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/25))
+                                .padding(.horizontal)
+                                .multilineTextAlignment(.center)
                         }
 
                     Button(action:{
@@ -154,6 +97,7 @@ struct LoginScreenView: View {
                             
                         }else{
                             AllFields = 0
+                            authManager.loginUser(email: email, password: password)
                         }
                         
                     }, label: {
@@ -187,10 +131,19 @@ struct LoginScreenView: View {
                 }//VStack
             }//ZStack
         }//georeader
+        .onAppear{
+            Auth.auth().addStateDidChangeListener{auth, user in
+                if user != nil {
+                    withAnimation{
+                        userIsLoggedIn.toggle()
+                    }//animation
+                }//if user is not nil
+            }//listening state
+        }//on appear
         .sheet(isPresented: $showForgotPassword, content: {
             ForgotPasswordScreenView()
         })
-    }//body
+    }
 }//loginscreenview
 
 struct LoginScreenView_Previews: PreviewProvider {

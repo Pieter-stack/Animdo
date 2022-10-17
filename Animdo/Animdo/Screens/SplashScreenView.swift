@@ -11,10 +11,16 @@ struct SplashScreenView: View {
     @State private var isActive = false
     @State private var size = 0.8
     @State private var opacity = 0.7
+    @AppStorage("isOnboarding") var isOnboarding: Bool = true
     var body: some View {
         
         if isActive{
-            OnboardingScreenView()
+            if isOnboarding{
+                OnboardingScreenView()
+            }else{
+                LoginScreenView()
+            }
+            
         }else{
             GeometryReader{metrics in
                 ZStack{

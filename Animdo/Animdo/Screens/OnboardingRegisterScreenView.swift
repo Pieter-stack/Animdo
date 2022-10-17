@@ -7,9 +7,12 @@
 
 ///make all components for better layout
 import SwiftUI
+import Firebase
+import FirebaseAuth
 
 struct OnboardingRegisterScreenView: View {
-  
+    @State var userIsLoggedIn: Bool = false
+    @StateObject var authManager = AuthManager()
     var device = UIDevice.current.name
     @State var offset: CGFloat = 0
     
@@ -36,6 +39,14 @@ struct OnboardingRegisterScreenView: View {
     
     var body: some View {
         //Custom Pager View
+        if userIsLoggedIn{
+            DashboardScreenView()
+        }else{
+            content
+        }
+    }//Body
+    
+    var content: some View{
         ZStack{
             LinearGradient(colors: [Color("CustomBlue"), Color("CustomBlueLight")], startPoint: .top, endPoint: .bottom)
                 .ignoresSafeArea()
@@ -58,8 +69,6 @@ struct OnboardingRegisterScreenView: View {
             .ignoresSafeArea()
             
             VStack{
-                
-                
                 if getIndex() == 0{
                     
                     ZStack{
@@ -150,95 +159,10 @@ struct OnboardingRegisterScreenView: View {
                     //Page One Form Inputs
                     
                     Spacer()
-                    ZStack(alignment: .leading){
-                        if name.isEmpty{
-                            Text("Name")
-                                .padding(.all, 20)
-                                .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/20))
-                                .foregroundColor(.white).opacity(0.5)
-                                .padding(.bottom, -50)
-                        }
-                        TextField("", text: $name)
-                            .padding(.all, 20)
-                            .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/20))
-                            .foregroundColor(.white)
-                            .padding(.bottom, -50)
-                    }//ZStack
-            
-                    if name.isEmpty{
-                        HStack{
-                            Text("")
-                                .padding(.all, 20)
-                            RoundedRectangle(cornerRadius: 25)
-                                .fill(Color("CustomBlueLight"))
-                                .frame(height: 5)
-                                .padding()
-                                .padding(.leading, -50)
-                        }//HStack
-                    }else{
-                        HStack{
-                            RoundedRectangle(cornerRadius: 25)
-                                .fill(Color("CustomBlueLight"))
-                                .frame(width: 30, height: 5)
-                                .padding(.leading)
-                                
-                            Text("Name")
-                                .padding(.all, 20)
-                                .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/29))
-                                .foregroundColor(.white.opacity(0.5))
-                                .padding(.horizontal, -20)
-                            
-                            RoundedRectangle(cornerRadius: 25)
-                                .fill(Color("CustomBlueLight"))
-                                .frame(height: 5)
-                                .padding(.trailing)
-                        }//HStack
-                    }//Custom Input Line
                     
-                    ZStack(alignment: .leading){
-                        if surname.isEmpty{
-                            Text("Surname")
-                                .padding(.all, 20)
-                                .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/20))
-                                .foregroundColor(.white).opacity(0.5)
-                                .padding(.bottom, -50)
-                        }
-                        TextField("", text: $surname)
-                            .padding(.all, 20)
-                            .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/20))
-                            .foregroundColor(.white)
-                            .padding(.bottom, -50)
-                    }//ZStack
-            
-                    if surname.isEmpty{
-                        HStack{
-                            Text("")
-                                .padding(.all, 20)
-                            RoundedRectangle(cornerRadius: 25)
-                                .fill(Color("CustomBlueLight"))
-                                .frame(height: 5)
-                                .padding()
-                                .padding(.leading, -50)
-                        }//HStack
-                    }else{
-                        HStack{
-                            RoundedRectangle(cornerRadius: 25)
-                                .fill(Color("CustomBlueLight"))
-                                .frame(width: 30, height: 5)
-                                .padding(.leading)
-                                
-                            Text("Surname")
-                                .padding(.all, 20)
-                                .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/29))
-                                .foregroundColor(.white.opacity(0.5))
-                                .padding(.horizontal, -20)
-                            
-                            RoundedRectangle(cornerRadius: 25)
-                                .fill(Color("CustomBlueLight"))
-                                .frame(height: 5)
-                                .padding(.trailing)
-                        }//HStack
-                    }//Custom Input Line
+                    LogRegInputs(input: $name, keyboardType: .default, placeholder: "Name")
+                    LogRegInputs(input: $surname, keyboardType: .default, placeholder: "Surname")
+
                 HStack{
                     VStack{
                         Menu {
@@ -386,7 +310,6 @@ struct OnboardingRegisterScreenView: View {
                                 .padding(.top, 20)
                         }//ZStack
                     })
-                        
                         HStack{
                             Text("Already have an account?")
                                 .foregroundColor(.white)
@@ -423,154 +346,28 @@ struct OnboardingRegisterScreenView: View {
                     //Page Two Form Inputs
                     
                     Spacer()
-                    ZStack(alignment: .leading){
-                        if username.isEmpty{
-                            Text("Username")
-                                .padding(.all, 20)
-                                .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/20))
-                                .foregroundColor(.white).opacity(0.5)
-                                .padding(.bottom, -50)
-                        }
-                        TextField("", text: $username)
-                            .padding(.all, 20)
-                            .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/20))
-                            .foregroundColor(.white)
-                            .padding(.bottom, -50)
-                    }//ZStack
-            
-                    if username.isEmpty{
-                        HStack{
-                            Text("")
-                                .padding(.all, 20)
-                            RoundedRectangle(cornerRadius: 25)
-                                .fill(Color("CustomBlueLight"))
-                                .frame(height: 5)
-                                .padding()
-                                .padding(.leading, -50)
-                        }//HStack
-                    }else{
-                        HStack{
-                            RoundedRectangle(cornerRadius: 25)
-                                .fill(Color("CustomBlueLight"))
-                                .frame(width: 30, height: 5)
-                                .padding(.leading)
-                                
-                            Text("Username")
-                                .padding(.all, 20)
-                                .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/29))
-                                .foregroundColor(.white.opacity(0.5))
-                                .padding(.horizontal, -20)
-                            
-                            RoundedRectangle(cornerRadius: 25)
-                                .fill(Color("CustomBlueLight"))
-                                .frame(height: 5)
-                                .padding(.trailing)
-                        }//HStack
-                    }//Custom Input Line
                     
-                    ZStack(alignment: .leading){
-                        if email.isEmpty{
-                            Text("Email")
-                                .padding(.all, 20)
-                                .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/20))
-                                .foregroundColor(.white).opacity(0.5)
-                                .padding(.bottom, -50)
-                        }
-                        TextField("", text: $email)
-                            .padding(.all, 20)
-                            .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/20))
-                            .foregroundColor(.white)
-                            .padding(.bottom, -50)
-                    }//ZStack
-            
-                    if email.isEmpty{
-                        HStack{
-                            Text("")
-                                .padding(.all, 20)
-                            RoundedRectangle(cornerRadius: 25)
-                                .fill(Color("CustomBlueLight"))
-                                .frame(height: 5)
-                                .padding()
-                                .padding(.leading, -50)
-                        }//HStack
-                    }else{
-                        HStack{
-                            RoundedRectangle(cornerRadius: 25)
-                                .fill(Color("CustomBlueLight"))
-                                .frame(width: 30, height: 5)
-                                .padding(.leading)
-                                
-                            Text("Email")
-                                .padding(.all, 20)
-                                .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/29))
-                                .foregroundColor(.white.opacity(0.5))
-                                .padding(.horizontal, -20)
-                            
-                            RoundedRectangle(cornerRadius: 25)
-                                .fill(Color("CustomBlueLight"))
-                                .frame(height: 5)
-                                .padding(.trailing)
-                        }//HStack
-                    }//Custom Input Line
-                HStack{
-                    VStack{
-                        
-                        ZStack(alignment: .leading){
-                            if password.isEmpty{
-                                Text("Password")
-                                    .padding(.all, 20)
-                                    .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/20))
-                                    .foregroundColor(.white).opacity(0.5)
-                                    .padding(.bottom, -55)
-                                    .padding(.top, -5)
-                            }
-                            TextField("", text: $password)
-                                .padding(.all, 20)
-                                .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/20))
-                                .foregroundColor(.white)
-                                .padding(.bottom, -55)
-                                .padding(.top, -5)
-                        }//ZStack
-                        .padding(.bottom, 5)
-                            
                     
-                        if password.isEmpty{
-                            HStack{
-                                Text("")
-                                    .padding(.all, 20)
-                                RoundedRectangle(cornerRadius: 25)
-                                    .fill(Color("CustomBlueLight"))
-                                    .frame(height: 5)
-                                    .padding()
-                                    .padding(.leading, -50)
-                            }//HStack
-                        }else{
-                            HStack{
-                                RoundedRectangle(cornerRadius: 25)
-                                    .fill(Color("CustomBlueLight"))
-                                    .frame(width: 30, height: 5)
-                                    .padding(.leading)
-                                    
-                                Text("Password")
-                                    .padding(.all, 20)
-                                    .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/29))
-                                    .foregroundColor(.white.opacity(0.5))
-                                    .padding(.horizontal, -20)
-                                
-                                RoundedRectangle(cornerRadius: 25)
-                                    .fill(Color("CustomBlueLight"))
-                                    .frame(height: 5)
-                                    .padding(.trailing)
-                            }//HStack
-                        }//Custom Input Line
-                    }//Vstack
-                }//Hstack
+                    LogRegInputs(input: $username, keyboardType: .default, placeholder: "Username")
+                    LogRegInputs(input: $email, keyboardType: .emailAddress, placeholder: "Email")
+                    LogRegInputs(input: $password, keyboardType: .default, placeholder: "Password").padding(.top, -5)
+                    
+                   
                 
                     VStack{
                         if AllFields == 1{
-                            Text("Please fill in all the fields!")
+                            Text("Fill in all the fields!")
                                 .foregroundColor(.yellow)
                                 .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/25))
+                                .padding(.horizontal)
+                                .multilineTextAlignment(.center)
+                        }else{
+                            Text("\(authManager.message)")
+                                .foregroundColor(.yellow)
+                                .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/25))
+                                .padding(.horizontal)
+                                .multilineTextAlignment(.center)
+                            
                         }
 
                     Button(action:{
@@ -579,6 +376,7 @@ struct OnboardingRegisterScreenView: View {
                             
                         }else{
                             AllFields = 0
+                            authManager.registerUser(email: email, password: password, name: name, surname: surname, age: age, gender: genderArray[selectedIndex], username: username)
                         }
                         
                     }, label: {
@@ -613,6 +411,15 @@ struct OnboardingRegisterScreenView: View {
                 }//if else for getindex
             }//VStack
         }//ZStack
+        .onAppear{
+            Auth.auth().addStateDidChangeListener{auth, user in
+                if user != nil {
+                    withAnimation{
+                        userIsLoggedIn.toggle()
+                    }//animation
+                }//if user is not nil
+            }//listening state
+        }//on appear
         .actionSheet(isPresented: $showSheet){
             ActionSheet(title: Text("Select between"), message: Text(""), buttons: [.default(Text("Photo Library")){
                 self.showImagePicker = true
@@ -628,7 +435,7 @@ struct OnboardingRegisterScreenView: View {
         .sheet(isPresented: $showImagePicker){
             ImagePicker(image: $image, isShown: $showImagePicker, sourceType: self.sourceType)
         }//sheet for library or camera
-    }//Body
+    }
     
     //getIndex of pages
     func getIndex()->Int{
