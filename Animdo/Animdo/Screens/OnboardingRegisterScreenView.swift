@@ -9,6 +9,7 @@
 import SwiftUI
 import Firebase
 import FirebaseAuth
+import GoogleSignIn
 
 struct OnboardingRegisterScreenView: View {
     @State var userIsLoggedIn: Bool = false
@@ -149,7 +150,7 @@ struct OnboardingRegisterScreenView: View {
                     
                     
                     Button(action: {
-                        authManager.GoogleLogin()
+                       GoogleLogin()
                     }, label: {
                         Text("Google")
                     })
@@ -441,6 +442,45 @@ struct OnboardingRegisterScreenView: View {
         }//sheet for library or camera
     }
     
+    func GoogleLogin(){
+       //Google Signin
+        
+        guard let ClientID = FirebaseApp.app()?.options.clientID else{ return }
+        //Create Google Sign In configuration object.
+        let config = GIDConfiguration(clientID: ClientID)
+        
+        GIDSignIn.sharedInstance.signIn(with: config, presenting: getRootViewController()){ user, error in
+            
+            if error != nil{
+                print(error.localizedDescription)
+                return
+            }
+            
+            guard
+                let authentication = user?.authentication,
+                let idToken = authentication.idToken
+            else{
+                return
+            }
+            
+            let credential = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: authentication.accessToken)
+            
+            Auth.auth().signIn(with: credential){result , error in
+                if error != nil{
+                    print(error.localizedDescription)
+                    return
+                }
+                
+                guard let user = result?.user else{
+                    return
+                }
+                
+                print(user.displayName ?? "Blank name")
+            }
+            
+        }
+    }
+    
     //getIndex of pages
     func getIndex()->Int{
             let progress = (offset / getScreenBounds().width).rounded()
@@ -448,6 +488,8 @@ struct OnboardingRegisterScreenView: View {
             return Int(progress)
         }
 }//end View
+
+
 
 struct OnboardingRegisterScreenView_Previews: PreviewProvider {
     static var previews: some View {
@@ -460,4 +502,17 @@ extension View{
     func getScreenBounds()->CGRect{
         return UIScreen.main.bounds
     }
+    
+    //receiving Rootview Controller
+    func getRootViewController()->UIViewController{
+        guard let screen = UIApplication.shared.connectedScenes.first as? UIWindowScene else{
+            return .init()
+        }
+        
+        guard let root = screen.windows.first?.rootViewController else{
+            return .init()
+        }
+        return root
+    }
+    
 }
