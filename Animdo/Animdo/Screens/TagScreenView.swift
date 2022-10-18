@@ -7,39 +7,52 @@
 
 import SwiftUI
 import CoreML
+import Vision
+
 
 struct TagScreenView: View {
     
 
-    let model = try! MobileNetV2(configuration: .init())
-    @State private var classificationLabel: String = ""
-
+    @StateObject var locationManager = LocationManager()
     
-    
-    private func performImageClasification(){
-        
-        
-       
-       guard let img = image,
-             let resizedImage = img.resizeTo(size: CGSize(width: 224, height: 224)),
-             let buffer = resizedImage.toBuffer() else{
-           return
+    var userLatitude: String {
+           return "\(locationManager.lastLocation?.coordinate.latitude ?? 0)"
        }
-        
-      let output = try? model.prediction(image: buffer)
-        
-        if let output = output{
-            self.classificationLabel = output.classLabel
-            print(classificationLabel)
-        }
-        
-        
-        
-    }
+       
+       var userLongitude: String {
+           return "\(locationManager.lastLocation?.coordinate.longitude ?? 0)"
+       }
+       
+
+//    let model = try! MNISTClassifier(configuration: .init())
+//    @State private var classificationLabel: Int = 0
+//
+//
+//
+//    private func performImageClasification(){
+//
+//
+//
+//       guard let img = image,
+//             let resizedImage = img.resizeTo(size: CGSize(width: 299, height: 299)),
+//             let buffer = resizedImage.toBuffer() else{
+//           return
+//       }
+//
+//      let output = try? model.prediction(image: buffer)
+//
+//        if let output = output{
+//            self.classificationLabel = Int(output.classLabel)
+//            print(classificationLabel)
+//        }
+//
+//
+//
+//    }
     
-    
-    
-    
+    private let classifier = try! VisionClassifier(mlModel: CustomAnimdoClassifier(configuration: MLModelConfiguration()).model)
+  
+
     
     var device = UIDevice.current.name
     //Image data
@@ -51,7 +64,8 @@ struct TagScreenView: View {
     //inputs
     @State private var tagCode: String = ""
     @State private var species: String = ""
-    @State private var location: String = ""
+    @State private var longitude: String = ""
+    @State private var latitude: String = ""
     private var genderArray = ["","Male", "Female"]
     @State private var selectedIndex = 0
     @State private var age: Int = 0
@@ -61,7 +75,6 @@ struct TagScreenView: View {
             Color("BG")
                 .ignoresSafeArea()
             VStack{
-               
                 Title(Titleblack: "Tag an", Titlebrown: "Animal!")
                     .padding(.top)
                 if image == nil{
@@ -195,8 +208,11 @@ struct TagScreenView: View {
                                     Button(action: {
                                      
                                         
-                                        ///HERE-----------
-                                        self.performImageClasification()
+                                        if let img = self.image{
+                                            self.classifier?.classify(img){result in
+                                                self.species = result
+                                            }
+                                        }
                                         
                                     }, label: {
                                         ZStack{
@@ -231,15 +247,31 @@ struct TagScreenView: View {
                                     .padding(.horizontal)
                                 HStack{
                                     ZStack(alignment: .leading){
-                                        if location.isEmpty{
-                                            Text("Drop your location")
+                                        if longitude.isEmpty{
+                                            Text("Long:")
                                                 .padding(.all, 20)
                                                 .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/20))
                                                 .foregroundColor(.white).opacity(0.5)
                                                 .padding(.leading, 20)
                                                 .padding(.bottom, -5)
                                         }
-                                        TextField("", text: $location)
+                                        TextField("", text: $longitude)
+                                            .padding(.all, 20)
+                                            .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/20))
+                                            .foregroundColor(.white)
+                                            .padding(.leading, 20)
+                                            .padding(.bottom, -5)
+                                    }//ZStack
+                                    ZStack(alignment: .leading){
+                                        if latitude.isEmpty{
+                                            Text("Lat:")
+                                                .padding(.all, 20)
+                                                .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/20))
+                                                .foregroundColor(.white).opacity(0.5)
+                                                .padding(.leading, 20)
+                                                .padding(.bottom, -5)
+                                        }
+                                        TextField("", text: $latitude)
                                             .padding(.all, 20)
                                             .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/20))
                                             .foregroundColor(.white)
@@ -247,6 +279,9 @@ struct TagScreenView: View {
                                             .padding(.bottom, -5)
                                     }//ZStack
                                     Button(action: {
+                                        
+                                        longitude = userLatitude
+                                        latitude = userLongitude
                                         
                                     }, label: {
                                         ZStack{
@@ -413,22 +448,22 @@ struct TagScreenView: View {
                                         .padding(.leading, 20)
                                         .padding(.bottom, -5)
                                 }//ZStack
-                                Button(action: {
-                                    
-                                }, label: {
+  
+                                
+
                                     ZStack{
                                         Circle()
                                             .strokeBorder(Color("BG"),lineWidth: 4)
                                             .background(Circle().foregroundColor(Color.white))
                                             .frame(width: getScreenBounds().width/7, height: getScreenBounds().height/7)
                                             .padding(.trailing)
-                                        Image("TagScan")
-                                            .resizable()
-                                            .aspectRatio(contentMode: .fit)
+                                        ScanTag(text: $tagCode)
                                             .frame(width: getScreenBounds().width/15, height: getScreenBounds().height/15)
                                             .padding(.trailing)
+                                          
                                     }
-                                })
+                                    
+                                
 
                                     
                             }//HSTack
@@ -465,7 +500,13 @@ struct TagScreenView: View {
                                 }//ZStack
                                 Button(action: {
                                     ///HERE
-                                    self.performImageClasification()
+                                    //self.performImageClasification()
+                                    
+                                    if let img = self.image{
+                                        self.classifier?.classify(img){result in
+                                            self.species = result
+                                        }
+                                    }
                                 }, label: {
                                     ZStack{
                                         Circle()
@@ -500,15 +541,31 @@ struct TagScreenView: View {
                                 .padding(.horizontal)
                             HStack{
                                 ZStack(alignment: .leading){
-                                    if location.isEmpty{
-                                        Text("Drop your location")
+                                    if longitude.isEmpty{
+                                        Text("Long:")
                                             .padding(.all, 20)
                                             .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/20))
                                             .foregroundColor(.white).opacity(0.5)
                                             .padding(.leading, 20)
                                             .padding(.bottom, -5)
                                     }
-                                    TextField("", text: $location)
+                                    TextField("", text: $longitude)
+                                        .padding(.all, 20)
+                                        .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/20))
+                                        .foregroundColor(.white)
+                                        .padding(.leading, 20)
+                                        .padding(.bottom, -5)
+                                }//ZStack
+                                ZStack(alignment: .leading){
+                                    if latitude.isEmpty{
+                                        Text("Lat:")
+                                            .padding(.all, 20)
+                                            .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/20))
+                                            .foregroundColor(.white).opacity(0.5)
+                                            .padding(.leading, 20)
+                                            .padding(.bottom, -5)
+                                    }
+                                    TextField("", text: $latitude)
                                         .padding(.all, 20)
                                         .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/20))
                                         .foregroundColor(.white)
@@ -516,7 +573,8 @@ struct TagScreenView: View {
                                         .padding(.bottom, -5)
                                 }//ZStack
                                 Button(action: {
-                                    
+                                    longitude = userLatitude
+                                    latitude = userLongitude
                                 }, label: {
                                     ZStack{
                                         Circle()
@@ -640,7 +698,7 @@ struct TagScreenView: View {
                                 .frame(height: 60)
                                 .padding(.horizontal)
                                 .padding(.top, 20)
-                            Text(classificationLabel)
+                            Text("Tag")
                                 .foregroundColor(.white)
                                 .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/20))
                                 .padding(.top, 20)
@@ -680,57 +738,3 @@ struct TagScreenView_Previews: PreviewProvider {
     }
 }
 
-
-//VStack(alignment: .leading){
-//    Text("Tag Code")
-//        .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/24))
-//        .foregroundColor(.black)
-//        .padding(.leading, 30)
-//
-//    ZStack{
-//        RoundedRectangle(cornerRadius: 40)
-//            .fill(Color("CustomBlueLight"))
-//            .frame(height: 60)
-//            .padding(.horizontal)
-//        HStack{
-//            ZStack(alignment: .leading){
-//                if tagCode.isEmpty{
-//                    Text("Scan Tag Code")
-//                        .padding(.all, 20)
-//                        .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/20))
-//                        .foregroundColor(.white).opacity(0.5)
-//                        .padding(.leading, 20)
-//                        .padding(.bottom, -5)
-//                }
-//                TextField("", text: $tagCode)
-//                    .padding(.all, 20)
-//                    .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/20))
-//                    .foregroundColor(.white)
-//                    .padding(.leading, 20)
-//                    .padding(.bottom, -5)
-//            }//ZStack
-//
-//            Button(action: {
-//
-//            }, label: {
-//                ZStack{
-//                    Circle()
-//                        .strokeBorder(Color("BG"),lineWidth: 5)
-//                        .background(Circle().foregroundColor(Color.white))
-//                        .frame(width: getScreenBounds().width/6, height: getScreenBounds().height/6)
-//
-//                    Image(systemName: "camera.fill")
-//                        .resizable()
-//                        .aspectRatio(contentMode: .fit)
-//                        .frame(width: getScreenBounds().width/14, height: getScreenBounds().height/14)
-//
-//
-//                }//ZStack
-//                .padding(.trailing, 10)
-//            })
-//
-//        }//HStack
-//    }//ZStack
-//    .padding(.top, -50)
-//}//VStack
-//.padding(.horizontal)

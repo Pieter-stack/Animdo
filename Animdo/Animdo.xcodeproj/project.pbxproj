@@ -42,8 +42,12 @@
 		673AE98C28F17596008D1D01 /* OnboardingScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673AE98B28F17596008D1D01 /* OnboardingScreenView.swift */; };
 		676F3BFF28F420B500EF9C4A /* LoginScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676F3BFE28F420B500EF9C4A /* LoginScreenView.swift */; };
 		676F3C0328F435FC00EF9C4A /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676F3C0228F435FC00EF9C4A /* ImagePicker.swift */; };
+		67E630EB28FF1B7A00112778 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E630EA28FF1B7A00112778 /* LocationManager.swift */; };
 		67EE39B328FD5B16005CDDB5 /* MobileNetV2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 67EE39B228FD5B16005CDDB5 /* MobileNetV2.mlmodel */; };
 		67EE39B528FD5DDF005CDDB5 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EE39B428FD5DDF005CDDB5 /* UIImage+Extension.swift */; };
+		67EE39BF28FDD9FD005CDDB5 /* CustomAnimdoClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 67EE39BE28FDD9FD005CDDB5 /* CustomAnimdoClassifier.mlmodel */; };
+		67EE39C128FDDB54005CDDB5 /* VisionClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EE39C028FDDB54005CDDB5 /* VisionClassifier.swift */; };
+		67EE39C328FDF6CD005CDDB5 /* TextClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EE39C228FDF6CD005CDDB5 /* TextClassifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,8 +81,12 @@
 		673AE98B28F17596008D1D01 /* OnboardingScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingScreenView.swift; sourceTree = "<group>"; };
 		676F3BFE28F420B500EF9C4A /* LoginScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenView.swift; sourceTree = "<group>"; };
 		676F3C0228F435FC00EF9C4A /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		67E630EA28FF1B7A00112778 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		67EE39B228FD5B16005CDDB5 /* MobileNetV2.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MobileNetV2.mlmodel; sourceTree = "<group>"; };
 		67EE39B428FD5DDF005CDDB5 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		67EE39BE28FDD9FD005CDDB5 /* CustomAnimdoClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = CustomAnimdoClassifier.mlmodel; sourceTree = "<group>"; };
+		67EE39C028FDDB54005CDDB5 /* VisionClassifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionClassifier.swift; sourceTree = "<group>"; };
+		67EE39C228FDF6CD005CDDB5 /* TextClassifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextClassifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,7 +119,10 @@
 			isa = PBXGroup;
 			children = (
 				670E83AB28F8925400054E02 /* GoogleService-Info.plist */,
+				67EE39C028FDDB54005CDDB5 /* VisionClassifier.swift */,
 				67EE39B428FD5DDF005CDDB5 /* UIImage+Extension.swift */,
+				67EE39C228FDF6CD005CDDB5 /* TextClassifier.swift */,
+				67E630EA28FF1B7A00112778 /* LocationManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -188,6 +199,7 @@
 		673AE97528F15ACF008D1D01 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				67EE39BE28FDD9FD005CDDB5 /* CustomAnimdoClassifier.mlmodel */,
 				67EE39B228FD5B16005CDDB5 /* MobileNetV2.mlmodel */,
 				673AE98928F174D0008D1D01 /* Onboarding.swift */,
 				6726600428F2BCF4003A4E56 /* OnRegister.swift */,
@@ -331,6 +343,7 @@
 			files = (
 				676F3BFF28F420B500EF9C4A /* LoginScreenView.swift in Sources */,
 				6726600128F1C5A8003A4E56 /* DashboardScreenView.swift in Sources */,
+				67E630EB28FF1B7A00112778 /* LocationManager.swift in Sources */,
 				672871E928F15963009342DA /* ContentView.swift in Sources */,
 				672871E728F15963009342DA /* AnimdoApp.swift in Sources */,
 				670E839B28F890A500054E02 /* ForgotPasswordScreenView.swift in Sources */,
@@ -343,13 +356,16 @@
 				6723DB8B28FC205700A07A86 /* Title.swift in Sources */,
 				67215E4728FC12F300490C66 /* MyAnimalsScreenView.swift in Sources */,
 				6726600328F2BCB9003A4E56 /* OnboardingRegisterScreenView.swift in Sources */,
+				67EE39BF28FDD9FD005CDDB5 /* CustomAnimdoClassifier.mlmodel in Sources */,
 				6726600528F2BCF4003A4E56 /* OnRegister.swift in Sources */,
 				67EE39B528FD5DDF005CDDB5 /* UIImage+Extension.swift in Sources */,
+				67EE39C328FDF6CD005CDDB5 /* TextClassifier.swift in Sources */,
 				676F3C0328F435FC00EF9C4A /* ImagePicker.swift in Sources */,
 				673AE98828F160DE008D1D01 /* SplashScreenView.swift in Sources */,
 				673AE98C28F17596008D1D01 /* OnboardingScreenView.swift in Sources */,
 				67EE39B328FD5B16005CDDB5 /* MobileNetV2.mlmodel in Sources */,
 				67215E4928FC131400490C66 /* TagScreenView.swift in Sources */,
+				67EE39C128FDDB54005CDDB5 /* VisionClassifier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -487,6 +503,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Animdo/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Please Allow Animdo the ability to access the camera";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We want to help you get your current location";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We want to help you get your current location";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -522,6 +540,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Animdo/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Please Allow Animdo the ability to access the camera";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We want to help you get your current location";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We want to help you get your current location";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

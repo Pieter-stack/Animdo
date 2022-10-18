@@ -48,6 +48,10 @@ class AuthManager: ObservableObject{
         }
     }
     
+    func GoogleLogin(){
+        
+    }
+    
     func loginUser(email: String, password: String){
             auth.signIn(withEmail: email, password: password) { [weak self] result, error in
           

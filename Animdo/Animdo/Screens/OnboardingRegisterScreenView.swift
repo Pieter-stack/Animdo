@@ -148,7 +148,11 @@ struct OnboardingRegisterScreenView: View {
                     .offset(x:getScreenBounds().width/5, y:-getScreenBounds().height/15)
                     
                     
-                    
+                    Button(action: {
+                        authManager.GoogleLogin()
+                    }, label: {
+                        Text("Google")
+                    })
                     
                     Text("Register")
                     .foregroundColor(.white)
