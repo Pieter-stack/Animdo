@@ -449,10 +449,10 @@ struct OnboardingRegisterScreenView: View {
         //Create Google Sign In configuration object.
         let config = GIDConfiguration(clientID: ClientID)
         
-        GIDSignIn.sharedInstance.signIn(with: config, presenting: getRootViewController()){ user, error in
+        GIDSignIn.sharedInstance.signIn(with: config, presenting: getRootViewController()){user, error in
             
-            if error != nil{
-                print(error.localizedDescription)
+            if (error != nil){
+                print(error!.localizedDescription)
                 return
             }
             
@@ -467,7 +467,7 @@ struct OnboardingRegisterScreenView: View {
             
             Auth.auth().signIn(with: credential){result , error in
                 if error != nil{
-                    print(error.localizedDescription)
+                    print(error!.localizedDescription)
                     return
                 }
                 
