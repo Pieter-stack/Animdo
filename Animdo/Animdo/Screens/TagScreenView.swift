@@ -11,56 +11,13 @@ import Vision
 
 
 struct TagScreenView: View {
-    
-
-    @StateObject var locationManager = LocationManager()
-    
-    var userLatitude: String {
-           return "\(locationManager.lastLocation?.coordinate.latitude ?? 0)"
-       }
-       
-       var userLongitude: String {
-           return "\(locationManager.lastLocation?.coordinate.longitude ?? 0)"
-       }
-       
-
-//    let model = try! MNISTClassifier(configuration: .init())
-//    @State private var classificationLabel: Int = 0
-//
-//
-//
-//    private func performImageClasification(){
-//
-//
-//
-//       guard let img = image,
-//             let resizedImage = img.resizeTo(size: CGSize(width: 299, height: 299)),
-//             let buffer = resizedImage.toBuffer() else{
-//           return
-//       }
-//
-//      let output = try? model.prediction(image: buffer)
-//
-//        if let output = output{
-//            self.classificationLabel = Int(output.classLabel)
-//            print(classificationLabel)
-//        }
-//
-//
-//
-//    }
-    
-    private let classifier = try! VisionClassifier(mlModel: CustomAnimdoClassifier(configuration: MLModelConfiguration()).model)
-  
-
-    
+    //Device sizes
     var device = UIDevice.current.name
     //Image data
     @State private var showSheet: Bool = false
     @State private var showImagePicker:Bool = false
     @State private var sourceType: UIImagePickerController.SourceType = .camera
     @State private var image: UIImage?
-    
     //inputs
     @State private var tagCode: String = ""
     @State private var species: String = ""
@@ -69,6 +26,16 @@ struct TagScreenView: View {
     private var genderArray = ["","Male", "Female"]
     @State private var selectedIndex = 0
     @State private var age: Int = 0
+    //Animal Recognition AI
+    private let classifier = try! VisionClassifier(mlModel: CustomAnimdoClassifier(configuration: MLModelConfiguration()).model)
+    //Location Manager
+    @StateObject var locationManager = LocationManager()
+    var userLatitude: String {
+        return "\(locationManager.lastLocation?.coordinate.latitude ?? 0)"
+    }
+    var userLongitude: String {
+        return "\(locationManager.lastLocation?.coordinate.longitude ?? 0)"
+    }
     
     var body: some View {
         ZStack{
@@ -131,6 +98,7 @@ struct TagScreenView: View {
                         VStack(alignment: .leading){
                             Text("Scan Tag")
                                 .foregroundColor(.black)
+                                .foregroundColor(.black)
                                 .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/25))
                                 .padding(.horizontal, 30)
                                 
@@ -179,6 +147,7 @@ struct TagScreenView: View {
                         
                         VStack(alignment: .leading){
                             Text("Species")
+                                .foregroundColor(.black)
                                 .foregroundColor(.black)
                                 .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/25))
                                 .padding(.horizontal, 30)
@@ -236,6 +205,7 @@ struct TagScreenView: View {
                        
                         VStack(alignment: .leading){
                             Text("Location")
+                                .foregroundColor(.black)
                                 .foregroundColor(.black)
                                 .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/25))
                                 .padding(.horizontal, 30)
@@ -306,91 +276,9 @@ struct TagScreenView: View {
                         
                         HStack{
 
-                            VStack(alignment: .leading){
-                                Text("Age")
-                                    .foregroundColor(.black)
-                                    .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/25))
-                                    .padding(.horizontal, 30)
-                                    .padding(.top, -20)
-                                ZStack{
-                                    RoundedRectangle(cornerRadius: 50)
-                                        .fill(Color("CustomBlueLight"))
-                                        .frame(height: 60)
-                                        .padding(.leading)
-                                        ZStack(alignment: .leading){
-                                            Menu {
-                                                Picker(selection: $age, label: EmptyView()) {
-                                                    ForEach(0..<100) {
-                                                        Text("\($0)")
-                                                    }//Foreach
-                                                }//Picker
-                                                } label: {
-                                                    HStack {
-                                                        if age == 0{
-                                                            Text("Age")
-                                                                .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/20))
-                                                                .foregroundColor(.white).opacity(0.5)
-                                                        }else{
-                                                            Text(String(age))
-                                                        }
-                                                        Spacer()
-                                                        Text("⌵")
-                                                            .offset(y: -4)
-                                                    }
-                                                    .foregroundColor(.white)
-                                                    .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/20))
-                                                    .padding()
-                                                    .frame(height: 32)
-                                                    .cornerRadius(16)
-                                                }//Menu
-                                                .padding(.all)
-                                        }//ZStack
-                                }//Zstack
-                                .padding(.top, -5)
-                            }//VStack
+                            AgeTagInput(input: $age, placeholder: "Age")
+                            GenderTagInput(input: $selectedIndex, placeholder: "Gender")
                             
-                            VStack(alignment: .leading){
-                                Text("Gender")
-                                    .foregroundColor(.black)
-                                    .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/25))
-                                    .padding(.horizontal, 10)
-                                    .padding(.top, -20)
-                                ZStack{
-                                    RoundedRectangle(cornerRadius: 50)
-                                        .fill(Color("CustomBlueLight"))
-                                        .frame(height: 60)
-                                        .padding(.trailing)
-                                        ZStack(alignment: .leading){
-                                            Menu {
-                                                Picker(selection: $selectedIndex, label: EmptyView()) {
-                                                    ForEach(1 ..< genderArray.count , id: \.self) {
-                                                        Text(self.genderArray[$0])
-                                                    }//Foreach
-                                                }//Picker
-                                                } label: {
-                                                    HStack {
-                                                        if genderArray[selectedIndex] == ""{
-                                                            Text("Gender")
-                                                                .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/20))
-                                                                .foregroundColor(.white).opacity(0.5)
-                                                        }else{
-                                                            Text(String(genderArray[selectedIndex]))
-                                                        }
-                                                        Spacer()
-                                                        Text("⌵")
-                                                            .offset(y: -4)
-                                                    }
-                                                    .foregroundColor(.white)
-                                                    .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/20))
-                                                    .padding()
-                                                    .frame(height: 32)
-                                                    .cornerRadius(16)
-                                                }//Menu
-                                                .padding(.all)
-                                        }//ZStack
-                                }//Zstack
-                                .padding(.top, -5)
-                            }//VStack
                         }//HStack
 
                         Spacer()
@@ -423,6 +311,7 @@ struct TagScreenView: View {
                 }else{
                     VStack(alignment: .leading){
                         Text("Scan Tag")
+                            .foregroundColor(.black)
                             .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/25))
                             .padding(.horizontal, 30)
                             
@@ -473,6 +362,7 @@ struct TagScreenView: View {
                     
                     VStack(alignment: .leading){
                         Text("Species")
+                            .foregroundColor(.black)
                             .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/25))
                             .padding(.horizontal, 30)
                             .padding(.top, -40)
@@ -531,6 +421,7 @@ struct TagScreenView: View {
                    
                     VStack(alignment: .leading){
                         Text("Location")
+                            .foregroundColor(.black)
                             .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/25))
                             .padding(.horizontal, 30)
                             .padding(.top, -40)
@@ -599,92 +490,11 @@ struct TagScreenView: View {
                     
                     
                     HStack{
-
-                        VStack(alignment: .leading){
-                            Text("Age")
-                                .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/25))
-                                .padding(.horizontal, 30)
-                                .padding(.top, -40)
-                            ZStack{
-                                RoundedRectangle(cornerRadius: 50)
-                                    .fill(Color("CustomBlueLight"))
-                                    .frame(height: 50)
-                                    .padding(.leading)
-                                    ZStack(alignment: .leading){
-                                        Menu {
-                                            Picker(selection: $age, label: EmptyView()) {
-                                                ForEach(0..<100) {
-                                                    Text("\($0)")
-                                                }//Foreach
-                                            }//Picker
-                                            } label: {
-                                                HStack {
-                                                    if age == 0{
-                                                        Text("Age")
-                                                            .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/20))
-                                                            .foregroundColor(.white).opacity(0.5)
-                                                    }else{
-                                                        Text(String(age))
-                                                    }
-                                                    Spacer()
-                                                    Text("⌵")
-                                                        .offset(y: -4)
-                                                }
-                                                .foregroundColor(.white)
-                                                .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/20))
-                                                .padding(.leading)
-                                                .frame(height: 32)
-                                                .cornerRadius(16)
-                                            }//Menu
-                                            .padding(.all)
-                                    }//ZStack
-                            }//Zstack
-                            .padding(.top, -25)
-                        }//VStack
-                        
-                        VStack(alignment: .leading){
-                            Text("Gender")
-                                .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/25))
-                                .padding(.horizontal, 10)
-                                .padding(.top, -40)
-                            ZStack{
-                                RoundedRectangle(cornerRadius: 50)
-                                    .fill(Color("CustomBlueLight"))
-                                    .frame(height: 50)
-                                    .padding(.trailing)
-                                    ZStack(alignment: .leading){
-                                        Menu {
-                                            Picker(selection: $selectedIndex, label: EmptyView()) {
-                                                ForEach(1 ..< genderArray.count , id: \.self) {
-                                                    Text(self.genderArray[$0])
-                                                }//Foreach
-                                            }//Picker
-                                            } label: {
-                                                HStack {
-                                                    if genderArray[selectedIndex] == ""{
-                                                        Text("Gender")
-                                                            .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/20))
-                                                            .foregroundColor(.white).opacity(0.5)
-                                                    }else{
-                                                        Text(String(genderArray[selectedIndex]))
-                                                    }
-                                                    Spacer()
-                                                    Text("⌵")
-                                                        .offset(y: -4)
-                                                }
-                                                .padding(.leading, -10)
-                                                .foregroundColor(.white)
-                                                .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/20))
-                                                .padding()
-                                                .frame(height: 32)
-                                                .cornerRadius(16)
-                                            }//Menu
-                                            .padding(.all)
-                                    }//ZStack
-                            }//Zstack
-                            .padding(.top, -25)
-                        }//VStack
+                        AgeTagInput(input: $age, placeholder: "Age")
+                        GenderTagInput(input: $selectedIndex, placeholder: "Gender")
+                       
                     }//HStack
+                    .padding(.top, -15)
 
 
 
@@ -704,13 +514,11 @@ struct TagScreenView: View {
                                 .padding(.top, 20)
                         }//ZStack
                     })
+                    .padding(.top, -5)
 
                    
                   Spacer()
                 }
-                
-
-               
             }//vStack
             
         }//ZStack
