@@ -150,7 +150,7 @@ struct OnboardingRegisterScreenView: View {
                     
                     
                     Button(action: {
-                       GoogleLogin()
+                        authManager.GoogleLogin()
                     }, label: {
                         Text("Google")
                     })
@@ -442,44 +442,7 @@ struct OnboardingRegisterScreenView: View {
         }//sheet for library or camera
     }
     
-    func GoogleLogin(){
-       //Google Signin
-        
-        guard let ClientID = FirebaseApp.app()?.options.clientID else{ return }
-        //Create Google Sign In configuration object.
-        let config = GIDConfiguration(clientID: ClientID)
-        
-        GIDSignIn.sharedInstance.signIn(with: config, presenting: getRootViewController()){user, error in
-            
-            if (error != nil){
-                print(error!.localizedDescription)
-                return
-            }
-            
-            guard
-                let authentication = user?.authentication,
-                let idToken = authentication.idToken
-            else{
-                return
-            }
-            
-            let credential = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: authentication.accessToken)
-            
-            Auth.auth().signIn(with: credential){result , error in
-                if error != nil{
-                    print(error!.localizedDescription)
-                    return
-                }
-                
-                guard let user = result?.user else{
-                    return
-                }
-                
-                print(user.displayName ?? "Blank name")
-            }
-            
-        }
-    }
+
     
     //getIndex of pages
     func getIndex()->Int{
@@ -503,16 +466,6 @@ extension View{
         return UIScreen.main.bounds
     }
     
-    //receiving Rootview Controller
-    func getRootViewController()->UIViewController{
-        guard let screen = UIApplication.shared.connectedScenes.first as? UIWindowScene else{
-            return .init()
-        }
-        
-        guard let root = screen.windows.first?.rootViewController else{
-            return .init()
-        }
-        return root
-    }
+
     
 }
