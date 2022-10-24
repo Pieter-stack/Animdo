@@ -8,12 +8,15 @@
 import SwiftUI
 import Firebase
 import FirebaseAuth
+import GoogleSignIn
+import AuthenticationServices
 
 struct LoginScreenView: View {
     @State var userIsLoggedIn: Bool = false
     @StateObject var authManager = AuthManager()
     var device = UIDevice.current.name
     //Input fields
+    @State private var pwVisible: Bool = false
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var AllFields: Int = 0
@@ -48,14 +51,15 @@ struct LoginScreenView: View {
                     .font(Font.custom("Aladin-regular", size: getScreenBounds().width/9))
                     .underline()
                     .padding(.bottom,getScreenBounds().width/100 )
-                    .padding(.top, 30)
+                    .padding(.top, 40)
                     
                     
 
                     
                     
                     LogRegInputs(input: $email, keyboardType: .default, placeholder: "Email")
-                    LogRegInputs(input: $password, keyboardType: .default, placeholder: "Password")
+                    
+                    PasswordInputs(input: $password, visible: $pwVisible, keyboardType: .default, placeholder: "Password").padding(.bottom, -10)
                     //TODO: forgot pw need to move to correct area
                     VStack(alignment: .trailing){
                         Button(action: {
@@ -67,12 +71,81 @@ struct LoginScreenView: View {
                                 .foregroundColor(.white)
                                 .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/25))
                         })
-                        .padding(.top, -20)
+                        .padding(.top, -10)
                         .padding(.trailing)
                     }
                     .frame(width: getScreenBounds().width, alignment: .trailing)
                     
+                    Spacer()
                     
+                    HStack{
+                        RoundedRectangle(cornerRadius: 25)
+                            .fill(Color("CustomBlueLight"))
+                            .frame(height: 5)
+                            .padding()
+                            .padding(.leading, 50)
+                        
+                        Button(action: {
+                            authManager.GoogleLogin()
+                        }, label: {
+                            Image("Google")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 28)
+                                .frame(width: 65, height: 35)
+                                .background(.white)
+                                .cornerRadius(40)
+                        })
+                        Image(systemName: "applelogo")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .foregroundColor(.white)
+                            .frame(width: 20)
+                            .padding(.bottom,5)
+                            .frame(width: 65, height: 35)
+                            .background(.black)
+                            .cornerRadius(40)
+                            .overlay(
+                            
+                                SignInWithAppleButton{ (request) in
+                                    //requesting paramaters from apple
+                                    //no pfp so have default one
+                                    authManager.nonce = randomNonceString()
+                                    request.requestedScopes=[.email,.fullName]
+                                    request.nonce = sha256(authManager.nonce)
+                                    
+                                    
+                                } onCompletion:{(result) in
+                                    //getting error or success
+                                    switch result{
+                                    case .success(let user):
+                                        print("success")
+                                        //do login with firebase
+                                        guard let credential = user.credential as? ASAuthorizationAppleIDCredential else{
+                                            print("error with firebase")
+                                            return
+                                        }
+                                        authManager.AppleLogin(credential: credential)
+                                    case .failure(let error):
+                                        print(error.localizedDescription)
+                                    }
+                                    
+                                }.signInWithAppleButtonStyle(.black)
+                                    .frame(width: 65)
+                                    .clipShape(Capsule())
+                                    .opacity(0.02)
+                            )
+                        
+                        RoundedRectangle(cornerRadius: 25)
+                            .fill(Color("CustomBlueLight"))
+                            .frame(height: 5)
+                            .padding()
+                            .padding(.trailing, 50)
+
+  
+                    }
+                    .padding(.bottom, AllFields == 1 ? 20 : -16)
+                    .padding(.top, 5)
                     
                 Spacer()
                 
@@ -133,14 +206,17 @@ struct LoginScreenView: View {
         }//georeader
         .onAppear{
             Auth.auth().addStateDidChangeListener{auth, user in
+                DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+                    print("Async after 4 seconds")
                 if user != nil {
                     withAnimation{
-                        userIsLoggedIn.toggle()
+                            userIsLoggedIn.toggle()
+                        }
                     }//animation
                 }//if user is not nil
             }//listening state
         }//on appear
-        .sheet(isPresented: $showForgotPassword, content: {
+        .fullScreenCover(isPresented: $showForgotPassword, content: {
             ForgotPasswordScreenView()
         })
     }

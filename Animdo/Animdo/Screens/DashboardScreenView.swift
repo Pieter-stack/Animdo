@@ -11,10 +11,12 @@ import FirebaseAuth
 
 struct DashboardScreenView: View {
     @State var userIsLoggedIn: Bool = true
+    @ObservedObject private var vm = SignedInUser()
 
     var body: some View {
        // if userIsLoggedIn{
         TabViewScreen()
+
        // }else{
        //         LoginScreenView()
        // }

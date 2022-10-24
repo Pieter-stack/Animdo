@@ -10,6 +10,7 @@ import SwiftUI
 import Firebase
 import FirebaseAuth
 import GoogleSignIn
+import AuthenticationServices
 
 struct OnboardingRegisterScreenView: View {
     @State var userIsLoggedIn: Bool = false
@@ -27,6 +28,7 @@ struct OnboardingRegisterScreenView: View {
     @State private var image: UIImage?
     
     //text input
+    @State private var pwVisible: Bool = false
     @State private var name: String = ""
     @State private var surname: String = ""
     @State private var age: Int = 0
@@ -36,6 +38,8 @@ struct OnboardingRegisterScreenView: View {
     private var genderArray = ["","Male", "Female", "Other"]
     @State private var selectedIndex = 0
     @State private var AllFields: Int = 0
+    
+
     
     
     var body: some View {
@@ -77,58 +81,64 @@ struct OnboardingRegisterScreenView: View {
                             Image("RegisterImgOnePick")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
-                                .frame(width: getScreenBounds().width - 100)
+                                .frame(width: getScreenBounds().width)
                                 .allowsHitTesting(false)
+                                .padding(.bottom, -25)
                         }else{
                             Image("RegisterImgOne")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
-                                .frame(width: getScreenBounds().width - 100)
+                                .frame(width: getScreenBounds().width)
                                 .allowsHitTesting(false)
+                                .padding(.bottom, -25)
                         }//check if image is not nil
                         
                         if device == "iPod touch (7th generation)" || device == "iPhone SE (3rd generation)" || device == "iPhone 8" || device == "iPhone 8 Plus" || device == "iPhone 13 mini"{
                             if image != nil{
                                 Image(uiImage: image ?? UIImage(named: "RegisterImgOne")!)
                                     .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: getScreenBounds().width - 200)
+                                    .aspectRatio(1, contentMode: .fit)
+                                    .frame(width: getScreenBounds().width)
                                     .allowsHitTesting(false)
+                                    .padding(.bottom, 8)
                                     .mask(
                                         Image("PfpTemplate")
                                             .resizable()
                                             .aspectRatio(contentMode: .fit)
-                                            .frame(width: getScreenBounds().width - 200)
+                                            .frame(width: getScreenBounds().width)
                                             .allowsHitTesting(false)
+                                            .padding(.bottom, 8)
                                     )
-                                    .offset(x:getScreenBounds().width/29, y:getScreenBounds().height/27)
+                                    .offset(x:getScreenBounds().width/40, y:getScreenBounds().height/17)
                             }//Check if there is an image
                             Image("RingPfp")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
-                                .frame(width: getScreenBounds().width - 100)
+                                .frame(width: getScreenBounds().width)
                                 .allowsHitTesting(false)
+                                .padding(.bottom, -25)
                         }else{
                             if image != nil{
                                 Image(uiImage: image ?? UIImage(named: "RegisterImgOne")!)
                                     .resizable()
-                                    .aspectRatio(contentMode: .fit)
+                                    .aspectRatio(1,contentMode: .fit)
                                     .frame(width: getScreenBounds().width - 100)
                                     .allowsHitTesting(false)
                                     .mask(
                                         Image("PfpTemplate")
                                             .resizable()
                                             .aspectRatio(contentMode: .fit)
-                                            .frame(width: getScreenBounds().width - 100)
+                                            .frame(width: getScreenBounds().width - 210)
                                             .allowsHitTesting(false)
                                     )
-                                    .offset(x:getScreenBounds().width/21, y:getScreenBounds().height/21)
+                                    .offset(x:getScreenBounds().width/17, y:getScreenBounds().height/17)
                             }//Check if there is an image
                             Image("RingPfp")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
-                                .frame(width: getScreenBounds().width - 100)
+                                .frame(width: getScreenBounds().width - 50)
                                 .allowsHitTesting(false)
+                                .padding(.bottom, -25)
                         }//responisveness
                    }//ZStack
                     Button(action: {
@@ -146,15 +156,8 @@ struct OnboardingRegisterScreenView: View {
                             .fontWeight(.bold)
                         }//ZStack
                     })
-                    .offset(x:getScreenBounds().width/5, y:-getScreenBounds().height/15)
-                    
-                    
-                    Button(action: {
-                        authManager.GoogleLogin()
-                    }, label: {
-                        Text("Google")
-                    })
-                    
+                    .offset(x:getScreenBounds().width/5, y:-getScreenBounds().height/19)
+    
                     Text("Register")
                     .foregroundColor(.white)
                     .font(Font.custom("Aladin-regular", size: getScreenBounds().width/9))
@@ -164,9 +167,11 @@ struct OnboardingRegisterScreenView: View {
                     //Page One Form Inputs
                     
                     Spacer()
-                    
-                    LogRegInputs(input: $name, keyboardType: .default, placeholder: "Name")
-                    LogRegInputs(input: $surname, keyboardType: .default, placeholder: "Surname")
+
+
+                        LogRegInputs(input: $name, keyboardType: .default, placeholder: "Name")
+                        LogRegInputs(input: $surname, keyboardType: .default, placeholder: "Surname")
+
 
                 HStack{
                     VStack{
@@ -295,10 +300,76 @@ struct OnboardingRegisterScreenView: View {
                         
                         
                     }//Vstack
+                    
                 }//Hstack
+                    HStack{
+                        RoundedRectangle(cornerRadius: 25)
+                            .fill(Color("CustomBlueLight"))
+                            .frame(height: 5)
+                            .padding()
+                            .padding(.leading, 50)
+                        
+                        Button(action: {
+                            authManager.GoogleLogin()
+                        }, label: {
+                            Image("Google")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 28)
+                                .frame(width: 65, height: 35)
+                                .background(.white)
+                                .cornerRadius(40)
+                        })
+                        Image(systemName: "applelogo")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .foregroundColor(.white)
+                            .frame(width: 20)
+                            .padding(.bottom,5)
+                            .frame(width: 65, height: 35)
+                            .background(.black)
+                            .cornerRadius(40)
+                            .overlay(
+                            
+                                SignInWithAppleButton{ (request) in
+                                    //requesting paramaters from apple
+                                    //no pfp so have default one
+                                    authManager.nonce = randomNonceString()
+                                    request.requestedScopes=[.email,.fullName]
+                                    request.nonce = sha256(authManager.nonce)
+                                    
+                                    
+                                } onCompletion:{(result) in
+                                    //getting error or success
+                                    switch result{
+                                    case .success(let user):
+                                        print("success")
+                                        //do login with firebase
+                                        guard let credential = user.credential as? ASAuthorizationAppleIDCredential else{
+                                            print("error with firebase")
+                                            return
+                                        }
+                                        authManager.AppleLogin(credential: credential)
+                                    case .failure(let error):
+                                        print(error.localizedDescription)
+                                    }
+                                    
+                                }.signInWithAppleButtonStyle(.black)
+                                    .frame(width: 65)
+                                    .clipShape(Capsule())
+                                    .opacity(0.02)
+                            )
+                        
+                        RoundedRectangle(cornerRadius: 25)
+                            .fill(Color("CustomBlueLight"))
+                            .frame(height: 5)
+                            .padding()
+                            .padding(.trailing, 50)
+
+  
+                    }
                 
                     VStack{
-
 
                     Button(action:{
                         offset = min(offset + getScreenBounds().width,getScreenBounds().width * 1)
@@ -345,19 +416,18 @@ struct OnboardingRegisterScreenView: View {
                     .foregroundColor(.white)
                     .font(Font.custom("Aladin-regular", size: getScreenBounds().width/9))
                     .underline()
-                    .padding(.top, 50)
+                    .padding(.top, 55)
                     .allowsHitTesting(false)
                     
                     //Page Two Form Inputs
                     
                     Spacer()
                     
-                    
-                    LogRegInputs(input: $username, keyboardType: .default, placeholder: "Username")
-                    LogRegInputs(input: $email, keyboardType: .emailAddress, placeholder: "Email")
-                    LogRegInputs(input: $password, keyboardType: .default, placeholder: "Password").padding(.top, -5)
-                    
-                   
+
+                        LogRegInputs(input: $username, keyboardType: .default, placeholder: "Username")
+                        LogRegInputs(input: $email, keyboardType: .emailAddress, placeholder: "Email")
+                        PasswordInputs(input: $password, visible: $pwVisible, keyboardType: .default, placeholder: "Password").padding(.top, -6)
+
                 
                     VStack{
                         if AllFields == 1{
@@ -374,14 +444,23 @@ struct OnboardingRegisterScreenView: View {
                                 .multilineTextAlignment(.center)
                             
                         }
+                        
+                        HStack{
+                                //Spacer for uniform scaling
+                                Rectangle()
+                                    .frame(height: 35)
+                                    .opacity(0)
+
+                        }
 
                     Button(action:{
+                        authManager.persistImageToStorage()
                         if (name.isEmpty || surname.isEmpty || age == 0 && genderArray[selectedIndex] == "" || username.isEmpty || email.isEmpty || password.isEmpty || image == nil){
                             AllFields = 1
                             
                         }else{
                             AllFields = 0
-                            authManager.registerUser(email: email, password: password, name: name, surname: surname, age: age, gender: genderArray[selectedIndex], username: username)
+                            authManager.registerUser(email: email, password: password, name: name, surname: surname, age: age, gender: genderArray[selectedIndex], username: username, image: image!)
                         }
                         
                     }, label: {
@@ -418,9 +497,12 @@ struct OnboardingRegisterScreenView: View {
         }//ZStack
         .onAppear{
             Auth.auth().addStateDidChangeListener{auth, user in
+                DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+                    print("Async after 4 seconds")
                 if user != nil {
                     withAnimation{
-                        userIsLoggedIn.toggle()
+                            userIsLoggedIn.toggle()
+                        }
                     }//animation
                 }//if user is not nil
             }//listening state
@@ -437,7 +519,7 @@ struct OnboardingRegisterScreenView: View {
                 .cancel()
             ])
         }//actionsheet to choose between library or camera
-        .sheet(isPresented: $showImagePicker){
+        .fullScreenCover(isPresented: $showImagePicker){
             ImagePicker(image: $image, isShown: $showImagePicker, sourceType: self.sourceType)
         }//sheet for library or camera
     }
@@ -450,6 +532,9 @@ struct OnboardingRegisterScreenView: View {
 
             return Int(progress)
         }
+    
+
+    
 }//end View
 
 

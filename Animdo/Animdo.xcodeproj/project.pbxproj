@@ -41,6 +41,10 @@
 		673AE98C28F17596008D1D01 /* OnboardingScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673AE98B28F17596008D1D01 /* OnboardingScreenView.swift */; };
 		676F3BFF28F420B500EF9C4A /* LoginScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676F3BFE28F420B500EF9C4A /* LoginScreenView.swift */; };
 		676F3C0328F435FC00EF9C4A /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676F3C0228F435FC00EF9C4A /* ImagePicker.swift */; };
+		67B03EA02905673400FC3F0C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B03E9F2905673400FC3F0C /* User.swift */; };
+		67B03EA2290569ED00FC3F0C /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B03EA1290569ED00FC3F0C /* UserViewModel.swift */; };
+		67B03EA529058C9800FC3F0C /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 67B03EA429058C9800FC3F0C /* SDWebImageSwiftUI */; };
+		67DA552C29052699002C69FA /* PasswordInputs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DA552B29052699002C69FA /* PasswordInputs.swift */; };
 		67E630EB28FF1B7A00112778 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E630EA28FF1B7A00112778 /* LocationManager.swift */; };
 		67E630EE28FF2CC200112778 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 67E630ED28FF2CC200112778 /* GoogleSignIn */; };
 		67E630F028FF2CC200112778 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 67E630EF28FF2CC200112778 /* GoogleSignInSwift */; };
@@ -82,8 +86,12 @@
 		673AE98728F160DE008D1D01 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 		673AE98928F174D0008D1D01 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 		673AE98B28F17596008D1D01 /* OnboardingScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingScreenView.swift; sourceTree = "<group>"; };
+		67465DBF2902F666007C29EA /* Animdo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Animdo.entitlements; sourceTree = "<group>"; };
 		676F3BFE28F420B500EF9C4A /* LoginScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenView.swift; sourceTree = "<group>"; };
 		676F3C0228F435FC00EF9C4A /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		67B03E9F2905673400FC3F0C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		67B03EA1290569ED00FC3F0C /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
+		67DA552B29052699002C69FA /* PasswordInputs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordInputs.swift; sourceTree = "<group>"; };
 		67E630EA28FF1B7A00112778 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		67E630F328FF32D100112778 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		67E630FB28FFF46300112778 /* AgeTagInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgeTagInput.swift; sourceTree = "<group>"; };
@@ -100,6 +108,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67B03EA529058C9800FC3F0C /* SDWebImageSwiftUI in Frameworks */,
 				67E630F028FF2CC200112778 /* GoogleSignInSwift in Frameworks */,
 				670E83A628F891AC00054E02 /* FirebaseDatabase in Frameworks */,
 				67E630EE28FF2CC200112778 /* GoogleSignIn in Frameworks */,
@@ -119,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				6721E1E828FA9ACF00D79AEC /* LogRegViewModel.swift */,
+				67B03EA1290569ED00FC3F0C /* UserViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -142,6 +152,7 @@
 				6723DB8C28FC222E00A07A86 /* LogRegInputs.swift */,
 				67E630FB28FFF46300112778 /* AgeTagInput.swift */,
 				67E630FD28FFF46F00112778 /* GenderTagInput.swift */,
+				67DA552B29052699002C69FA /* PasswordInputs.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -165,6 +176,7 @@
 		672871E528F15963009342DA /* Animdo */ = {
 			isa = PBXGroup;
 			children = (
+				67465DBF2902F666007C29EA /* Animdo.entitlements */,
 				6723DB8928FC203C00A07A86 /* Components */,
 				673AE97E28F15CA5008D1D01 /* Info.plist */,
 				6721E1EE28FBD7F400D79AEC /* Services */,
@@ -213,6 +225,7 @@
 				67EE39B228FD5B16005CDDB5 /* MobileNetV2.mlmodel */,
 				673AE98928F174D0008D1D01 /* Onboarding.swift */,
 				6726600428F2BCF4003A4E56 /* OnRegister.swift */,
+				67B03E9F2905673400FC3F0C /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -266,6 +279,7 @@
 				670E83A928F891AC00054E02 /* FirebaseStorage */,
 				67E630ED28FF2CC200112778 /* GoogleSignIn */,
 				67E630EF28FF2CC200112778 /* GoogleSignInSwift */,
+				67B03EA429058C9800FC3F0C /* SDWebImageSwiftUI */,
 			);
 			productName = Animdo;
 			productReference = 672871E328F15963009342DA /* Animdo.app */;
@@ -298,6 +312,7 @@
 			packageReferences = (
 				670E839C28F891AB00054E02 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				67E630EC28FF2CC200112778 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+				67B03EA329058C9700FC3F0C /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 			);
 			productRefGroup = 672871E428F15963009342DA /* Products */;
 			projectDirPath = "";
@@ -362,9 +377,12 @@
 				672871E728F15963009342DA /* AnimdoApp.swift in Sources */,
 				670E839B28F890A500054E02 /* ForgotPasswordScreenView.swift in Sources */,
 				67215E4328FC127800490C66 /* HomeScreenView.swift in Sources */,
+				67B03EA02905673400FC3F0C /* User.swift in Sources */,
 				6721E1E928FA9ACF00D79AEC /* LogRegViewModel.swift in Sources */,
+				67DA552C29052699002C69FA /* PasswordInputs.swift in Sources */,
 				6726600728F2C19F003A4E56 /* OffsetPageTabView.swift in Sources */,
 				673AE98A28F174D0008D1D01 /* Onboarding.swift in Sources */,
+				67B03EA2290569ED00FC3F0C /* UserViewModel.swift in Sources */,
 				6723DB8D28FC222E00A07A86 /* LogRegInputs.swift in Sources */,
 				67215E4528FC12C400490C66 /* AdoptionScreenView.swift in Sources */,
 				6723DB8B28FC205700A07A86 /* Title.swift in Sources */,
@@ -508,12 +526,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Animdo/Animdo.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"Animdo/Preview Content\"";
-				DEVELOPMENT_TEAM = 7T5G873XW3;
+				DEVELOPMENT_TEAM = JZGBV9FVW4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Animdo/Info.plist;
@@ -545,12 +564,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Animdo/Animdo.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"Animdo/Preview Content\"";
-				DEVELOPMENT_TEAM = 7T5G873XW3;
+				DEVELOPMENT_TEAM = JZGBV9FVW4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Animdo/Info.plist;
@@ -609,6 +629,14 @@
 				minimumVersion = 9.0.0;
 			};
 		};
+		67B03EA329058C9700FC3F0C /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		67E630EC28FF2CC200112778 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/google/GoogleSignIn-iOS.git";
@@ -654,6 +682,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 670E839C28F891AB00054E02 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		67B03EA429058C9800FC3F0C /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 67B03EA329058C9700FC3F0C /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
 		};
 		67E630ED28FF2CC200112778 /* GoogleSignIn */ = {
 			isa = XCSwiftPackageProductDependency;
