@@ -13,6 +13,7 @@ import AuthenticationServices
 
 struct LoginScreenView: View {
     @State var userIsLoggedIn: Bool = false
+    @AppStorage("loggedIn") var loggedIn: Bool = true
     @StateObject var authManager = AuthManager()
     var device = UIDevice.current.name
     //Input fields
@@ -206,14 +207,26 @@ struct LoginScreenView: View {
         }//georeader
         .onAppear{
             Auth.auth().addStateDidChangeListener{auth, user in
+                if loggedIn{
+                    if user != nil {
+                        withAnimation{
+                                userIsLoggedIn = true
+                                loggedIn = true
+                        }//animation
+                    }//if user is not nil
+            }else{
                 DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
                     print("Async after 4 seconds")
                 if user != nil {
                     withAnimation{
-                            userIsLoggedIn.toggle()
+                            userIsLoggedIn = true
+                            loggedIn = true
                         }
                     }//animation
                 }//if user is not nil
+            }
+                
+                
             }//listening state
         }//on appear
         .fullScreenCover(isPresented: $showForgotPassword, content: {

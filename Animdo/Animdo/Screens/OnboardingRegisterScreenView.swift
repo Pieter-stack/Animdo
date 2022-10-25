@@ -454,7 +454,6 @@ struct OnboardingRegisterScreenView: View {
                         }
 
                     Button(action:{
-                        authManager.persistImageToStorage()
                         if (name.isEmpty || surname.isEmpty || age == 0 && genderArray[selectedIndex] == "" || username.isEmpty || email.isEmpty || password.isEmpty || image == nil){
                             AllFields = 1
                             

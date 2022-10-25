@@ -305,9 +305,7 @@ class AuthManager: ObservableObject{
         
     }
 
-    func persistImageToStorage(){
-        print("Hello there")
-    }
+
     
 }
 

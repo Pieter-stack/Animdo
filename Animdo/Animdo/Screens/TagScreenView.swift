@@ -11,6 +11,7 @@ import Vision
 
 
 struct TagScreenView: View {
+    @StateObject var tagManager = TagManager()
     //Device sizes
     var device = UIDevice.current.name
     //Image data
@@ -26,10 +27,12 @@ struct TagScreenView: View {
     private var genderArray = ["","Male", "Female"]
     @State private var selectedIndex = 0
     @State private var age: Int = 0
+    @State private var showAlert = false
     //Animal Recognition AI
     private let classifier = try! VisionClassifier(mlModel: CustomAnimdoClassifier(configuration: MLModelConfiguration()).model)
     //Location Manager
     @StateObject var locationManager = LocationManager()
+    @ObservedObject var lm = SpesificLocationManager()
     var userLatitude: String {
         return "\(locationManager.lastLocation?.coordinate.latitude ?? 0)"
     }
@@ -41,13 +44,27 @@ struct TagScreenView: View {
         ZStack{
             Color("BG")
                 .ignoresSafeArea()
+            VStack(alignment: .leading){
+                HStack{
+                Text("Tag an")
+                    .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/11))
+                    .foregroundColor(Color("CustomBeige"))
+                Text("Animal")
+                    .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/11))
+                    .foregroundColor(.black)
+                    Spacer()
+            }//HStack
+                .padding(.leading, 30)
+                Spacer()
+                Spacer()
+            }
             VStack{
-                Title(Titleblack: "Tag an", Titlebrown: "Animal!")
-                    .padding(.top)
+
                 if image == nil{
                   RoundedRectangle(cornerRadius: 12)
                         .fill(Color("CustomBeigeLight"))
                         .frame(width: getScreenBounds().width - 50, height: getScreenBounds().height/4.5)
+                        .padding(.top, 70)
                        
                 }else{
                     
@@ -66,7 +83,7 @@ struct TagScreenView: View {
                             .frame(width: getScreenBounds().width - 50, height: getScreenBounds().height/4.5)
                             .opacity(0.9)
                             
-                    }
+                    }.padding(.top, 70)
                 }
                 
 
@@ -253,6 +270,8 @@ struct TagScreenView: View {
                                         longitude = userLatitude
                                         latitude = userLongitude
                                         
+                                   
+
                                     }, label: {
                                         ZStack{
                                             Circle()
@@ -267,7 +286,7 @@ struct TagScreenView: View {
                                                 .padding(.trailing)
                                         }
                                     })
-                                        
+                                
                                 }//HSTack
                             }//Zstack
                             .padding(.top, -30)
@@ -496,10 +515,30 @@ struct TagScreenView: View {
                     }//HStack
                     .padding(.top, -15)
 
-
-
                     Button(action:{
 
+
+                        
+                        if (tagCode.isEmpty || species.isEmpty || age == 0 && genderArray[selectedIndex] == "" || longitude.isEmpty || latitude.isEmpty  || image == nil){
+                            showAlert = true
+                            
+                        }else{
+                            showAlert = false
+                            
+                            lm.get(longitude: Double(longitude)!, latitude: Double(latitude)!)
+
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                                tagManager.TagNewAnimal(tagCode: tagCode, species: species, longitude: longitude, latitude: latitude, gender: genderArray[selectedIndex], age: age, animalImage: image!, country: lm.Country ?? "", isoCode: lm.isoCode ?? "", ocean: lm.Ocean ?? "")
+                                tagCode = ""
+                                species = ""
+                                longitude = ""
+                                latitude = ""
+                                selectedIndex = 0
+                                age = 0
+                                image = nil
+                            }
+
+                        }
                         
                     }, label: {
                         ZStack{
@@ -522,6 +561,10 @@ struct TagScreenView: View {
             }//vStack
             
         }//ZStack
+        .alert(isPresented: $showAlert){
+            Alert(title: Text("Oops something went wrong!"), message: Text(tagManager.message == "" ? "Please fill in all the fields" : tagManager.message), dismissButton: .default(Text("OK")){
+            })
+        }
         .actionSheet(isPresented: $showSheet){
             ActionSheet(title: Text("Select between"), message: Text(""), buttons: [.default(Text("Photo Library")){
                 self.showImagePicker = true
@@ -538,6 +581,7 @@ struct TagScreenView: View {
             ImagePicker(image: $image, isShown: $showImagePicker, sourceType: self.sourceType)
         }//sheet for library or camera
     }//body
+    
 }//tagscreen
 
 struct TagScreenView_Previews: PreviewProvider {
