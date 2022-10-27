@@ -10,11 +10,11 @@ import StoreKit
 final class IAPStore: ObservableObject {
     @Published private(set) var tokens: TokenA
     @Published private(set) var tokens2: TokenB
-//    @Published private(set) var tokens3: TokenC
+    @Published private(set) var tokens3: TokenC
   init() async throws {
     tokens = try await .init()
     tokens2 = try await .init()
-//    tokens3 = try await .init()
+    tokens3 = try await .init()
     task = Task.detached { [unowned self] in
       for await result in Transaction.updates {
         try? await processTransaction(result: result)

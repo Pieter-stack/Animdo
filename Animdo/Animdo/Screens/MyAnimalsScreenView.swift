@@ -15,14 +15,7 @@ struct MyAnimalsScreenView: View {
             ZStack{
                 Color("BG")
                     .ignoresSafeArea()
-                VStack{
-                    
-                    
-//                    TokenA.Row()
-
-                    
-                    
-                    
+                VStack{ 
                 Button(action: {
                     try? Auth.auth().signOut()
                     loggedIn = false

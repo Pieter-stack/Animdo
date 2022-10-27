@@ -10,9 +10,32 @@ import StoreKit
 
 struct PurchaseScreenView: View {
     @EnvironmentObject private var store: IAPStore
+    @Environment(\.presentationMode) var presentationMode
     var body: some View {
-        TokenA.Row()
-        TokenB.Row()
+        ZStack{
+            Color("BG")
+                .ignoresSafeArea()
+            VStack{
+                HStack{
+                    Button(action: {
+                        presentationMode.wrappedValue.dismiss()
+                    }, label: {
+                        Image(systemName: "chevron.left")
+                            .foregroundColor(.black)
+                             .font(.title)
+                             .fontWeight(.black)
+                    })
+                    .padding(.leading, 20)
+                    Spacer()
+                }//HStack                
+            }//Vstack
+            
+        }//Zstack
+        
+        
+        
+//        TokenA.Row()
+//        TokenB.Row()
 //        TokenC.Row()
     }
 }
@@ -81,40 +104,40 @@ private extension TokenB {
     }
   }
 }
-//
-//private extension TokenC {
-//  struct Row: View {
-//    @EnvironmentObject private var store: IAPStore
-//    @State private var alertIsPresented = false
-//
-//    var body: some View {
-//      ProductRow(product: store.tokens3.product) {
-//        let consumableCount = store.tokens3.ConsumableCount
-//        if consumableCount > 0 {
-//          Button {
-//            alertIsPresented = true
-//          } label: {
-//            Image(systemName: "\(consumableCount).circle")
-//              .font(.system(.largeTitle))
-//          }
-//        } else {
-//          PurchaseButton(purchasable: store.tokens3)
-//        }
-//      }
-//      .alert(
-//        "Unlock Random Owl?",
-//        isPresented: $alertIsPresented,
-//        actions: {
-//          Button("Yes", action: store.buyTokens)
-//          Button("No", role: .cancel) { }
-//        },
-//        message: {
-//          Text("Do you wish to unlock a random owl?")
-//        }
-//      )
-//    }
-//  }
-//}
+
+private extension TokenC {
+  struct Row: View {
+    @EnvironmentObject private var store: IAPStore
+    @State private var alertIsPresented = false
+
+    var body: some View {
+      ProductRow(product: store.tokens3.product) {
+        let consumableCount = store.tokens3.ConsumableCount
+        if consumableCount > 0 {
+          Button {
+            alertIsPresented = true
+          } label: {
+            Image(systemName: "\(consumableCount).circle")
+              .font(.system(.largeTitle))
+          }
+        } else {
+          PurchaseButton(purchasable: store.tokens3)
+        }
+      }
+      .alert(
+        "Unlock Random Owl?",
+        isPresented: $alertIsPresented,
+        actions: {
+          Button("Yes", action: store.buyTokens)
+          Button("No", role: .cancel) { }
+        },
+        message: {
+          Text("Do you wish to unlock a random owl?")
+        }
+      )
+    }
+  }
+}
 
 
 

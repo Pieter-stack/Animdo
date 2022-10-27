@@ -12,6 +12,11 @@ import SDWebImageSwiftUI
 
 struct AdoptionScreenView: View {
     @ObservedObject private var vm = AllAnimalsViewModel()
+    @EnvironmentObject private var store: IAPStore
+    
+    init(){
+        self.vm.fetchAllAnimals()
+    }
     
     var vGridLayout: [GridItem] = [GridItem(.adaptive(minimum: 200, maximum: 200),spacing: 10)]
     var body: some View {
@@ -19,6 +24,7 @@ struct AdoptionScreenView: View {
             Color("BG")
                 .ignoresSafeArea()
             VStack{
+                Image(systemName: "\(store.tokens.ConsumableCount).circle")
                 VStack(alignment: .leading){
                     HStack{
                     Text("Adopt")
@@ -28,7 +34,7 @@ struct AdoptionScreenView: View {
                         .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/11))
                         .foregroundColor(.black)
                         Spacer()
-                        NavigationLink(destination: TestScreenView()){
+                        NavigationLink(destination: PurchasefailScreenView().navigationBarBackButtonHidden(true)){
                             Text("hello")
                         }
                 }//HStack
@@ -86,20 +92,17 @@ struct AdoptionScreenView: View {
                                             }
                                             Spacer()
                                         }//Hstack
-                                        
-//                                        if let product = viewModel.products.first{
-//                                            Text(product.displayName)
-//                                            Text(product.displayPrice)
-//                                        }
-
-                                        
                                         Spacer()
 
                                             HStack{
                                                 Spacer()
                                                 Button(action: {
                                                     //in app purchase
-
+                                                    if store.tokens.ConsumableCount == 0{
+                                                        print("hello world")
+                                                    }else{
+                                                        print("not enough tokens")
+                                                    }
                                                 }, label: {
                                                 Rectangle()
                                                     .frame(width: 50, height: 40)
@@ -124,7 +127,10 @@ struct AdoptionScreenView: View {
                             }//foreach
                         }//lazyvgrid
                     }//scrollview
-                    
+                    .padding(.top, 10)
+                    .cornerRadius(35)
+                    .padding(.top, -10)
+                    .padding(.bottom, 75)
 
                     Spacer()
                 }//VStack

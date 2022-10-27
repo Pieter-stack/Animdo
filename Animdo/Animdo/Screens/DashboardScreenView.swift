@@ -11,7 +11,6 @@ import FirebaseAuth
 
 struct DashboardScreenView: View {
     @State var userIsLoggedIn: Bool = true
-    @State private var store: IAPStore?
     @ObservedObject private var vm = SignedInUser()
 
     var body: some View {
@@ -68,7 +67,7 @@ struct TabViewScreen: View{
         ZStack(alignment: Alignment(horizontal: .center, vertical: .bottom)) {
             TabView(selection: $selectedtab){
                 
-                AdoptionScreenView()
+                TestScreenView()
                     .tag("Adoption")
                 
                 HomeScreenView()
@@ -132,7 +131,18 @@ struct TabViewScreen: View{
                           }//if statement
                                })
                                      .onAppear(perform: {
-                                         if image == tabs[1]{
+                                         var tab: Int = 1
+                                         if selectedtab == "Adoption"{
+                                            tab = 0
+                                         }else if selectedtab == "Home"{
+                                             tab = 1
+                                         }else if selectedtab == "My Animals"{
+                                             tab = 2
+                                         }else if selectedtab == "Tag"{
+                                             tab = 3
+                                         }
+                                         
+                                         if image == tabs[tab]{
                                              xAxis = metrics.frame(in: .global).minX
                                          }
                                      })
