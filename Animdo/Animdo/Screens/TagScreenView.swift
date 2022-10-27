@@ -267,8 +267,8 @@ struct TagScreenView: View {
                                     }//ZStack
                                     Button(action: {
                                         
-                                        longitude = userLatitude
-                                        latitude = userLongitude
+                                        longitude = userLongitude
+                                        latitude = userLatitude
                                         
                                    
 
@@ -483,8 +483,8 @@ struct TagScreenView: View {
                                         .padding(.bottom, -5)
                                 }//ZStack
                                 Button(action: {
-                                    longitude = userLatitude
-                                    latitude = userLongitude
+                                    longitude = userLongitude
+                                    latitude = userLatitude
                                 }, label: {
                                     ZStack{
                                         Circle()

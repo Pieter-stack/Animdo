@@ -58,7 +58,8 @@ class TagManager: ObservableObject{
                     "country": country,
                     "isoCode": isoCode,
                     "ocean": ocean,
-                    "adopted": false
+                    "adopted": false,
+                    "adopter": ""
                 ]){err in
                     if let err = err {
                         print("Error writing user to document:\(err)")

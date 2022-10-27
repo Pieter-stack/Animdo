@@ -6,14 +6,32 @@
 //
 
 import SwiftUI
+import FirebaseAuth
+import StoreKit
 
 struct MyAnimalsScreenView: View {
+    @AppStorage("loggedIn") var loggedIn: Bool = true
     var body: some View {
-        ZStack{
-            Color("BG")
-                .ignoresSafeArea()
-            Text("My Animals View")
-        }//ZStack
+            ZStack{
+                Color("BG")
+                    .ignoresSafeArea()
+                VStack{
+                    
+                    
+//                    TokenA.Row()
+
+                    
+                    
+                    
+                Button(action: {
+                    try? Auth.auth().signOut()
+                    loggedIn = false
+                }, label: {
+                    Text("Logout")
+                })
+                }
+            }//ZStack
+        
     }
 }
 
@@ -22,3 +40,6 @@ struct MyAnimalsScreenView_Previews: PreviewProvider {
         MyAnimalsScreenView()
     }
 }
+
+
+

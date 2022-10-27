@@ -11,6 +11,7 @@ import FirebaseAuth
 
 struct DashboardScreenView: View {
     @State var userIsLoggedIn: Bool = true
+    @State private var store: IAPStore?
     @ObservedObject private var vm = SignedInUser()
 
     var body: some View {

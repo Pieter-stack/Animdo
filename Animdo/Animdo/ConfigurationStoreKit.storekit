@@ -1,0 +1,63 @@
+{
+  "identifier" : "EF17D0EE",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+    {
+      "displayPrice" : "0.99",
+      "familyShareable" : false,
+      "internalID" : "E21F52FE",
+      "localizations" : [
+        {
+          "description" : "Adoption Tonken for adopting animals",
+          "displayName" : "1 Adoption Token",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.openwindow.Animdo.1adoption",
+      "referenceName" : " 1 Adoption Token",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "1.99",
+      "familyShareable" : false,
+      "internalID" : "8854FAD1",
+      "localizations" : [
+        {
+          "description" : "Adoption Tokens for adopting animals",
+          "displayName" : "5 Adoption tokens",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.openwindow.Animdo.5adoption",
+      "referenceName" : "5 Adoption Tokens",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "2.99",
+      "familyShareable" : false,
+      "internalID" : "5C556096",
+      "localizations" : [
+        {
+          "description" : "Adoption Tokens for adopting animals",
+          "displayName" : "10 Adoption Tokens",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.openwindow.Animdo.10adoption",
+      "referenceName" : "10 Adoption Tokens",
+      "type" : "Consumable"
+    }
+  ],
+  "settings" : {
+
+  },
+  "subscriptionGroups" : [
+
+  ],
+  "version" : {
+    "major" : 2,
+    "minor" : 0
+  }
+}

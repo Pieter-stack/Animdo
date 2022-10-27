@@ -7,8 +7,12 @@
 
 import SwiftUI
 import SDWebImageSwiftUI
+
+
+
 struct AdoptionScreenView: View {
     @ObservedObject private var vm = AllAnimalsViewModel()
+    
     var vGridLayout: [GridItem] = [GridItem(.adaptive(minimum: 200, maximum: 200),spacing: 10)]
     var body: some View {
         ZStack{
@@ -24,6 +28,9 @@ struct AdoptionScreenView: View {
                         .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/11))
                         .foregroundColor(.black)
                         Spacer()
+                        NavigationLink(destination: TestScreenView()){
+                            Text("hello")
+                        }
                 }//HStack
                     .padding(.leading, 30)
                     
@@ -80,24 +87,37 @@ struct AdoptionScreenView: View {
                                             Spacer()
                                         }//Hstack
                                         
+//                                        if let product = viewModel.products.first{
+//                                            Text(product.displayName)
+//                                            Text(product.displayPrice)
+//                                        }
+
+                                        
                                         Spacer()
-                                        HStack{
-                                            Spacer()
-                                            Rectangle()
-                                                .frame(width: 50, height: 40)
-                                                .foregroundColor(Color("CustomBlueLight"))
-                                                .padding(.bottom, 20)
-                                                .padding(.trailing, 20)
-                                                .cornerRadius(20)
-                                                .padding(.bottom, -20)
-                                                .padding(.trailing, -20)
-                                                .padding(.top, 20)
-                                                .padding(.leading, 20)
-                                                .cornerRadius(20)
-                                                .padding(.top, -20)
-                                                .padding(.leading, -20)
-                                        }//hstack
-                                        .padding(.top, -40)
+
+                                            HStack{
+                                                Spacer()
+                                                Button(action: {
+                                                    //in app purchase
+
+                                                }, label: {
+                                                Rectangle()
+                                                    .frame(width: 50, height: 40)
+                                                    .foregroundColor(Color("CustomBlueLight"))
+                                                    .padding(.bottom, 20)
+                                                    .padding(.trailing, 20)
+                                                    .cornerRadius(20)
+                                                    .padding(.bottom, -20)
+                                                    .padding(.trailing, -20)
+                                                    .padding(.top, 20)
+                                                    .padding(.leading, 20)
+                                                    .cornerRadius(20)
+                                                    .padding(.top, -20)
+                                                    .padding(.leading, -20)
+                                                })
+                                            }//hstack
+                                            .padding(.top, -40)
+                                     
                                     }//VStack
                                 }//ZStack
                                 

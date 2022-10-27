@@ -8,6 +8,7 @@
 import SwiftUI
 import Firebase
 import GoogleSignIn
+import SwiftKeychainWrapper
 
 
 class AppDelegate: NSObject, UIApplicationDelegate {
@@ -22,7 +23,12 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 }
 
 @main
+
 struct AnimdoApp: App {
+    init(){
+        KeychainWrapper.standard.removeAllKeys()
+    }
+    
     //register app delegate for firbase setup
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     var body: some Scene {
