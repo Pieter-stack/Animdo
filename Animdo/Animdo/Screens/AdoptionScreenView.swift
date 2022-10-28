@@ -24,7 +24,32 @@ struct AdoptionScreenView: View {
             Color("BG")
                 .ignoresSafeArea()
             VStack{
-                Image(systemName: "\(store.tokens.ConsumableCount).circle")
+                HStack{
+                    Spacer()
+                    NavigationLink(destination: PurchasefailScreenView().navigationBarBackButtonHidden(true)){
+                        ZStack{
+                            Image("TopCoin")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 120)
+                            HStack{
+                                Image("LionCoin")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 20)
+                                    .padding(.top, -5)
+                                Text("555")
+                                    .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/19))
+                                    .foregroundColor(Color("White"))
+                            }
+                            .padding(.top, -10)
+                        }
+                    }
+                }
+                .ignoresSafeArea()
+                
+                
+//                Image(systemName: "\(store.tokens.ConsumableCount).circle")
                 VStack(alignment: .leading){
                     HStack{
                     Text("Adopt")
@@ -34,11 +59,13 @@ struct AdoptionScreenView: View {
                         .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/11))
                         .foregroundColor(.black)
                         Spacer()
-                        NavigationLink(destination: PurchasefailScreenView().navigationBarBackButtonHidden(true)){
-                            Text("hello")
-                        }
                 }//HStack
                     .padding(.leading, 30)
+                    .padding(.top, -80)
+                    
+                    HStack{
+                        Text("hhhhh")
+                    }
                     
                     ScrollView{
                         LazyVGrid(columns: vGridLayout){

@@ -11,6 +11,7 @@ import StoreKit
 struct PurchaseScreenView: View {
     @EnvironmentObject private var store: IAPStore
     @Environment(\.presentationMode) var presentationMode
+    var device = UIDevice.current.name
     var body: some View {
         ZStack{
             Color("BG")
@@ -22,21 +23,120 @@ struct PurchaseScreenView: View {
                     }, label: {
                         Image(systemName: "chevron.left")
                             .foregroundColor(.black)
-                             .font(.title)
-                             .fontWeight(.black)
+                            .font(.title)
+                            .fontWeight(.black)
                     })
+                    .padding(.top, device == "iPod touch (7th generation)" || device == "iPhone SE (3rd generation)" || device == "iPhone 8" || device == "iPhone 8 Plus" || device == "iPhone 13 mini" ? 0 : 50)
                     .padding(.leading, 20)
                     Spacer()
-                }//HStack                
+                    ZStack{
+                        Image("TopCoin")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 120)
+                        HStack{
+                            Image("LionCoin")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 20)
+                                .padding(.top, -5)
+//                            let consumableCount = store.tokens.ConsumableCount
+//                            Text("\(consumableCount)")
+//                                .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/19))
+//                                .foregroundColor(Color("White"))
+                        }//HStack
+                        .padding(.top, -10)
+                    }//ZStack
+                    
+                }//HStack
+                HStack{
+                    VStack(alignment: .leading){
+                        Text("Animal")
+                            .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/11))
+                            .foregroundColor(Color("CustomBeige"))
+                        Text("Rescue Center")
+                            .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/13))
+                            .foregroundColor(.black)
+                        
+                    }//VStack
+                    .padding(.top, device == "iPod touch (7th generation)" || device == "iPhone SE (3rd generation)" || device == "iPhone 8" || device == "iPhone 8 Plus" || device == "iPhone 13 mini" ? 0 : 10)
+                    Spacer()
+                }//HStack
+                .padding(.leading, 30)
+                
+                HStack{
+                    
+                    Text("Buy token Bundles")
+                        .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/17))
+                        .foregroundColor(Color("CustomBeige"))
+                    Spacer()
+                }.padding(.leading, 30)
+                    .padding(.top, 30)
+                
+                
+//                TokenA.Row(purchasable: store.tokens)
+//                TokenB.Row(purchasable: store.tokens2)
+//                TokenC.Row(purchasable: store.tokens3)
+                
+                Spacer()
+                HStack{
+                    
+                    Text("Subscribe to Animdo")
+                        .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/17))
+                        .foregroundColor(Color("CustomBeige"))
+                    Spacer()
+                }.padding(.leading, 30)
+                    .padding(.top, 30)
+                
+                
+
+                ZStack{
+                   RoundedRectangle(cornerRadius: 15)
+                        .fill(Color("CustomGreenLighter"))
+                        .frame(width: getScreenBounds().width - 50, height: 80)
+                    HStack{
+                        ZStack{
+                            RoundedRectangle(cornerRadius: 15)
+                                 .fill(Color("CustomGreenLight"))
+                                 .aspectRatio(contentMode: .fit)
+                                 .frame(width: 60)
+                                 .padding(.leading, 35)
+                                 .padding(.trailing, 5)
+                            
+                        Image("LionCoin")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 40)
+                                .padding(.leading, 35)
+                                .padding(.trailing, 5)
+                        }//ZStack
+                        VStack(alignment: .leading){
+                            HStack{
+                                Text("Subscribe")
+                                    .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/19))
+                                    .foregroundColor(Color("White"))
+                                Spacer()
+                                Text("R45.00 pm")
+                                    .font(Font.custom("JosefinSans-Regular", size: getScreenBounds().width/30))
+                                    .foregroundColor(Color("White"))
+                                    .padding(.trailing, 50)
+                            }//HStack
+                            Text("Help feed the animals monthly")
+                                .font(Font.custom("JosefinSans-Regular", size: getScreenBounds().width/25))
+                                .foregroundColor(Color("White"))
+                                .padding(.top, 2)
+                        }//VStack
+                        Spacer()
+                            
+                    }//HStack
+                    
+                }//ZStack
+                .padding(.bottom, device == "iPod touch (7th generation)" || device == "iPhone SE (3rd generation)" || device == "iPhone 8" || device == "iPhone 8 Plus" || device == "iPhone 13 mini" ? 30 : 100)
+                
             }//Vstack
-            
+            .ignoresSafeArea()
         }//Zstack
         
-        
-        
-//        TokenA.Row()
-//        TokenB.Row()
-//        TokenC.Row()
     }
 }
 
@@ -48,97 +148,64 @@ struct PurchaseScreenView_Previews: PreviewProvider {
 
 
 private extension TokenA {
-  struct Row: View {
+    struct Row <Purchasable: Animdo.Purchasable> :View {
     @EnvironmentObject private var store: IAPStore
-    @State private var alertIsPresented = false
+    let purchasable: Purchasable
 
     var body: some View {
-      ProductRow(product: store.tokens.product) {
-        let consumableCount = store.tokens.ConsumableCount
-          Image(systemName: "\(consumableCount).circle")
-            .font(.system(.largeTitle))
-
-          PurchaseButton(purchasable: store.tokens)
-        
-      }
-      .alert(
-        "Unlock Random Owl?",
-        isPresented: $alertIsPresented,
-        actions: {
-          Button("Yes", action: store.buyTokens)
-          Button("No", role: .cancel) { }
-        },
-        message: {
-          Text("Do you wish to unlock a random owl?")
-        }
-      )
+      
+          
+          Button(action: {
+              Task {
+                try await store.buy(purchasable)
+              }
+          }, label: {
+              ProductRow(product: store.tokens.product) {}
+          })
+      
     }
   }
 }
 
 private extension TokenB {
-  struct Row: View {
+    struct Row <Purchasable: Animdo.Purchasable> :View {
     @EnvironmentObject private var store: IAPStore
-    @State private var alertIsPresented = false
+    let purchasable: Purchasable
 
     var body: some View {
-      ProductRow(product: store.tokens2.product) {
-        let consumableCount = store.tokens2.ConsumableCount
-          Image(systemName: "\(consumableCount).circle")
-            .font(.system(.largeTitle))
-
-          PurchaseButton(purchasable: store.tokens2)
-        
-      }
-      .alert(
-        "Unlock Random Owl?",
-        isPresented: $alertIsPresented,
-        actions: {
-          Button("Yes", action: store.buyTokens)
-          Button("No", role: .cancel) { }
-        },
-        message: {
-          Text("Do you wish to unlock a random owl?")
-        }
-      )
+      
+          
+          Button(action: {
+              Task {
+                try await store.buy(purchasable)
+              }
+          }, label: {
+              ProductRow(product: store.tokens2.product) {}
+          })
+      
     }
   }
 }
 
 private extension TokenC {
-  struct Row: View {
+    struct Row <Purchasable: Animdo.Purchasable> :View {
     @EnvironmentObject private var store: IAPStore
-    @State private var alertIsPresented = false
+    let purchasable: Purchasable
 
     var body: some View {
-      ProductRow(product: store.tokens3.product) {
-        let consumableCount = store.tokens3.ConsumableCount
-        if consumableCount > 0 {
-          Button {
-            alertIsPresented = true
-          } label: {
-            Image(systemName: "\(consumableCount).circle")
-              .font(.system(.largeTitle))
-          }
-        } else {
-          PurchaseButton(purchasable: store.tokens3)
-        }
-      }
-      .alert(
-        "Unlock Random Owl?",
-        isPresented: $alertIsPresented,
-        actions: {
-          Button("Yes", action: store.buyTokens)
-          Button("No", role: .cancel) { }
-        },
-        message: {
-          Text("Do you wish to unlock a random owl?")
-        }
-      )
+      
+          
+          Button(action: {
+              Task {
+                try await store.buy(purchasable)
+              }
+          }, label: {
+              ProductRow(product: store.tokens3.product) {}
+          })
+      
     }
   }
 }
-
 
 
 private struct ProductRow<TrailingView: View>: View {
@@ -146,15 +213,56 @@ private struct ProductRow<TrailingView: View>: View {
   @ViewBuilder let trailingView: () -> TrailingView
 
   var body: some View {
-    HStack {
-      VStack(alignment: .leading, spacing: nil) {
-        Text("\(product.displayName) - \(product.displayPrice)")
-        Text(product.description)
-      }
-      Spacer()
-      trailingView()
-    }
-    .padding()
+      ZStack{
+          RoundedRectangle(cornerRadius: 50)
+              .fill(Color("CustomDark"))
+              .frame(width: getScreenBounds().width + 90, height: 100)
+              .padding(.trailing, -90)
+              .clipped()
+              .padding(.trailing, -50)
+              .padding(.top)
+          
+          HStack{
+                 Image("LionCoin")
+                      .resizable()
+                      .aspectRatio(contentMode: .fit)
+                      .frame(width: 60)
+                      .padding(.top, 12)
+              VStack(alignment: .leading){
+                  HStack{
+                      Text("\(product.displayName)")
+                          .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/21))
+                          .foregroundColor(Color("White"))
+                          .padding(.leading, 5)
+                          .padding(.top, 15)
+                      Spacer()
+                      ZStack{
+                          RoundedRectangle(cornerRadius: 50)
+                              .fill(Color("CustomGreenLight"))
+                              .frame(width: 150, height: 25)
+                              .padding(.trailing, -50)
+                              .clipped()
+                              .padding(.trailing, -10)
+                          HStack{
+                              Text("\(product.displayPrice)")
+                                  .font(Font.custom("JosefinSans-Regular", size: getScreenBounds().width/31))
+                                  .foregroundColor(Color("White"))
+                                  .padding(.top, 2)
+                          }//HStack
+                      }//ZStack
+
+                  }//HStack
+                  Text("Adopt your favourite animal")
+                      .font(Font.custom("JosefinSans-Regular", size: getScreenBounds().width/25))
+                      .foregroundColor(Color("White"))
+                      .padding(.leading, 5)
+                      .padding(.top, 2)
+                  
+              }//VStack
+              Spacer()
+          }//HStack
+          .padding(.leading, 50)
+      }//ZStack
   }
 }
 
