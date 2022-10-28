@@ -34,7 +34,9 @@ class AllAnimalsViewModel: ObservableObject{
                 let isoCode = data["isoCode"] as? String ?? ""
                 let ocean = data["ocean"] as? String ?? ""
                 let adopted = data["adopted"] as? Bool ?? false
-                return AllAnimals(uid: uid, tagCode: tagCode, species: species, longitude: longitude, latitude: latitude, gender: gender, age: age, animalImage: animalImage, country: country, isoCode: isoCode, ocean: ocean, adopted: adopted)
+                let adopter = data["adopter"] as? String ?? ""
+                let tokens = data["tokens"] as? String ?? ""
+                return AllAnimals(uid: uid, tagCode: tagCode, species: species, longitude: longitude, latitude: latitude, gender: gender, age: age, animalImage: animalImage, country: country, isoCode: isoCode, ocean: ocean, adopted: adopted, adoper: adopter, tokens: tokens)
                 
             }
         }

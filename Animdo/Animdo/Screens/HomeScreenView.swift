@@ -79,6 +79,7 @@ struct HomeScreenView: View {
                 HStack{
                     ScrollView{
                         ForEach(dashAnimals){ animal in
+                            NavigationLink(destination: DashboardDetailScreenView(animal: animal).navigationBarBackButtonHidden(true), label: {
                             ZStack{
                                 Image(animal.coverImage)
                                     .resizable()
@@ -89,7 +90,6 @@ struct HomeScreenView: View {
                                     Spacer()
                                     HStack{
                                         Spacer()
-                                        NavigationLink(destination: DashboardDetailScreenView(animal: animal).navigationBarBackButtonHidden(true), label: {
                                             ZStack{
                                                 Rectangle()
                                                     .frame(width: 50, height: 40)
@@ -109,12 +109,12 @@ struct HomeScreenView: View {
                                                     .font(.title2)
                                                     .fontWeight(.black)
                                             }//ZStack
-                                        })//NavigationLink
                                     }//HStack
                                 }//VStack
                                 .padding(.bottom, 5)
                                 .padding(.trailing, 11)
                             }//ZStack
+                            })//NavigationLink
                         }//foreach
                         
                     }//Scrollview

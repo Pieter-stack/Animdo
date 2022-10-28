@@ -59,7 +59,8 @@ class TagManager: ObservableObject{
                     "isoCode": isoCode,
                     "ocean": ocean,
                     "adopted": false,
-                    "adopter": ""
+                    "adopter": "",
+                    "tokens": species == "Polar Bear" ? "5" : species == "Elephant" ? "5" :  species == "Lion" ? "5" : species == "Penguin" ? "2" : species == "Sea Turtle" ? "1" : species == "Shark" ? "1" : "1"
                 ]){err in
                     if let err = err {
                         print("Error writing user to document:\(err)")

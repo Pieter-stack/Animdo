@@ -36,6 +36,7 @@ struct SplashScreenView: View {
                             .foregroundColor(.white)
                             .font(Font.custom("Aladin-regular", size: metrics.size.width/6))
                             .padding(.top, -10)
+                            .accessibilityIdentifier("SplashPage")
                     }//VStack
                     .scaleEffect(size)
                     .opacity(opacity)
@@ -46,6 +47,7 @@ struct SplashScreenView: View {
                         }
                     }
                 }//ZStack
+                
             }//GeoReader
             .onAppear{
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2.0){

@@ -22,4 +22,6 @@ struct AllAnimals: Identifiable{
     var isoCode: String
     var ocean: String
     var adopted: Bool
+    var adoper: String
+    var tokens: String
 }

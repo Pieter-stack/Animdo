@@ -28,6 +28,28 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "6772DAFB290C1BA50035A618"
+               BuildableName = "AnimdoTests.xctest"
+               BlueprintName = "AnimdoTests"
+               ReferencedContainer = "container:Animdo.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "6772DB0D290C21230035A618"
+               BuildableName = "AnimdoTests2.xctest"
+               BlueprintName = "AnimdoTests2"
+               ReferencedContainer = "container:Animdo.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

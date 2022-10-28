@@ -73,10 +73,20 @@ struct PurchaseScreenView: View {
                 }.padding(.leading, 30)
                     .padding(.top, 30)
                 
+                if device == "iPod touch (7th generation)" || device == "iPhone SE (3rd generation)" || device == "iPhone 8" || device == "iPhone 8 Plus" || device == "iPhone 13 mini"{
+                    ScrollView{
+//                        TokenA.Row(purchasable: store.tokens)
+//                        TokenB.Row(purchasable: store.tokens2)
+//                        TokenC.Row(purchasable: store.tokens3)
+                    }//Scrollview
+                }else{
+//                                    TokenA.Row(purchasable: store.tokens)
+//                                    TokenB.Row(purchasable: store.tokens2)
+//                                    TokenC.Row(purchasable: store.tokens3)
+                }
                 
-//                TokenA.Row(purchasable: store.tokens)
-//                TokenB.Row(purchasable: store.tokens2)
-//                TokenC.Row(purchasable: store.tokens3)
+                
+
                 
                 Spacer()
                 HStack{

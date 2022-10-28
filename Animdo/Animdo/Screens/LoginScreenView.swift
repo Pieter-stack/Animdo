@@ -187,6 +187,7 @@ struct LoginScreenView: View {
                                 .padding(.top, 20)
                         }//ZStack
                     })
+                    .accessibilityIdentifier("loginButton")
                         
                         HStack{
                             Text("Don't have an account?")

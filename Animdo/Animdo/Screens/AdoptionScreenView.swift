@@ -70,10 +70,15 @@ struct AdoptionScreenView: View {
                     ScrollView{
                         LazyVGrid(columns: vGridLayout){
                             ForEach(vm.animals){animal in
+                                Button(action: {
+                                    
+                                }, label: {
+                                    
+                               
                                 ZStack{
                                     RoundedRectangle(cornerRadius: 20)
                                         .fill(.white)
-                                        .frame(height: 280)
+                                        .frame(height: 330)
                                     VStack{
                                         WebImage(url:URL(string: animal.animalImage))
                                             .resizable()
@@ -85,7 +90,7 @@ struct AdoptionScreenView: View {
                                             .padding(.bottom, -12)
                                             .frame(maxWidth: .infinity, alignment: .leading)
                                             .frame(height: 30)
-                                            .padding(.leading, 15)
+                                            .padding(.leading, 20)
                                             .padding(.trailing, 15)
                                                 .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/19))
                                                 .foregroundColor(.black)
@@ -94,7 +99,7 @@ struct AdoptionScreenView: View {
                                         .frame(maxWidth: .infinity, alignment: .leading)
                                         .padding(.top, 5)
                                         .padding(.bottom, -8)
-                                        .padding(.leading, 15)
+                                        .padding(.leading, 23)
                                         .padding(.trailing, 15)
                                             .font(Font.custom("JosefinSans-Regular", size: getScreenBounds().width/25))
                                             .foregroundColor(.black)
@@ -103,7 +108,8 @@ struct AdoptionScreenView: View {
                                                 .resizable()
                                                 .aspectRatio(contentMode: .fit)
                                                 .frame(width: 15, height: 13)
-                                                .padding(.leading, 10)
+                                                .padding(.leading, 20)
+                                                .foregroundColor(.black)
                                             if animal.country == ""{
                                                 Text("\(animal.ocean)")
                                                     .padding(.top, 2)
@@ -119,37 +125,54 @@ struct AdoptionScreenView: View {
                                             }
                                             Spacer()
                                         }//Hstack
+                                        RoundedRectangle(cornerRadius: 10)
+                                            .fill(Color("CustomBlueLight"))
+                                            .frame(height: 2)
+                                            .padding(.horizontal)
                                         Spacer()
-
-                                            HStack{
-                                                Spacer()
-                                                Button(action: {
-                                                    //in app purchase
-                                                    if store.tokens.ConsumableCount == 0{
-                                                        print("hello world")
-                                                    }else{
-                                                        print("not enough tokens")
-                                                    }
-                                                }, label: {
+                                        
+                                        HStack{
+                                            Text("12 Tokens")
+                                                .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/25))
+                                                .foregroundColor(.black)
+                                                .padding(.leading)
+                                            Spacer()
+                                            ZStack{
                                                 Rectangle()
-                                                    .frame(width: 50, height: 40)
+                                                    .frame(width: 45, height: 35)
                                                     .foregroundColor(Color("CustomBlueLight"))
-                                                    .padding(.bottom, 20)
-                                                    .padding(.trailing, 20)
-                                                    .cornerRadius(20)
-                                                    .padding(.bottom, -20)
-                                                    .padding(.trailing, -20)
-                                                    .padding(.top, 20)
-                                                    .padding(.leading, 20)
-                                                    .cornerRadius(20)
-                                                    .padding(.top, -20)
-                                                    .padding(.leading, -20)
-                                                })
-                                            }//hstack
+                                                    .padding(.bottom, 15)
+                                                    .padding(.trailing, 15)
+                                                    .cornerRadius(15)
+                                                    .padding(.bottom, -15)
+                                                    .padding(.trailing, -15)
+                                                    .padding(.top, 15)
+                                                    .padding(.leading, 15)
+                                                    .cornerRadius(15)
+                                                    .padding(.top, -15)
+                                                    .padding(.leading, -15)
+                                                    .padding(.trailing)
+                                                Image("LionCoin")
+                                                    .resizable()
+                                                    .aspectRatio(contentMode: .fit)
+                                                    .frame(width: 23)
+                                                    .padding(.trailing)
+                                                
+                                            }//ZStack
+                                        }//HStack
+                                        
+
+//                                                    if store.tokens.ConsumableCount == 0{
+//                                                        print("hello world")
+//                                                    }else{
+//                                                        print("not enough tokens")
+//                                                    }
+
                                             .padding(.top, -40)
                                      
                                     }//VStack
                                 }//ZStack
+                                })
                                 
                             }//foreach
                         }//lazyvgrid
