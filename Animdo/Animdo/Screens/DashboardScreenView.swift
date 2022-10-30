@@ -12,14 +12,31 @@ import FirebaseAuth
 struct DashboardScreenView: View {
     @State var userIsLoggedIn: Bool = true
     @ObservedObject private var vm = SignedInUser()
+    
 
     var body: some View {
        // if userIsLoggedIn{
-        TabViewScreen()
+        
+//        Text((vm.user?.role ?? "Fuck life"))
+        
+        if !userIsLoggedIn{
+            TabViewScreen()
+ 
+        }else{
+           HomeScreenView() // maybe lottie loader
+                .onAppear{
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                        if vm.user?.role == "Researcher"{
+                            tabs.append("Tag")
+                            userIsLoggedIn = false
+                        }else{
+                            userIsLoggedIn = false
+                        }
+                    }
+                    
+                }
+        }
 
-       // }else{
-       //         LoginScreenView()
-       // }
     }
     
     
@@ -61,28 +78,38 @@ struct TabViewScreen: View{
     //Location for each Curve
     @State var xAxis: CGFloat = 0
     @Namespace var animation
-    
+    @ObservedObject private var vm = SignedInUser()
+
+
+
     var body: some View{
         let device = UIDevice.current.name
         ZStack(alignment: Alignment(horizontal: .center, vertical: .bottom)) {
             TabView(selection: $selectedtab){
+              
+               
+                    TestScreenView()
+                        .tag("Adoption")
+                    
+                    HomeScreenView()
+                        .tag("Home")
+                    
+                    MyAnimalsScreenView()
+                        .tag("My Animals")
+                    
+                    TagScreenView()
+                        .tag("Tag")
                 
-                TestScreenView()
-                    .tag("Adoption")
                 
-                HomeScreenView()
-                    .tag("Home")
-                
-                MyAnimalsScreenView()
-                    .tag("My Animals")
-                
-                TagScreenView()
-                    .tag("Tag")
+
             }//TabView
+            
+
             
             //Custom Tab Bar
             HStack(spacing:0){
-                ForEach(tabs, id:\.self){ image in
+                
+                ForEach( tabs, id:\.self){ image in
                     GeometryReader { metrics in
                         Button(action: {
                           withAnimation(.spring()){
@@ -116,8 +143,6 @@ struct TabViewScreen: View{
                                       .aspectRatio(contentMode: .fit)
                                       .frame(width:25, height:25)
                                       .padding(selectedtab == image ? 15 : 0)
-    //                                  .background(Color("Tab")
-    //                                    .opacity(selectedtab == image ? 1 : 0).clipShape(Circle()))
                                       .matchedGeometryEffect(id: image, in: animation)
                                       .offset(x: selectedtab == image ? (metrics.frame(in: .global).minX - metrics.frame(in: .global).midX) : 0 ,y: selectedtab == image ? -30 : 0)
                                   Text(image)
@@ -132,15 +157,19 @@ struct TabViewScreen: View{
                                })
                                      .onAppear(perform: {
                                          var tab: Int = 1
-                                         if selectedtab == "Adoption"{
-                                            tab = 0
-                                         }else if selectedtab == "Home"{
-                                             tab = 1
-                                         }else if selectedtab == "My Animals"{
-                                             tab = 2
-                                         }else if selectedtab == "Tag"{
-                                             tab = 3
+
+                                             if selectedtab == "Adoption"{
+                                                tab = 0
+                                             }else if selectedtab == "Home"{
+                                                 tab = 1
+                                             }else if selectedtab == "My Animals"{
+                                                 tab = 2
+                                             }else if selectedtab == "Tag"{
+                                                 tab = 3
+                                        
                                          }
+                                         
+
                                          
                                          if image == tabs[tab]{
                                              xAxis = metrics.frame(in: .global).minX
@@ -172,9 +201,16 @@ struct TabViewScreen: View{
     }//body
     
     
+    
+    
 }//Home
 
-var tabs = ["Adoption", "Home", "My Animals", "Tag"]
+
+
+var tabs = ["Adoption", "Home", "My Animals"]
+
+
+
 
 //Curve for tabbar
 

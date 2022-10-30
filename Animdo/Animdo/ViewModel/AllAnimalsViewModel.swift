@@ -8,9 +8,11 @@
 import Foundation
 import FirebaseFirestore
 import Firebase
+import FirebaseAuth
 
 class AllAnimalsViewModel: ObservableObject{
     @Published var animals = [AllAnimals]()
+    private var auth = Auth.auth()
     private var db = Firestore.firestore()
     
     func fetchAllAnimals(){
@@ -40,6 +42,23 @@ class AllAnimalsViewModel: ObservableObject{
                 
             }
         }
+    }
+    
+    func adoptAnimal(animaluid: String){
+        db.collection("animals").document(animaluid).setData([
+            "adopted": true,
+            "adopter": auth.currentUser?.uid as Any
+        ], merge: true){err in
+            if let err = err{
+                print(err)
+            }else{
+                print("Success")
+            }
+        }
+    }
+    
+    func fetchadoptedAnimals(){
+        
     }
     
 }

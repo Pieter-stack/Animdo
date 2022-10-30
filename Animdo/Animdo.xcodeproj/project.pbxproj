@@ -46,7 +46,6 @@
 		6780CE6F290C0EC900DC7C02 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 6780CE6E290C0EC900DC7C02 /* SDWebImageSwiftUI */; };
 		6780CE72290C0EE900DC7C02 /* SwiftKeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = 6780CE71290C0EE900DC7C02 /* SwiftKeychainWrapper */; };
 		678A8548290AB0A800765DC7 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 678A8547290AB0A800765DC7 /* StoreKit.framework */; };
-		678A854A290AB11700765DC7 /* StoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678A8549290AB11700765DC7 /* StoreViewModel.swift */; };
 		678A854F290AC1EE00765DC7 /* Purchasable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678A854E290AC1EE00765DC7 /* Purchasable.swift */; };
 		678A8551290AC2CF00765DC7 /* TokensViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678A8550290AC2CF00765DC7 /* TokensViewModel.swift */; };
 		678A8553290AC94C00765DC7 /* IAPStoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678A8552290AC94C00765DC7 /* IAPStoreViewModel.swift */; };
@@ -104,7 +103,6 @@
 		676F3BFE28F420B500EF9C4A /* LoginScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenView.swift; sourceTree = "<group>"; };
 		676F3C0228F435FC00EF9C4A /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		678A8547290AB0A800765DC7 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		678A8549290AB11700765DC7 /* StoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreViewModel.swift; sourceTree = "<group>"; };
 		678A854E290AC1EE00765DC7 /* Purchasable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Purchasable.swift; sourceTree = "<group>"; };
 		678A8550290AC2CF00765DC7 /* TokensViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokensViewModel.swift; sourceTree = "<group>"; };
 		678A8552290AC94C00765DC7 /* IAPStoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPStoreViewModel.swift; sourceTree = "<group>"; };
@@ -163,7 +161,6 @@
 				67B03EA1290569ED00FC3F0C /* UserViewModel.swift */,
 				67D606492906C435000BF4C6 /* TagAnimalViewModel.swift */,
 				67D6064D2907001D000BF4C6 /* AllAnimalsViewModel.swift */,
-				678A8549290AB11700765DC7 /* StoreViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -456,7 +453,6 @@
 				67EE39B528FD5DDF005CDDB5 /* UIImage+Extension.swift in Sources */,
 				67EE39C328FDF6CD005CDDB5 /* TextClassifier.swift in Sources */,
 				6772DAF4290C15960035A618 /* SpesificLocationManager.swift in Sources */,
-				678A854A290AB11700765DC7 /* StoreViewModel.swift in Sources */,
 				676F3C0328F435FC00EF9C4A /* ImagePicker.swift in Sources */,
 				673AE98828F160DE008D1D01 /* SplashScreenView.swift in Sources */,
 				673AE98C28F17596008D1D01 /* OnboardingScreenView.swift in Sources */,

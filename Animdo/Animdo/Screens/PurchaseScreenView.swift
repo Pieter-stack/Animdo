@@ -40,10 +40,10 @@ struct PurchaseScreenView: View {
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 20)
                                 .padding(.top, -5)
-//                            let consumableCount = store.tokens.ConsumableCount
-//                            Text("\(consumableCount)")
-//                                .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/19))
-//                                .foregroundColor(Color("White"))
+                            let consumableCount = store.tokens.ConsumableCount
+                            Text("\(consumableCount)")
+                                .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/19))
+                                .foregroundColor(Color("White"))
                         }//HStack
                         .padding(.top, -10)
                     }//ZStack
@@ -80,9 +80,9 @@ struct PurchaseScreenView: View {
 //                        TokenC.Row(purchasable: store.tokens3)
                     }//Scrollview
                 }else{
-//                                    TokenA.Row(purchasable: store.tokens)
-//                                    TokenB.Row(purchasable: store.tokens2)
-//                                    TokenC.Row(purchasable: store.tokens3)
+                                    TokenA.Row(purchasable: store.tokens)
+                                    TokenB.Row(purchasable: store.tokens2)
+                                    TokenC.Row(purchasable: store.tokens3)
                 }
                 
                 

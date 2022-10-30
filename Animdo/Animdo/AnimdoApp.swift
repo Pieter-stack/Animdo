@@ -26,7 +26,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 
 struct AnimdoApp: App {
     init(){
-        KeychainWrapper.standard.removeAllKeys()
+//        KeychainWrapper.standard.removeAllKeys()
     }
     
     //register app delegate for firbase setup

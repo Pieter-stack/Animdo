@@ -24,7 +24,7 @@ struct HomeScreenView: View {
                 HStack{
                     ZStack{
                         
-                        WebImage(url: URL(string: vm.user?.pfp ?? "https://lh3.googleusercontent.com/a/ALm5wu2yT5NuPMaRICs2Jnq4-QhggyOWsmSVMeiCQRZm=s96-c"))
+                        WebImage(url: URL(string: vm.user?.pfp ?? ""))
                             .resizable()
                             .aspectRatio(1,contentMode: .fit)
                             .frame(width: getScreenBounds().width/5)
@@ -48,7 +48,7 @@ struct HomeScreenView: View {
                         Text("Welcome,")
                             .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/19))
                             .foregroundColor(Color("CustomBeige"))
-                        Text("\(vm.user?.name ?? "Pieter") \(vm.user?.surname ?? "Venter")")
+                        Text("\(vm.user?.name ?? "") \(vm.user?.surname ?? "")")
                             .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/19))
                             .foregroundColor(.black)
                     }//VStack

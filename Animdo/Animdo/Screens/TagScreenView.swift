@@ -303,7 +303,26 @@ struct TagScreenView: View {
                         Spacer()
 
                         Button(action:{
+                            if (tagCode.isEmpty || species.isEmpty || age == 0 && genderArray[selectedIndex] == "" || longitude.isEmpty || latitude.isEmpty  || image == nil){
+                                showAlert = true
+                                
+                            }else{
+                                showAlert = false
+                                
+                                lm.get(longitude: Double(longitude)!, latitude: Double(latitude)!)
 
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                                    tagManager.TagNewAnimal(tagCode: tagCode, species: species, longitude: longitude, latitude: latitude, gender: genderArray[selectedIndex], age: age, animalImage: image!, country: lm.Country ?? "", isoCode: lm.isoCode ?? "", ocean: lm.Ocean ?? "")
+                                    tagCode = ""
+                                    species = ""
+                                    longitude = ""
+                                    latitude = ""
+                                    selectedIndex = 0
+                                    age = 0
+                                    image = nil
+                                }
+
+                            }
                             
                         }, label: {
                             ZStack{
@@ -326,6 +345,10 @@ struct TagScreenView: View {
                     }//Scrollview
                     .frame(height: 400)
                     .padding(.top, 40)
+                    .alert(isPresented: $showAlert){
+                        Alert(title: Text("Oops something went wrong!"), message: Text(tagManager.message == "" ? "Please fill in all the fields" : tagManager.message), dismissButton: .default(Text("OK")){
+                        })
+                    }
                     
                 }else{
                     VStack(alignment: .leading){

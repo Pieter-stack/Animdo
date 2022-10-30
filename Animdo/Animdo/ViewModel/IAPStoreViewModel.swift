@@ -37,8 +37,8 @@ extension IAPStore {
     }
   }
 
-  func buyTokens() {
-      tokens.ConsumableCount -= 1
+    func buyTokens(tokenamount: String){
+        tokens.ConsumableCount -= Int(tokenamount)!
   }
 }
 

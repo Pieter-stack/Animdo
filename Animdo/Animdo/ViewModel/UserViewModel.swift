@@ -18,7 +18,6 @@ class SignedInUser: ObservableObject{
     
     init(){
         fetchCurrentUser()
-        print("init done")
     }
     
      func fetchCurrentUser(){
