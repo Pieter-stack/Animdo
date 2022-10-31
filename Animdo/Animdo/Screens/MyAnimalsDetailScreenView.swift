@@ -7,6 +7,9 @@
 
 import SwiftUI
 import SDWebImageSwiftUI
+import AlertX
+import CoreLocation
+
 
 struct MyAnimalsDetailScreenView: View {
     @ObservedObject private var vm = AllAnimalsViewModel()
@@ -16,6 +19,20 @@ struct MyAnimalsDetailScreenView: View {
     var animal : AllAnimals
     @State private var showAlert = false
     @State private var AlertValue = ""
+    //Location Manager
+    @StateObject var locationManager = LocationManager()
+    var userLatitude: String {
+        return "\(locationManager.lastLocation?.coordinate.latitude ?? 0)"
+    }
+    var userLongitude: String {
+        return "\(locationManager.lastLocation?.coordinate.longitude ?? 0)"
+    }
+     @State var distance: String = ""
+    
+
+    
+    
+    
     var body: some View {
         ZStack{
             Color("BG")
@@ -82,6 +99,7 @@ struct MyAnimalsDetailScreenView: View {
                         .opacity(0.9)
                 }.padding(.top, -10)
                 
+
                 HStack(spacing: 10){
                     VStack{
                      Text("Species")
@@ -149,6 +167,51 @@ struct MyAnimalsDetailScreenView: View {
                 }//HStack
                 .padding(.leading, 30)
                 .padding(.top, 30)
+                
+                ZStack{
+                   RoundedRectangle(cornerRadius: 90)
+                        .fill(Color("CustomDark"))
+                        .frame(width: getScreenBounds().width - 30, height: 60)
+                    HStack{
+                       Image("MapPinLight")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 12)
+                            .padding(.leading, 15)
+                        if animal.country == ""{
+                            Text("\(animal.ocean)")
+                                .padding(.top, 2)
+                                .padding(.leading, -8)
+                                .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/25))
+                                .foregroundColor(.white)
+                                .padding(.leading, 10)
+                        }else{
+                            Text("\(animal.country), \(animal.isoCode)")
+                                .padding(.top, 2)
+                                .padding(.leading, -8)
+                                .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/25))
+                                .foregroundColor(.white)
+                                .padding(.leading, 10)
+                        }
+                        Spacer()
+                        Text("\(distance) km")
+                            .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/29))
+                            .foregroundColor(.white)
+                            .padding(.trailing, 20)
+                        ZStack{
+                            Circle()
+                                .fill(Color("CustomBlueLight"))
+                                .frame(width: 60)
+                            Image(systemName: "chevron.right")
+                                .font(.title2)
+                                .fontWeight(.black)
+                                .foregroundColor(.white)
+                        }//ZStack
+                        .padding(.trailing, -15)
+                    }//HStack
+                    .padding(.horizontal, 30)
+                }//ZStack
+              
                 
                 HStack{
                     VStack(alignment: .leading){
@@ -269,18 +332,48 @@ struct MyAnimalsDetailScreenView: View {
                 
             }//VStack
         }//ZStack
-        .alert(isPresented: $showAlert){
-            Alert(title: Text( AlertValue == "Success" ? "Thank you for helping your animal" : "Oops something went wrong!"), message: Text(AlertValue == "Success" ? "Donating comes a long way in helping these animals form extinction" : "Please buy some tokens to adopt an Animal."), dismissButton: .default(Text("OK")){
+        .alertX(isPresented: $showAlert, content: {
+                            
+                            AlertX(title: Text(AlertValue == "Success" ? "Thank you for helping your animal" : "Oops something went wrong!"),
+                                   message: Text(AlertValue == "Success" ? "Donating comes a long way in helping these animals form extinction" : "Please buy some tokens to help support your animal!"),
+     
+                                   theme: AlertX.Theme.custom(windowColor: Color("CustomBlue"),
+                                                              alertTextColor: .white,
+                                                             enableShadow: true,
+                                                             enableRoundedCorners: true,
+                                                             enableTransparency: true,
+                                                              cancelButtonColor: .red,
+                                                              cancelButtonTextColor: .red,
+                                                              defaultButtonColor: Color("CustomBlueLighter"),
+                                                              defaultButtonTextColor: .black,
+                                                             roundedCornerRadius: 20),
+                                   animation: .classicEffect())
+                        })
+        
 
-            })
-        }
         .onAppear(){
             self.vm.fetchAllAnimals()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            let coordinate₀ = CLLocation(latitude: Double(animal.latitude)!, longitude: Double(animal.longitude)!)
+            let coordinate₁ = CLLocation(latitude: Double(userLatitude)!, longitude: Double(userLongitude)!)
+
+             let distancemeters = coordinate₀.distance(from: coordinate₁)
+            let distanceKm = distancemeters / 1000
+                distance = String(format: "%.2f", distanceKm)
+            
+                print("user long\(userLongitude)")
+                print("user lat\(userLatitude)")
+                print("animal long\(animal.longitude)")
+                print("animal lat\(animal.latitude)")
+            }
+            
         }//onappear
 
     }
     
 }
+
+
 
 struct MyAnimalsDetailScreenView_Previews: PreviewProvider {
     static var previews: some View {

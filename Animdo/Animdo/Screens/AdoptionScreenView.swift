@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SDWebImageSwiftUI
+import AlertX
 
 
 
@@ -184,10 +185,23 @@ struct AdoptionScreenView: View {
         .onAppear(){
             self.vm.fetchAllAnimals()
         }//onappear
-        .alert(isPresented: $showAlert){
-            Alert(title: Text( AlertValue == "Success" ? "Animal Adopted" : "Oops something went wrong!"), message: Text(AlertValue == "Success" ? "Thank you for rescuing an Animal." : "Please buy some tokens to adopt an Animal."), dismissButton: .default(Text("OK")){
-            })
-        }
+        .alertX(isPresented: $showAlert, content: {
+                            
+                            AlertX(title: Text(AlertValue == "Success" ? "Animal Adopted" : "Oops something went wrong!"),
+                                   message: Text(AlertValue == "Success" ? "Thank you for rescuing an Animal." : "Please buy some tokens to adopt an Animal."),
+     
+                                   theme: AlertX.Theme.custom(windowColor: Color("CustomBlue"),
+                                                              alertTextColor: .white,
+                                                             enableShadow: true,
+                                                             enableRoundedCorners: true,
+                                                             enableTransparency: true,
+                                                              cancelButtonColor: .red,
+                                                              cancelButtonTextColor: .red,
+                                                              defaultButtonColor: Color("CustomBlueLighter"),
+                                                              defaultButtonTextColor: .black,
+                                                             roundedCornerRadius: 20),
+                                   animation: .classicEffect())
+                        })
         
     }//body
 }//struct

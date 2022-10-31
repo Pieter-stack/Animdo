@@ -27,6 +27,7 @@
 		673011DF290FF79D0074C1FE /* MyAnimalComp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673011DE290FF79D0074C1FE /* MyAnimalComp.swift */; };
 		673011E1291015ED0074C1FE /* MyAnimalsDetailScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673011E0291015EC0074C1FE /* MyAnimalsDetailScreenView.swift */; };
 		673011E3291035110074C1FE /* MyAnimalsPurchaseFail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673011E2291035110074C1FE /* MyAnimalsPurchaseFail.swift */; };
+		673011E629104B5E0074C1FE /* AlertX in Frameworks */ = {isa = PBXBuildFile; productRef = 673011E529104B5E0074C1FE /* AlertX */; };
 		673AE97C28F15C26008D1D01 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 673AE97928F15BCE008D1D01 /* Roboto-Light.ttf */; };
 		673AE97D28F15C29008D1D01 /* Aladin-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 673AE97828F15B98008D1D01 /* Aladin-Regular.ttf */; };
 		673AE98328F15DFA008D1D01 /* JosefinSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 673AE97F28F15DF3008D1D01 /* JosefinSans-Bold.ttf */; };
@@ -146,6 +147,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				673011E629104B5E0074C1FE /* AlertX in Frameworks */,
 				6780CE63290C0E8300DC7C02 /* FirebaseDatabase in Frameworks */,
 				6780CE5B290C0E8300DC7C02 /* FirebaseAnalytics in Frameworks */,
 				6780CE72290C0EE900DC7C02 /* SwiftKeychainWrapper in Frameworks */,
@@ -348,6 +350,7 @@
 				6780CE6B290C0EA800DC7C02 /* GoogleSignInSwift */,
 				6780CE6E290C0EC900DC7C02 /* SDWebImageSwiftUI */,
 				6780CE71290C0EE900DC7C02 /* SwiftKeychainWrapper */,
+				673011E529104B5E0074C1FE /* AlertX */,
 			);
 			productName = Animdo;
 			productReference = 672871E328F15963009342DA /* Animdo.app */;
@@ -382,6 +385,7 @@
 				6780CE68290C0EA800DC7C02 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 				6780CE6D290C0EC900DC7C02 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 				6780CE70290C0EE900DC7C02 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */,
+				673011E429104B5E0074C1FE /* XCRemoteSwiftPackageReference "AlertX" */,
 			);
 			productRefGroup = 672871E428F15963009342DA /* Products */;
 			projectDirPath = "";
@@ -709,6 +713,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		673011E429104B5E0074C1FE /* XCRemoteSwiftPackageReference "AlertX" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/neel-makhecha/AlertX.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		6780CE59290C0E8300DC7C02 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -744,6 +756,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		673011E529104B5E0074C1FE /* AlertX */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 673011E429104B5E0074C1FE /* XCRemoteSwiftPackageReference "AlertX" */;
+			productName = AlertX;
+		};
 		6780CE5A290C0E8300DC7C02 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 6780CE59290C0E8300DC7C02 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

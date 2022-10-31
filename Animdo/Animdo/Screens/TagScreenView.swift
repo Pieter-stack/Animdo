@@ -8,6 +8,7 @@
 import SwiftUI
 import CoreML
 import Vision
+import AlertX
 
 
 struct TagScreenView: View {
@@ -584,10 +585,22 @@ struct TagScreenView: View {
             }//vStack
             
         }//ZStack
-        .alert(isPresented: $showAlert){
-            Alert(title: Text("Oops something went wrong!"), message: Text(tagManager.message == "" ? "Please fill in all the fields" : tagManager.message), dismissButton: .default(Text("OK")){
-            })
-        }
+        .alertX(isPresented: $showAlert, content: {
+                            AlertX(title: Text("Oops something went wrong!"),
+                                   message: Text(tagManager.message == "" ? "Please fill in all the fields" : tagManager.message),
+     
+                                   theme: AlertX.Theme.custom(windowColor: Color("CustomBlue"),
+                                                              alertTextColor: .white,
+                                                             enableShadow: true,
+                                                             enableRoundedCorners: true,
+                                                             enableTransparency: true,
+                                                              cancelButtonColor: .red,
+                                                              cancelButtonTextColor: .red,
+                                                              defaultButtonColor: Color("CustomBlueLighter"),
+                                                              defaultButtonTextColor: .black,
+                                                             roundedCornerRadius: 20),
+                                   animation: .classicEffect())
+                        })
         .actionSheet(isPresented: $showSheet){
             ActionSheet(title: Text("Select between"), message: Text(""), buttons: [.default(Text("Photo Library")){
                 self.showImagePicker = true

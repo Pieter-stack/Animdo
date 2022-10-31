@@ -7,6 +7,7 @@
 
 import SwiftUI
 import FirebaseAuth
+import AlertX
 
 struct ForgotPasswordScreenView: View {
     @StateObject var authManager = AuthManager()
@@ -73,11 +74,24 @@ struct ForgotPasswordScreenView: View {
                 
             }//VStack
         }//ZStack
-        .alert(isPresented: $showAlert){
-            Alert(title: Text("Password Reset"), message: Text(self.errString ?? "Success. Reset email sent successfully. Check your email."), dismissButton: .default(Text("OK")){
-                self.presentationMode.wrappedValue.dismiss()
-            })
-        }
+        .alertX(isPresented: $showAlert, content: {
+                            AlertX(title: Text("Password Reset"),
+                                   message: Text(self.errString ?? "Success. Reset email sent successfully. Check your email."), buttonStack: [AlertX.Button.default(Text("OK"), action: {
+                                self.presentationMode.wrappedValue.dismiss()
+                          })],
+     
+                                   theme: AlertX.Theme.custom(windowColor: Color("CustomBlue"),
+                                                              alertTextColor: .white,
+                                                             enableShadow: true,
+                                                             enableRoundedCorners: true,
+                                                             enableTransparency: true,
+                                                              cancelButtonColor: .red,
+                                                              cancelButtonTextColor: .red,
+                                                              defaultButtonColor: Color("CustomBlueLighter"),
+                                                              defaultButtonTextColor: .black,
+                                                             roundedCornerRadius: 20),
+                                   animation: .classicEffect())
+                        })
     }
 }
 

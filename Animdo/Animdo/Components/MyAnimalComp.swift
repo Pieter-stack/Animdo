@@ -49,7 +49,7 @@ struct MyAnimalComp: View {
                                     .font(Font.custom("JosefinSans-Regular", size: getScreenBounds().width/35))
                                     .foregroundColor(.black)
                             }else{
-                                Text("\(country),\(isoCode)")
+                                Text("\(country), \(isoCode)")
                                     .padding(.leading, -8)
                                     .font(Font.custom("JosefinSans-Regular", size: getScreenBounds().width/35))
                                     .foregroundColor(.black)

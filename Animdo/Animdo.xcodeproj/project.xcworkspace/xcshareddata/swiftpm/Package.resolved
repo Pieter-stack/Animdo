@@ -10,6 +10,15 @@
       }
     },
     {
+      "identity" : "alertx",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/neel-makhecha/AlertX.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "6249e4a36fffb77a53215b77d30fdf044d5da39d"
+      }
+    },
+    {
       "identity" : "appauth-ios",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/openid/AppAuth-iOS.git",
