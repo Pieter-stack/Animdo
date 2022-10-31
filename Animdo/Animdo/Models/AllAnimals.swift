@@ -25,3 +25,4 @@ struct AllAnimals: Identifiable{
     var adoper: String
     var tokens: String
 }
+

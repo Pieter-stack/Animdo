@@ -15,6 +15,7 @@ struct AdoptionScreenView: View {
     @EnvironmentObject private var store: IAPStore
     @State private var showAlert = false
     @State private var AlertValue = ""
+    @State private var filterSearch = "ALL"
     
     init(){
         self.vm.fetchAllAnimals()
@@ -40,9 +41,9 @@ struct AdoptionScreenView: View {
                                     .aspectRatio(contentMode: .fit)
                                     .frame(width: 20)
                                     .padding(.top, -5)
-                                Text("555")
-                                    .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/19))
-                                    .foregroundColor(Color("White"))
+//                                Text("\(store.tokens.ConsumableCount)")
+//                                    .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/19))
+//                                    .foregroundColor(Color("White"))
                             }
                             .padding(.top, -10)
                         }
@@ -51,7 +52,7 @@ struct AdoptionScreenView: View {
                 .ignoresSafeArea()
                 
                 
-//                Image(systemName: "\(store.tokens.ConsumableCount).circle")
+
                 VStack(alignment: .leading){
                     HStack{
                     Text("Adopt")
@@ -65,9 +66,66 @@ struct AdoptionScreenView: View {
                     .padding(.leading, 30)
                     .padding(.top, -80)
                     
-                    HStack{
-                        Text("hhhhh")
-                    }
+
+                        ScrollView(.horizontal, showsIndicators: false){
+                            HStack(spacing: 15){
+                                Button(action: {
+                                    filterSearch = "ALL"
+                                }, label: {
+                                    ZStack{
+                                        RoundedRectangle(cornerRadius: 10)
+                                            .fill(Color("CustomGreenLighter"))
+                                            .frame(width: 60, height: 40)
+                                        Text("All")
+                                            .font(Font.custom("JosefinSans-Bold", size: getScreenBounds().width/24))
+                                            .foregroundColor(.black)
+                                            .padding(.top, 5)
+                                    }//ZStack
+                                })
+                                .padding(.bottom, filterSearch == "ALL" ? 20 : 0)
+                                Button(action: {
+                                    filterSearch = "Lion"
+                                }, label: {
+                                    FilterBtnAdoption(image: "LionIcon", color: "CustomBrown")
+                                        .padding(.bottom, filterSearch == "Lion" ? 20 : 0)
+                                })
+                                Button(action: {
+                                    filterSearch = "Polar Bear"
+                                }, label: {
+                                    FilterBtnAdoption(image: "PolarBearIcon", color: "CustomBlueLight")
+                                        .padding(.bottom, filterSearch == "Polar Bear" ? 20 : 0)
+                                })
+                                Button(action: {
+                                    filterSearch = "Elephant"
+                                }, label: {
+                                    FilterBtnAdoption(image: "ElephantIcon", color: "CustomBrown")
+                                        .padding(.bottom, filterSearch == "Elephant" ? 20 : 0)
+                                })
+                                Button(action: {
+                                    filterSearch = "Penguin"
+                                }, label: {
+                                    FilterBtnAdoption(image: "PenguinIcon", color: "CustomBlueLight")
+                                        .padding(.bottom, filterSearch == "Penguin" ? 20 : 0)
+                                })
+                                Button(action: {
+                                    filterSearch = "Sea Turtle"
+                                }, label: {
+                                    FilterBtnAdoption(image: "SeaTurtleIcon", color: "CustomGreenLighter")
+                                        .padding(.bottom, filterSearch == "Sea Turtle" ? 20 : 0)
+                                })
+                                Button(action: {
+                                    filterSearch = "Shark"
+                                }, label: {
+                                    FilterBtnAdoption(image: "SharkIcon", color: "CustomBlueLight")
+                                        .padding(.bottom, filterSearch == "Shark" ? 20 : 0)
+                                })
+                                
+                            }//HStack
+                        }//ScrollView
+                        .padding(.horizontal)
+                        .padding(.top, -15)
+                        .padding(.bottom, 35)
+                    
                     
                     ScrollView{
                         LazyVGrid(columns: vGridLayout){
@@ -77,114 +135,40 @@ struct AdoptionScreenView: View {
                                   //if animal adopted take out of adoption pool
                                 }else{
                                     //if for filtering here
-                                    
-                                    Button(action: {
-                                        if store.tokens.ConsumableCount >= Int(animal.tokens)! {
-                                            showAlert = true
-                                            AlertValue = "Success"
-                                            vm.adoptAnimal(animaluid: animal.uid)
-                                            store.buyTokens(tokenamount: animal.tokens)
-                                        }else{
-                                            showAlert = true
-                                            AlertValue = "Error"
-                                        }
-                                        
-                                    }, label: {
-                                    ZStack{
-                                        RoundedRectangle(cornerRadius: 20)
-                                            .fill(.white)
-                                            .frame(height: 330)
-                                        VStack{
-                                            WebImage(url:URL(string: animal.animalImage))
-                                                .resizable()
-                                                .frame(width: 180, height: 180)
-                                            .clipShape(RoundedRectangle(cornerRadius: 15))
-                                            .padding(.top, 10)
-                                
-                                            Text(animal.species)
-                                                .padding(.bottom, -12)
-                                                .frame(maxWidth: .infinity, alignment: .leading)
-                                                .frame(height: 30)
-                                                .padding(.leading, 20)
-                                                .padding(.trailing, 15)
-                                                    .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/19))
-                                                    .foregroundColor(.black)
+                                  
+                                    if filterSearch == "ALL"{
+                                        Button(action: {
+                                            if store.tokens.ConsumableCount >= Int(animal.tokens)! {
+                                                showAlert = true
+                                                AlertValue = "Success"
+                                                vm.adoptAnimal(animaluid: animal.uid)
+                                                store.buyTokens(tokenamount: animal.tokens)
+                                            }else{
+                                                showAlert = true
+                                                AlertValue = "Error"
+                                            }
                                             
-                                            Text("\(animal.age) years old")
-                                            .frame(maxWidth: .infinity, alignment: .leading)
-                                            .padding(.top, 5)
-                                            .padding(.bottom, -8)
-                                            .padding(.leading, 23)
-                                            .padding(.trailing, 15)
-                                                .font(Font.custom("JosefinSans-Regular", size: getScreenBounds().width/25))
-                                                .foregroundColor(.black)
-                                            HStack{
-                                               Image(systemName: "mappin")
-                                                    .resizable()
-                                                    .aspectRatio(contentMode: .fit)
-                                                    .frame(width: 15, height: 13)
-                                                    .padding(.leading, 20)
-                                                    .foregroundColor(.black)
-                                                if animal.country == ""{
-                                                    Text("\(animal.ocean)")
-                                                        .padding(.top, 2)
-                                                        .padding(.leading, -8)
-                                                        .font(Font.custom("JosefinSans-Regular", size: getScreenBounds().width/35))
-                                                        .foregroundColor(.black)
+                                        }, label: {
+                                            AdoptionCard(image: animal.animalImage, species: animal.species, age: animal.age, country: animal.country, ocean: animal.ocean, isoCode: animal.isoCode, tokens: animal.tokens)
+                                        })
+                                    }else if animal.species == filterSearch{
+                                      
+                                            Button(action: {
+                                                if store.tokens.ConsumableCount >= Int(animal.tokens)! {
+                                                    showAlert = true
+                                                    AlertValue = "Success"
+                                                    vm.adoptAnimal(animaluid: animal.uid)
+                                                    store.buyTokens(tokenamount: animal.tokens)
                                                 }else{
-                                                    Text("\(animal.country),\(animal.isoCode)")
-                                                        .padding(.top, 2)
-                                                        .padding(.leading, -8)
-                                                        .font(Font.custom("JosefinSans-Regular", size: getScreenBounds().width/35))
-                                                        .foregroundColor(.black)
+                                                    showAlert = true
+                                                    AlertValue = "Error"
                                                 }
-                                                Spacer()
-                                            }//Hstack
-                                            RoundedRectangle(cornerRadius: 10)
-                                                .fill(Color("CustomBlueLight"))
-                                                .frame(height: 2)
-                                                .padding(.horizontal)
-                                            Spacer()
-                                            
-                                            HStack{
-                                                Text("12 Tokens")
-                                                    .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/25))
-                                                    .foregroundColor(.black)
-                                                    .padding(.leading)
-                                                Spacer()
-                                                ZStack{
-                                                    Rectangle()
-                                                        .frame(width: 45, height: 35)
-                                                        .foregroundColor(Color("CustomBlueLight"))
-                                                        .padding(.bottom, 15)
-                                                        .padding(.trailing, 15)
-                                                        .cornerRadius(15)
-                                                        .padding(.bottom, -15)
-                                                        .padding(.trailing, -15)
-                                                        .padding(.top, 15)
-                                                        .padding(.leading, 15)
-                                                        .cornerRadius(15)
-                                                        .padding(.top, -15)
-                                                        .padding(.leading, -15)
-                                                        .padding(.trailing)
-                                                    Image("LionCoin")
-                                                        .resizable()
-                                                        .aspectRatio(contentMode: .fit)
-                                                        .frame(width: 23)
-                                                        .padding(.trailing)
-                                                    
-                                                }//ZStack
-                                            }//HStack
-                                                .padding(.top, -40)
-                                
-                                        }//VStack
-                                    }//ZStack
-                                    })
-                                    
+                                                
+                                            }, label: {
+                                                AdoptionCard(image: animal.animalImage, species: animal.species, age: animal.age, country: animal.country, ocean: animal.ocean, isoCode: animal.isoCode, tokens: animal.tokens)
+                                            })
+                                        }
                                 }//else
-                                
-                               
-                                
                             }//foreach
                         }//lazyvgrid
                     }//scrollview

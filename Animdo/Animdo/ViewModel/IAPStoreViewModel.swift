@@ -40,6 +40,19 @@ extension IAPStore {
     func buyTokens(tokenamount: String){
         tokens.ConsumableCount -= Int(tokenamount)!
   }
+    
+    func buyFood(){
+        tokens.ConsumableCount -= 5
+  }
+    func buyEnergy(){
+        tokens.ConsumableCount -= 1
+  }
+    func buyHabitat(){
+        tokens.ConsumableCount -= 3
+  }
+    func buyFun(){
+        tokens.ConsumableCount -= 1
+  }
 }
 
 // MARK: - private
