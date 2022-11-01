@@ -28,6 +28,8 @@
 		673011E1291015ED0074C1FE /* MyAnimalsDetailScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673011E0291015EC0074C1FE /* MyAnimalsDetailScreenView.swift */; };
 		673011E3291035110074C1FE /* MyAnimalsPurchaseFail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673011E2291035110074C1FE /* MyAnimalsPurchaseFail.swift */; };
 		673011E629104B5E0074C1FE /* AlertX in Frameworks */ = {isa = PBXBuildFile; productRef = 673011E529104B5E0074C1FE /* AlertX */; };
+		673011EA291105190074C1FE /* MyAnimalMapScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673011E9291105190074C1FE /* MyAnimalMapScreenView.swift */; };
+		673011EC291116A90074C1FE /* CustomPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673011EB291116A90074C1FE /* CustomPin.swift */; };
 		673AE97C28F15C26008D1D01 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 673AE97928F15BCE008D1D01 /* Roboto-Light.ttf */; };
 		673AE97D28F15C29008D1D01 /* Aladin-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 673AE97828F15B98008D1D01 /* Aladin-Regular.ttf */; };
 		673AE98328F15DFA008D1D01 /* JosefinSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 673AE97F28F15DF3008D1D01 /* JosefinSans-Bold.ttf */; };
@@ -101,6 +103,8 @@
 		673011DE290FF79D0074C1FE /* MyAnimalComp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAnimalComp.swift; sourceTree = "<group>"; };
 		673011E0291015EC0074C1FE /* MyAnimalsDetailScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAnimalsDetailScreenView.swift; sourceTree = "<group>"; };
 		673011E2291035110074C1FE /* MyAnimalsPurchaseFail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAnimalsPurchaseFail.swift; sourceTree = "<group>"; };
+		673011E9291105190074C1FE /* MyAnimalMapScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAnimalMapScreenView.swift; sourceTree = "<group>"; };
+		673011EB291116A90074C1FE /* CustomPin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPin.swift; sourceTree = "<group>"; };
 		673AE97828F15B98008D1D01 /* Aladin-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Aladin-Regular.ttf"; sourceTree = "<group>"; };
 		673AE97928F15BCE008D1D01 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
 		673AE97E28F15CA5008D1D01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -203,6 +207,7 @@
 				673011DA290FBD020074C1FE /* AdoptionCard.swift */,
 				673011DC290FC1670074C1FE /* FilterBtnMyAnimals.swift */,
 				673011DE290FF79D0074C1FE /* MyAnimalComp.swift */,
+				673011EB291116A90074C1FE /* CustomPin.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -273,6 +278,7 @@
 				678A8558290B1FC300765DC7 /* PurchasefailScreenView.swift */,
 				673011E0291015EC0074C1FE /* MyAnimalsDetailScreenView.swift */,
 				673011E2291035110074C1FE /* MyAnimalsPurchaseFail.swift */,
+				673011E9291105190074C1FE /* MyAnimalMapScreenView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -457,6 +463,7 @@
 				67B03EA02905673400FC3F0C /* User.swift in Sources */,
 				6721E1E928FA9ACF00D79AEC /* LogRegViewModel.swift in Sources */,
 				67DA552C29052699002C69FA /* PasswordInputs.swift in Sources */,
+				673011EC291116A90074C1FE /* CustomPin.swift in Sources */,
 				678A8559290B1FC300765DC7 /* PurchasefailScreenView.swift in Sources */,
 				6726600728F2C19F003A4E56 /* OffsetPageTabView.swift in Sources */,
 				673AE98A28F174D0008D1D01 /* Onboarding.swift in Sources */,
@@ -465,6 +472,7 @@
 				678A8557290AD6AE00765DC7 /* TestScreenView.swift in Sources */,
 				67215E4528FC12C400490C66 /* AdoptionScreenView.swift in Sources */,
 				67D6064A2906C435000BF4C6 /* TagAnimalViewModel.swift in Sources */,
+				673011EA291105190074C1FE /* MyAnimalMapScreenView.swift in Sources */,
 				673011E1291015ED0074C1FE /* MyAnimalsDetailScreenView.swift in Sources */,
 				67D6064C2906FEC9000BF4C6 /* AllAnimals.swift in Sources */,
 				67215E4728FC12F300490C66 /* MyAnimalsScreenView.swift in Sources */,

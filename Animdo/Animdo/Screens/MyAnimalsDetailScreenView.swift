@@ -167,51 +167,51 @@ struct MyAnimalsDetailScreenView: View {
                 }//HStack
                 .padding(.leading, 30)
                 .padding(.top, 30)
-                
-                ZStack{
-                   RoundedRectangle(cornerRadius: 90)
-                        .fill(Color("CustomDark"))
-                        .frame(width: getScreenBounds().width - 30, height: 60)
-                    HStack{
-                       Image("MapPinLight")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 12)
-                            .padding(.leading, 15)
-                        if animal.country == ""{
-                            Text("\(animal.ocean)")
-                                .padding(.top, 2)
-                                .padding(.leading, -8)
-                                .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/25))
+                NavigationLink(destination: MyAnimalMapScreenView(animal:animal).navigationBarBackButtonHidden(true), label: {
+                    ZStack{
+                        RoundedRectangle(cornerRadius: 90)
+                            .fill(Color("CustomDark"))
+                            .frame(width: getScreenBounds().width - 30, height: 60)
+                        HStack{
+                            Image("MapPinLight")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 12)
+                                .padding(.leading, 15)
+                            if animal.country == ""{
+                                Text("\(animal.ocean)")
+                                    .padding(.top, 2)
+                                    .padding(.leading, -8)
+                                    .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/25))
+                                    .foregroundColor(.white)
+                                    .padding(.leading, 10)
+                            }else{
+                                Text("\(animal.country), \(animal.isoCode)")
+                                    .padding(.top, 2)
+                                    .padding(.leading, -8)
+                                    .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/25))
+                                    .foregroundColor(.white)
+                                    .padding(.leading, 10)
+                            }
+                            Spacer()
+                            Text("\(distance) km")
+                                .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/29))
                                 .foregroundColor(.white)
-                                .padding(.leading, 10)
-                        }else{
-                            Text("\(animal.country), \(animal.isoCode)")
-                                .padding(.top, 2)
-                                .padding(.leading, -8)
-                                .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/25))
-                                .foregroundColor(.white)
-                                .padding(.leading, 10)
-                        }
-                        Spacer()
-                        Text("\(distance) km")
-                            .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/29))
-                            .foregroundColor(.white)
-                            .padding(.trailing, 20)
-                        ZStack{
-                            Circle()
-                                .fill(Color("CustomBlueLight"))
-                                .frame(width: 60)
-                            Image(systemName: "chevron.right")
-                                .font(.title2)
-                                .fontWeight(.black)
-                                .foregroundColor(.white)
-                        }//ZStack
-                        .padding(.trailing, -15)
-                    }//HStack
-                    .padding(.horizontal, 30)
-                }//ZStack
-              
+                                .padding(.trailing, 20)
+                            ZStack{
+                                Circle()
+                                    .fill(Color("CustomBlueLight"))
+                                    .frame(width: 60)
+                                Image(systemName: "chevron.right")
+                                    .font(.title2)
+                                    .fontWeight(.black)
+                                    .foregroundColor(.white)
+                            }//ZStack
+                            .padding(.trailing, -15)
+                        }//HStack
+                        .padding(.horizontal, 30)
+                    }//ZStack
+                })//Nav link
                 
                 HStack{
                     VStack(alignment: .leading){
@@ -349,15 +349,13 @@ struct MyAnimalsDetailScreenView: View {
                                                              roundedCornerRadius: 20),
                                    animation: .classicEffect())
                         })
-        
-
         .onAppear(){
             self.vm.fetchAllAnimals()
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            let coordinate₀ = CLLocation(latitude: Double(animal.latitude)!, longitude: Double(animal.longitude)!)
-            let coordinate₁ = CLLocation(latitude: Double(userLatitude)!, longitude: Double(userLongitude)!)
+            let coordinate0 = CLLocation(latitude: Double(animal.latitude)!, longitude: Double(animal.longitude)!)
+            let coordinate1 = CLLocation(latitude: Double(userLatitude)!, longitude: Double(userLongitude)!)
 
-             let distancemeters = coordinate₀.distance(from: coordinate₁)
+             let distancemeters = coordinate0.distance(from: coordinate1)
             let distanceKm = distancemeters / 1000
                 distance = String(format: "%.2f", distanceKm)
             
