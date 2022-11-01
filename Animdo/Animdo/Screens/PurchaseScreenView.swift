@@ -90,15 +90,15 @@ struct PurchaseScreenView: View {
                 
                 Spacer()
                 HStack{
-                    
-                    Text("Subscribe to Animdo")
+
+                    Text("Thank you for donating")
                         .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/17))
                         .foregroundColor(Color("CustomBeige"))
                     Spacer()
                 }.padding(.leading, 30)
                     .padding(.top, 30)
-                
-                
+
+
 
                 ZStack{
                    RoundedRectangle(cornerRadius: 15)
@@ -107,39 +107,36 @@ struct PurchaseScreenView: View {
                     HStack{
                         ZStack{
                             RoundedRectangle(cornerRadius: 15)
-                                 .fill(Color("CustomGreenLight"))
+                                 .fill(Color("CustomeGreenLight"))
                                  .aspectRatio(contentMode: .fit)
                                  .frame(width: 60)
                                  .padding(.leading, 35)
                                  .padding(.trailing, 5)
-                            
-                        Image("LionCoin")
+
+                        Image("SeaTurtleIcon")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
-                                .frame(width: 40)
+                                .frame(width: 30)
                                 .padding(.leading, 35)
                                 .padding(.trailing, 5)
                         }//ZStack
                         VStack(alignment: .leading){
                             HStack{
-                                Text("Subscribe")
-                                    .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/19))
+                                Text("Thanks from the Animdo Team")
+                                    .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/29))
                                     .foregroundColor(Color("White"))
                                 Spacer()
-                                Text("R45.00 pm")
-                                    .font(Font.custom("JosefinSans-Regular", size: getScreenBounds().width/30))
-                                    .foregroundColor(Color("White"))
-                                    .padding(.trailing, 50)
-                            }//HStack
-                            Text("Help feed the animals monthly")
-                                .font(Font.custom("JosefinSans-Regular", size: getScreenBounds().width/25))
+                            }
+                            Text("By donating you help save these animals from extinction")
+                                .font(Font.custom("JosefinSans-Regular", size: getScreenBounds().width/35))
                                 .foregroundColor(Color("White"))
                                 .padding(.top, 2)
+                                .padding(.trailing, 25)
                         }//VStack
                         Spacer()
-                            
+
                     }//HStack
-                    
+//
                 }//ZStack
                 .padding(.bottom, device == "iPod touch (7th generation)" || device == "iPhone SE (3rd generation)" || device == "iPhone 8" || device == "iPhone 8 Plus" || device == "iPhone 13 mini" ? 30 : 100)
                 

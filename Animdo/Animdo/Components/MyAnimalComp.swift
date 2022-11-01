@@ -10,6 +10,7 @@ import SDWebImageSwiftUI
 
 struct MyAnimalComp: View {
     var image: String
+    var name:String
     var species : String
     var country: String
     var ocean: String
@@ -31,9 +32,10 @@ struct MyAnimalComp: View {
                     .fill(Color(color))
                     .frame(width: getScreenBounds().width / 3)
                 VStack{
-                    Text("Alex")
+                    Text(name)
                         .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/15))
                         .foregroundColor(Color("Black"))
+                        .padding(.top, 20)
                     Text(species)
                         .font(Font.custom("JosefinSans-Light", size: getScreenBounds().width/30))
                         .foregroundColor(Color("Black"))
@@ -66,7 +68,7 @@ struct MyAnimalComp: View {
                             .font(.title3)
                         
                     }
-                    .offset(x: 50, y: 10)
+                    .offset(x: 50, y: 7)
                 }//VStack
                 .padding(.bottom, -15)
             }//ZStack
@@ -79,6 +81,6 @@ struct MyAnimalComp: View {
 
 struct MyAnimalComp_Previews: PreviewProvider {
     static var previews: some View {
-        MyAnimalComp(image: "https://firebasestorage.googleapis.com:443/v0/b/animdo.appspot.com/o/animals%2FD5D5A4D1-1238-432D-ACA0-B22A32386FAB.jpg?alt=media&token=c8cf4ff6-ab58-413a-92a0-2363c919ac73",species: "Polar bear",country: "South Africa",ocean: "",isoCode: "ZA", color: "CustomBlueLighter", colorSecondary: "CustomBlue")
+        MyAnimalComp(image: "https://firebasestorage.googleapis.com:443/v0/b/animdo.appspot.com/o/animals%2FD5D5A4D1-1238-432D-ACA0-B22A32386FAB.jpg?alt=media&token=c8cf4ff6-ab58-413a-92a0-2363c919ac73",name: "Alex" ,species: "Polar bear",country: "South Africa",ocean: "",isoCode: "ZA", color: "CustomBlueLighter", colorSecondary: "CustomBlue")
     }
 }

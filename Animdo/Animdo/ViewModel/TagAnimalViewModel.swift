@@ -48,6 +48,7 @@ class TagManager: ObservableObject{
                 
                 self.db.collection("animals").document(uid).setData([
                     "uid": uid,
+                    "name": "",
                     "tagCode": tagCode,
                     "species":species,
                     "longitude": longitude,

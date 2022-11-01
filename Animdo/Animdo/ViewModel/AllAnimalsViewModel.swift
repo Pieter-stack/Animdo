@@ -25,6 +25,7 @@ class AllAnimalsViewModel: ObservableObject{
             self.animals = documents.map{ (queryDocumentSnapshot) -> AllAnimals in
                 let data = queryDocumentSnapshot.data()
                 let uid = data["uid"] as? String ?? ""
+                let name = data["name"] as? String ?? ""
                 let tagCode = data["tagCode"] as? String ?? ""
                 let species = data["species"] as? String ?? ""
                 let longitude = data["longitude"] as? String ?? ""
@@ -38,7 +39,7 @@ class AllAnimalsViewModel: ObservableObject{
                 let adopted = data["adopted"] as? Bool ?? false
                 let adopter = data["adopter"] as? String ?? ""
                 let tokens = data["tokens"] as? String ?? ""
-                return AllAnimals(uid: uid, tagCode: tagCode, species: species, longitude: longitude, latitude: latitude, gender: gender, age: age, animalImage: animalImage, country: country, isoCode: isoCode, ocean: ocean, adopted: adopted, adoper: adopter, tokens: tokens)
+                return AllAnimals(uid: uid, name: name , tagCode: tagCode, species: species, longitude: longitude, latitude: latitude, gender: gender, age: age, animalImage: animalImage, country: country, isoCode: isoCode, ocean: ocean, adopted: adopted, adoper: adopter, tokens: tokens)
                 
             }
         }
@@ -48,6 +49,18 @@ class AllAnimalsViewModel: ObservableObject{
         db.collection("animals").document(animaluid).setData([
             "adopted": true,
             "adopter": auth.currentUser?.uid as Any
+        ], merge: true){err in
+            if let err = err{
+                print(err)
+            }else{
+                print("Success")
+            }
+        }
+    }
+    
+    func renameAnimal(animaluid: String, animalName:String){
+        db.collection("animals").document(animaluid).setData([
+            "name": animalName
         ], merge: true){err in
             if let err = err{
                 print(err)

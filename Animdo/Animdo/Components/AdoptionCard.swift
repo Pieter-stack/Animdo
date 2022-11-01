@@ -36,15 +36,25 @@ struct AdoptionCard: View {
                     .padding(.trailing, 15)
                         .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/19))
                         .foregroundColor(.black)
-                
-                Text("\(age) years old")
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.top, 5)
-                .padding(.bottom, -8)
-                .padding(.leading, 23)
-                .padding(.trailing, 15)
-                    .font(Font.custom("JosefinSans-Regular", size: getScreenBounds().width/25))
-                    .foregroundColor(.black)
+                if age == 1{
+                    Text("\(age) year old")
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.top, 5)
+                        .padding(.bottom, -8)
+                        .padding(.leading, 23)
+                        .padding(.trailing, 15)
+                        .font(Font.custom("JosefinSans-Regular", size: getScreenBounds().width/25))
+                        .foregroundColor(.black)
+                }else{
+                    Text("\(age) years old")
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.top, 5)
+                        .padding(.bottom, -8)
+                        .padding(.leading, 23)
+                        .padding(.trailing, 15)
+                        .font(Font.custom("JosefinSans-Regular", size: getScreenBounds().width/25))
+                        .foregroundColor(.black)
+                }
                 HStack{
                    Image(systemName: "mappin")
                         .resizable()
@@ -74,7 +84,7 @@ struct AdoptionCard: View {
                 Spacer()
                 
                 HStack{
-                    Text("\(tokens)")
+                    Text("\(tokens) Tokens")
                         .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/25))
                         .foregroundColor(.black)
                         .padding(.leading)

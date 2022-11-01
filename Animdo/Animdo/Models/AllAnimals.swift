@@ -11,6 +11,7 @@ import Foundation
 struct AllAnimals: Identifiable{
     var id: String = UUID().uuidString
     var uid: String
+    var name: String
     var tagCode: String
     var species: String
     var longitude: String
