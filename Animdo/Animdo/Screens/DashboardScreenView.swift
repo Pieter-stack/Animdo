@@ -11,31 +11,46 @@ import FirebaseAuth
 
 struct DashboardScreenView: View {
     @State var userIsLoggedIn: Bool = true
+    @AppStorage("loggedIn") var loggedIn: Bool = true
+    @AppStorage("Userloaded") var userLoaded: Bool = true
     @ObservedObject private var vm = SignedInUser()
     
 
     var body: some View {
-       // if userIsLoggedIn{
-        
-//        Text((vm.user?.role ?? "Fuck life"))
-        
-        if !userIsLoggedIn{
+        if loggedIn{
             TabViewScreen()
- 
+//            if !userLoaded{
+//                TabViewScreen()
+//
+//
+//
+//            }else{
+//               HomeScreenView() // maybe lottie loader
+//                    .onAppear{
+//                        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+//                            vm.fetchCurrentUser()
+//                            if vm.user!.role == "Researcher"{
+//                                if tabs.count == 3{
+//                                    tabs.append("Tag")
+//                                }
+//                                userLoaded = false
+//                            }else if vm.user!.role == "User"{
+//                                userLoaded = false
+//                                if tabs.count > 3{
+//                                    tabs.removeLast()
+//                                }
+//
+//                            }
+//                        }
+//
+//                    }
+//            }
         }else{
-           HomeScreenView() // maybe lottie loader
-                .onAppear{
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                        if vm.user?.role == "Researcher"{
-                            tabs.append("Tag")
-                            userIsLoggedIn = false
-                        }else{
-                            userIsLoggedIn = false
-                        }
-                    }
-                    
-                }
+           LoginScreenView()
         }
+
+                
+        
 
     }
     
@@ -96,9 +111,17 @@ struct TabViewScreen: View{
                     
                     MyAnimalsScreenView()
                         .tag("My Animals")
+                
+                if vm.user?.role == "User"{
+                    PurchasefailScreenView() //replace with info page
+                        .tag("Tag")
                     
+                }else{
                     TagScreenView()
                         .tag("Tag")
+                }
+                    
+                   
                 
                 
 
@@ -207,7 +230,7 @@ struct TabViewScreen: View{
 
 
 
-var tabs = ["Adoption", "Home", "My Animals"]
+var tabs = ["Adoption", "Home", "My Animals", "Tag"]
 
 
 

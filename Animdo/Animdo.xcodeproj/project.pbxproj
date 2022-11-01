@@ -31,6 +31,7 @@
 		673011EA291105190074C1FE /* MyAnimalMapScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673011E9291105190074C1FE /* MyAnimalMapScreenView.swift */; };
 		673011EC291116A90074C1FE /* CustomPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673011EB291116A90074C1FE /* CustomPin.swift */; };
 		673011EE291130BA0074C1FE /* NameAnimalScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673011ED291130BA0074C1FE /* NameAnimalScreenView.swift */; };
+		673622B929114E8600CF6471 /* AdoptionDashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673622B829114E8600CF6471 /* AdoptionDashScreenView.swift */; };
 		673AE97C28F15C26008D1D01 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 673AE97928F15BCE008D1D01 /* Roboto-Light.ttf */; };
 		673AE97D28F15C29008D1D01 /* Aladin-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 673AE97828F15B98008D1D01 /* Aladin-Regular.ttf */; };
 		673AE98328F15DFA008D1D01 /* JosefinSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 673AE97F28F15DF3008D1D01 /* JosefinSans-Bold.ttf */; };
@@ -107,6 +108,7 @@
 		673011E9291105190074C1FE /* MyAnimalMapScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAnimalMapScreenView.swift; sourceTree = "<group>"; };
 		673011EB291116A90074C1FE /* CustomPin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPin.swift; sourceTree = "<group>"; };
 		673011ED291130BA0074C1FE /* NameAnimalScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameAnimalScreenView.swift; sourceTree = "<group>"; };
+		673622B829114E8600CF6471 /* AdoptionDashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdoptionDashScreenView.swift; sourceTree = "<group>"; };
 		673AE97828F15B98008D1D01 /* Aladin-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Aladin-Regular.ttf"; sourceTree = "<group>"; };
 		673AE97928F15BCE008D1D01 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
 		673AE97E28F15CA5008D1D01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -282,6 +284,7 @@
 				673011E2291035110074C1FE /* MyAnimalsPurchaseFail.swift */,
 				673011E9291105190074C1FE /* MyAnimalMapScreenView.swift */,
 				673011ED291130BA0074C1FE /* NameAnimalScreenView.swift */,
+				673622B829114E8600CF6471 /* AdoptionDashScreenView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -452,6 +455,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				673011DD290FC1670074C1FE /* FilterBtnMyAnimals.swift in Sources */,
+				673622B929114E8600CF6471 /* AdoptionDashScreenView.swift in Sources */,
 				676F3BFF28F420B500EF9C4A /* LoginScreenView.swift in Sources */,
 				678A8555290AD4C400765DC7 /* PurchaseScreenView.swift in Sources */,
 				673011EE291130BA0074C1FE /* NameAnimalScreenView.swift in Sources */,

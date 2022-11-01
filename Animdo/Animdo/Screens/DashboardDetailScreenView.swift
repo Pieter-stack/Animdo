@@ -10,6 +10,8 @@ import SwiftUI
 struct DashboardDetailScreenView: View {
     var animal : DashboardAnimals = dashAnimals[0]
     @Environment(\.presentationMode) var presentationMode
+    @State var filterSearch: String = "ALL"
+
     var body: some View {
         ZStack {
             Color("BG")
@@ -67,7 +69,7 @@ struct DashboardDetailScreenView: View {
                             .foregroundColor(.black)
                     }//VStack
                 }//HStack
-                .padding(.top, 60)
+                .padding(.top, 30)
                 
                 ZStack{
                    Circle()
@@ -88,11 +90,27 @@ struct DashboardDetailScreenView: View {
                         }//ZStack
                     }//VStack
                 }//ZStack
-                .padding(.top, 100)
+                .padding(.top, 70)
+                ScrollView{
+                    Text(animal.description)
+                    .multilineTextAlignment(.center)
+                }
+                .padding(.top)
+                .padding(.horizontal, 30)
                 
-                Text(animal.description)
-                    .padding(.top)
-                
+                Spacer()
+                NavigationLink(destination: AdoptionDashScreenView( filterSearch: .constant(animal.animal)).navigationBarBackButtonHidden(true)){
+                    ZStack{
+                        RoundedRectangle(cornerRadius: 15)
+                            .fill(Color("CustomDark"))
+                            .frame(width: getScreenBounds().width - 150, height: 60)
+                        Text("Adopt Me!")
+                            .font(Font.custom("JosefinSans-Bold", size: getScreenBounds().width/17))
+                            .foregroundColor(.white)
+                            .padding(.top, 5)
+                        
+                    }//ZStack
+                }
                 Spacer()
                 
             }//VStack

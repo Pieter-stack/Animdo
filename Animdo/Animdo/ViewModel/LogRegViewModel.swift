@@ -173,7 +173,7 @@ class AuthManager: ObservableObject{
                             "email": result?.user.email as Any,
                             "role": "User",
                             //pfp not with apple restrict access
-                            "pfp": ""
+                            "pfp": "https://firebasestorage.googleapis.com:443/v0/b/animdo.appspot.com/o/images%2FNkqPUikiLRVfZJDKqn2CMv4uYs13.jpg?alt=media&token=ef4d9443-eed4-40c5-b609-f6a5a02f25e0"
                         ]){err in
                             if let err = err {
                                 print("Error writing user to document:\(err)")

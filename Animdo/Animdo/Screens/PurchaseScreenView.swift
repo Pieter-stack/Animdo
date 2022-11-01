@@ -26,6 +26,7 @@ struct PurchaseScreenView: View {
                             .font(.title)
                             .fontWeight(.black)
                     })
+                    .padding(.top, -20)
                     .padding(.top, device == "iPod touch (7th generation)" || device == "iPhone SE (3rd generation)" || device == "iPhone 8" || device == "iPhone 8 Plus" || device == "iPhone 13 mini" ? 0 : 50)
                     .padding(.leading, 20)
                     Spacer()

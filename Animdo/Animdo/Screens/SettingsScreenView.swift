@@ -11,6 +11,7 @@ import FirebaseAuth
 struct SettingsScreenView: View {
     @Environment(\.presentationMode) var presentationMode
     @AppStorage("loggedIn") var loggedIn: Bool = true
+    @AppStorage("Userloaded") var userLoaded: Bool = true
     @State var userIsLoggedIn: Bool = true
     var body: some View {
         
@@ -33,6 +34,7 @@ struct SettingsScreenView: View {
                             Button(action: {
                                 try? Auth.auth().signOut()
                                 loggedIn = false
+                                userLoaded = true
                             }, label: {
                                 ZStack{
                                     RoundedRectangle(cornerRadius: 40)

@@ -153,16 +153,3 @@ struct HomeScreenView_Previews: PreviewProvider {
 }
 
 
-
-
-//                WebImage(url: URL(string: vm.user?.pfp ?? ""))
-//                Text("Current user: \(vm.user?.name ?? "")")
-//                Text("Current user: \(vm.user?.pfp ?? "no image found")")
-//                Text("Home View")
-//                Text("\(Auth.auth().currentUser?.uid ?? "")")
-//                Button(action: {
-//                    try? Auth.auth().signOut()
-//                    loggedIn = false
-//                }, label: {
-//                    Text("Logout")
-//                })
