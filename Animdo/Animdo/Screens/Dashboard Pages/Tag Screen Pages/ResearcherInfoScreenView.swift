@@ -20,12 +20,21 @@ struct ResearcherInfoScreenView: View {
             Color("BG")
                 .ignoresSafeArea()
             VStack{
+                Text("The Penguin's Guide")
+                .foregroundColor(.black)
+                .font(Font.custom("Aladin-regular", size: getScreenBounds().width/9))
+                .underline()
+                .padding(.bottom,getScreenBounds().width/100 )
+                .padding(.top, 40)
+                
                 TabView{
                     ForEach(steps, id: \.self){step in
-                        Text(step)
+                      Image("LoginBG")
+                          
                     }
                 }//Tabview
                 .tabViewStyle(PageTabViewStyle())
+                .ignoresSafeArea()
             }//VStack
         }//ZStack
     }

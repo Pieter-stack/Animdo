@@ -19,32 +19,6 @@ struct DashboardScreenView: View {
     var body: some View {
         if loggedIn{
             TabViewScreen()
-//            if !userLoaded{
-//                TabViewScreen()
-//
-//
-//
-//            }else{
-//               HomeScreenView() // maybe lottie loader
-//                    .onAppear{
-//                        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-//                            vm.fetchCurrentUser()
-//                            if vm.user!.role == "Researcher"{
-//                                if tabs.count == 3{
-//                                    tabs.append("Tag")
-//                                }
-//                                userLoaded = false
-//                            }else if vm.user!.role == "User"{
-//                                userLoaded = false
-//                                if tabs.count > 3{
-//                                    tabs.removeLast()
-//                                }
-//
-//                            }
-//                        }
-//
-//                    }
-//            }
         }else{
            LoginScreenView()
         }
@@ -103,7 +77,7 @@ struct TabViewScreen: View{
             TabView(selection: $selectedtab){
               
                
-                    TestScreenView()
+                AdoptionPurchaseFailScreenView()
                         .tag("Adoption")
                     
                     HomeScreenView()
@@ -113,7 +87,7 @@ struct TabViewScreen: View{
                         .tag("My Animals")
                 
                 if vm.user?.role == "User"{
-                    PurchasefailScreenView() //replace with info page
+                    UserSideTagScreenView()
                         .tag("Tag")
                     
                 }else{

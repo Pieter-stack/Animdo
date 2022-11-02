@@ -1,30 +1,28 @@
 //
-//  TestScreenView.swift
+//  AdoptionPurchaseFailScreenView.swift
 //  Animdo
 //
-//  Created by Pieter Venter on 2022/10/27.
+//  Created by Pieter Venter on 2022/11/01.
 //
 
 import SwiftUI
-import StoreKit
 
-struct TestScreenView: View {
+struct AdoptionPurchaseFailScreenView: View {
     @State private var store: IAPStore?
     var body: some View {
         if let store = store {
           AdoptionScreenView()
             .environmentObject(store)
         } else {
-           SettingsScreenView() // replace with content // replace whole page with not test
+          LottieView(filename: "Loading")
                 .task {
                     store = try? await .init()
                 }
-        }
-    }
+        }    }
 }
 
-struct TestScreenView_Previews: PreviewProvider {
+struct AdoptionPurchaseFailScreenView_Previews: PreviewProvider {
     static var previews: some View {
-        TestScreenView()
+        AdoptionPurchaseFailScreenView()
     }
 }

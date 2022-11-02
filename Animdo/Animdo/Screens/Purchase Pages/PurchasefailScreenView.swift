@@ -15,7 +15,7 @@ struct PurchasefailScreenView: View {
           PurchaseScreenView()
             .environmentObject(store)
         } else {
-           SettingsScreenView() // replace with content
+            LottieScreenView()
                 .task {
                     store = try? await .init()
                 }

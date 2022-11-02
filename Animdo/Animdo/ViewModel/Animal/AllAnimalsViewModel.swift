@@ -71,5 +71,12 @@ class AllAnimalsViewModel: ObservableObject{
     }
     
     
+    func giftAnimal(){
+        //get uid of user
+        //get uid of animal
+        //set adopter uid to new user uid
+    }
+    
+    
 }
 

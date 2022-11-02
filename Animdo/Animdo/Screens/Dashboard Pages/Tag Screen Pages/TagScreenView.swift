@@ -613,9 +613,12 @@ struct TagScreenView: View {
                 .cancel()
             ])
         }//actionsheet to choose between library or camera
-        .sheet(isPresented: $showImagePicker){
-            ResearcherInfoScreenView()
-        }//sheet for library or camera
+        .fullScreenCover(isPresented: $showImagePicker){
+            ImagePicker(image: $image, isShown: $showImagePicker, sourceType: self.sourceType)
+        }
+//        .sheet(isPresented: false){
+//                    ResearcherInfoScreenView()
+//                }//sheet for library or camera
     }//body
     
 }//tagscreen

@@ -15,11 +15,6 @@ struct AdoptionDashScreenView: View {
     @EnvironmentObject private var store: IAPStore
     @State private var showAlert = false
     @State private var AlertValue = ""
-//    @State var filterSearch = "ALL"
-    
-//    init(){
-//        self.vm.fetchAllAnimals()
-//    }
     @Binding var filterSearch: String
     
     var vGridLayout: [GridItem] = [GridItem(.adaptive(minimum: 200, maximum: 200),spacing: 10)]

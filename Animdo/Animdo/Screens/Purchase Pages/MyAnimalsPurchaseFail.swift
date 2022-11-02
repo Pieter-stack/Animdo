@@ -16,7 +16,7 @@ struct MyAnimalsPurchaseFail: View {
           MyAnimalsDetailScreenView(animal: animal)
             .environmentObject(store)
         } else {
-           SettingsScreenView() // replace with content
+            LottieScreenView()
                 .task {
                     store = try? await .init()
                 }

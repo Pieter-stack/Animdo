@@ -79,7 +79,7 @@ struct MyAnimalsScreenView: View {
                                 Button(action: {
                                     filterSearch = "Sea Turtle"
                                 }, label: {
-                                    FilterBtnMyAnimals(image: "SeaTurtleIcon", color: "CustomGreenLighter", size: filterSearch == "Sea Turtle" ? 70 : 50, sizeIcon: filterSearch == "Sea TTurtle" ? 35 : 25)
+                                    FilterBtnMyAnimals(image: "SeaTurtleIcon", color: "CustomGreenLighter", size: filterSearch == "Sea Turtle" ? 70 : 50, sizeIcon: filterSearch == "Sea Turtle" ? 35 : 25)
                                 })
                                 .padding(.vertical, 5)
                                 Button(action: {
