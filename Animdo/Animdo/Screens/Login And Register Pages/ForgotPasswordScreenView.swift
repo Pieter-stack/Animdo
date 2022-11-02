@@ -36,6 +36,7 @@ struct ForgotPasswordScreenView: View {
                     .padding(.bottom, 150)
                     .padding(.horizontal)
                     .multilineTextAlignment(.center)
+                    .lineSpacing(1.2)
 
                 LogRegInputs(input: $email, keyboardType: .emailAddress, placeholder: "Email")
                 

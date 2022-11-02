@@ -41,9 +41,10 @@ struct UserSideTagScreenView: View {
                                 .font(Font.custom("JosefinSans-Regular", size: getScreenBounds().width/29))
                                 .foregroundColor(Color("Black"))
                                 .padding(.top, 1)
+                                .lineSpacing(1.2)
                         }
                         .padding(.bottom, 35)
-                        .frame(height: 125)
+                        .frame(height: 130)
                         
                         Text("About the animals")
                             .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/15))
@@ -53,9 +54,10 @@ struct UserSideTagScreenView: View {
                                 .font(Font.custom("JosefinSans-Regular", size: getScreenBounds().width/29))
                                 .foregroundColor(Color("Black"))
                                 .padding(.top, 1)
+                                .lineSpacing(1.2)
                         }
                         .padding(.bottom, 35)
-                        .frame(height: 156)
+                        .frame(height: 150)
                     }//VStack
                     Spacer()
                 }//HStack

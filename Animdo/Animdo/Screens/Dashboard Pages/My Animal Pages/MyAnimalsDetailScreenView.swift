@@ -18,6 +18,7 @@ struct MyAnimalsDetailScreenView: View {
     @EnvironmentObject private var store: IAPStore
     var animal : AllAnimals
     @State private var showAlert = false
+    @State private var showGiftSheet = false
     @State private var AlertValue = ""
     @State private var animalName: String = ""
     //Location Manager
@@ -64,10 +65,10 @@ struct MyAnimalsDetailScreenView: View {
                                     .aspectRatio(contentMode: .fit)
                                     .frame(width: 20)
                                     .padding(.top, -5)
-//                                let consumableCount = store.tokens.ConsumableCount
-//                                Text("\(consumableCount)")
-//                                    .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/19))
-//                                    .foregroundColor(Color("White"))
+                                let consumableCount = store.tokens.ConsumableCount
+                                Text("\(consumableCount)")
+                                    .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/19))
+                                    .foregroundColor(Color("White"))
                             }//HStack
                             .padding(.top, -10)
                         }//ZStack
@@ -99,6 +100,22 @@ struct MyAnimalsDetailScreenView: View {
                         .cornerRadius(10.0)
                         .frame(width: getScreenBounds().width - 50, height: getScreenBounds().height/4.5)
                         .opacity(0.9)
+                    VStack{
+                        HStack{
+                            Spacer()
+                            Button(action: {
+                                showGiftSheet = true
+                            }, label: {
+                                Image("GiftAnimal")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(height: 40)
+                            })
+                        }//HStack
+                        .padding(.trailing, 30)
+                        .padding(.top, -20)
+                        Spacer()
+                    }//HStack
                 }.padding(.top, -10)
                 
 
@@ -375,6 +392,9 @@ struct MyAnimalsDetailScreenView: View {
         }//onappear
         .fullScreenCover(isPresented: $renameAnimal, content: {
             NameAnimalScreenView(animal:animal)
+        })
+        .fullScreenCover(isPresented: $showGiftSheet, content: {
+            GiftAnimalScreenView(animal:animal)
         })
 
     }

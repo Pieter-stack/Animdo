@@ -29,6 +29,8 @@ struct TagScreenView: View {
     @State private var selectedIndex = 0
     @State private var age: Int = 0
     @State private var showAlert = false
+    @AppStorage("ShowGuide") var ShowGuide: Bool = true
+    @State private var showGuidebtn = false
     //Animal Recognition AI
     private let classifier = try! VisionClassifier(mlModel: CustomAnimdoClassifier(configuration: MLModelConfiguration()).model)
     //Location Manager
@@ -54,6 +56,17 @@ struct TagScreenView: View {
                     .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/11))
                     .foregroundColor(.black)
                     Spacer()
+                    Button(action: {
+                        showGuidebtn = true
+                    }, label: {
+                        Image("PenguinHelp")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 60)
+                    })
+                    .padding(.trailing, 20)
+                    .padding(.top, -10)
+
             }//HStack
                 .padding(.leading, 30)
                 Spacer()
@@ -346,10 +359,22 @@ struct TagScreenView: View {
                     }//Scrollview
                     .frame(height: 400)
                     .padding(.top, 40)
-                    .alert(isPresented: $showAlert){
-                        Alert(title: Text("Oops something went wrong!"), message: Text(tagManager.message == "" ? "Please fill in all the fields" : tagManager.message), dismissButton: .default(Text("OK")){
-                        })
-                    }
+                    .alertX(isPresented: $showAlert, content: {
+                                        AlertX(title: Text("Oops something went wrong!"),
+                                               message: Text(tagManager.message == "" ? "Please fill in all the fields" : tagManager.message),
+                 
+                                               theme: AlertX.Theme.custom(windowColor: Color("CustomBlue"),
+                                                                          alertTextColor: .white,
+                                                                         enableShadow: true,
+                                                                         enableRoundedCorners: true,
+                                                                         enableTransparency: true,
+                                                                          cancelButtonColor: .red,
+                                                                          cancelButtonTextColor: .red,
+                                                                          defaultButtonColor: Color("CustomBlueLighter"),
+                                                                          defaultButtonTextColor: .black,
+                                                                         roundedCornerRadius: 20),
+                                               animation: .classicEffect())
+                                    })
                     
                 }else{
                     VStack(alignment: .leading){
@@ -543,7 +568,7 @@ struct TagScreenView: View {
 
 
                         
-                        if (tagCode.isEmpty || species.isEmpty || age == 0 && genderArray[selectedIndex] == "" || longitude.isEmpty || latitude.isEmpty  || image == nil){
+                        if (tagCode.isEmpty || species.isEmpty || age == 0 && selectedIndex == 0 || longitude.isEmpty || latitude.isEmpty  || image == nil){
                             showAlert = true
                             
                         }else{
@@ -585,6 +610,13 @@ struct TagScreenView: View {
             }//vStack
             
         }//ZStack
+        .onAppear{
+            if ShowGuide == true{
+                showGuidebtn = true
+            }else{
+                showGuidebtn = false
+            }
+        }
         .alertX(isPresented: $showAlert, content: {
                             AlertX(title: Text("Oops something went wrong!"),
                                    message: Text(tagManager.message == "" ? "Please fill in all the fields" : tagManager.message),
@@ -616,9 +648,9 @@ struct TagScreenView: View {
         .fullScreenCover(isPresented: $showImagePicker){
             ImagePicker(image: $image, isShown: $showImagePicker, sourceType: self.sourceType)
         }
-//        .sheet(isPresented: false){
-//                    ResearcherInfoScreenView()
-//                }//sheet for library or camera
+        .sheet(isPresented: $showGuidebtn){
+                    ResearcherInfoScreenView()
+                }//sheet for library or camera
     }//body
     
 }//tagscreen

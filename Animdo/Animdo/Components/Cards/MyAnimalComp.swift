@@ -58,6 +58,7 @@ struct MyAnimalComp: View {
                             }
                         
                         }//Hstack
+                    .frame(width: 130)
                     ZStack{
                         Circle()
                             .fill(Color(colorSecondary))

@@ -72,6 +72,7 @@
 		67BA2812291186AB00E5C0C2 /* LottieScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67BA2811291186AB00E5C0C2 /* LottieScreenView.swift */; };
 		67BA28142911873600E5C0C2 /* Loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 67BA28132911873600E5C0C2 /* Loading.json */; };
 		67BA28162911899C00E5C0C2 /* AdoptionPurchaseFailScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67BA28152911899C00E5C0C2 /* AdoptionPurchaseFailScreenView.swift */; };
+		67BA281829123F7400E5C0C2 /* GiftAnimalScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67BA281729123F7400E5C0C2 /* GiftAnimalScreenView.swift */; };
 		67C872C42908199900C3A7E3 /* DashboardAnimals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C872C32908199900C3A7E3 /* DashboardAnimals.swift */; };
 		67C872C629082C2B00C3A7E3 /* DashboardDetailScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C872C529082C2B00C3A7E3 /* DashboardDetailScreenView.swift */; };
 		67D6064A2906C435000BF4C6 /* TagAnimalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D606492906C435000BF4C6 /* TagAnimalViewModel.swift */; };
@@ -144,6 +145,7 @@
 		67BA2811291186AB00E5C0C2 /* LottieScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieScreenView.swift; sourceTree = "<group>"; };
 		67BA28132911873600E5C0C2 /* Loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Loading.json; sourceTree = "<group>"; };
 		67BA28152911899C00E5C0C2 /* AdoptionPurchaseFailScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdoptionPurchaseFailScreenView.swift; sourceTree = "<group>"; };
+		67BA281729123F7400E5C0C2 /* GiftAnimalScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftAnimalScreenView.swift; sourceTree = "<group>"; };
 		67C872C32908199900C3A7E3 /* DashboardAnimals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardAnimals.swift; sourceTree = "<group>"; };
 		67C872C529082C2B00C3A7E3 /* DashboardDetailScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardDetailScreenView.swift; sourceTree = "<group>"; };
 		67C872C929086BB800C3A7E3 /* ConfigurationStoreKit.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = ConfigurationStoreKit.storekit; sourceTree = "<group>"; };
@@ -270,6 +272,7 @@
 				67F4A488291175A20045CD7B /* Purchase Pages */,
 				67F4A4862911752C0045CD7B /* General Pages */,
 				67F4A4852911750C0045CD7B /* Login And Register Pages */,
+				67BA281729123F7400E5C0C2 /* GiftAnimalScreenView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -694,6 +697,7 @@
 				67C872C42908199900C3A7E3 /* DashboardAnimals.swift in Sources */,
 				678A854F290AC1EE00765DC7 /* Purchasable.swift in Sources */,
 				673011E3291035110074C1FE /* MyAnimalsPurchaseFail.swift in Sources */,
+				67BA281829123F7400E5C0C2 /* GiftAnimalScreenView.swift in Sources */,
 				6798C85D2907F19600FCD00E /* SettingsScreenView.swift in Sources */,
 				67215E4928FC131400490C66 /* TagScreenView.swift in Sources */,
 				67EE39C128FDDB54005CDDB5 /* VisionClassifier.swift in Sources */,

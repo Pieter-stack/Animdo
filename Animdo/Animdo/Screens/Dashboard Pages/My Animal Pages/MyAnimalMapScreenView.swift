@@ -77,14 +77,26 @@ struct MyAnimalMapScreenView: View {
                 ZStack{
                     RoundedRectangle(cornerRadius: 20)
                         .fill(.white)
-                        .frame(width: getScreenBounds().width - 50, height: 250)
-                        .padding(.top, 30)
+                        .frame(width: getScreenBounds().width - 50, height: 220)
+                        .padding(.top, 20)
                     HStack{
-                        WebImage(url:URL(string: animal.animalImage))
-                            .resizable()
-                            .cornerRadius(20)
-                            .frame(width: getScreenBounds().width / 3, height: 230)
-                            .padding(.top, 30)
+                        ZStack{
+                            WebImage(url:URL(string: animal.animalImage))
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: getScreenBounds().width / 3, height: getScreenBounds().height / 5)
+                                .cornerRadius(12)
+                                .blur(radius: 5)
+                                .opacity(0.5)
+                            WebImage(url:URL(string: animal.animalImage))
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .cornerRadius(10.0)
+                                .frame(width: getScreenBounds().width / 3, height: getScreenBounds().height / 5)
+                                .opacity(0.9)
+                                
+                        }.padding(.top, 30)
+
                         VStack(alignment: .leading){
                             Text("\(animal.name), the \(animal.species)")
                                 .font(Font.custom("JosefinSans-Regular", size: getScreenBounds().width/22))
@@ -94,29 +106,63 @@ struct MyAnimalMapScreenView: View {
                                Image(systemName: "mappin")
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
-                                    .frame(width: 6)
+                                    .frame(width: 4)
                                     .padding(.trailing, 5)
                                     .foregroundColor(.black)
                                 if animal.country == ""{
                                     Text("\(animal.ocean)")
                                         .padding(.top, 2)
                                         .padding(.leading, -8)
-                                        .font(Font.custom("JosefinSans-Light", size: getScreenBounds().width/25))
+                                        .font(Font.custom("JosefinSans-Light", size: getScreenBounds().width/35))
                                         .foregroundColor(.black)
                                 }else{
                                     Text("\(animal.country), \(animal.isoCode)")
                                         .padding(.top, 2)
                                         .padding(.leading, -8)
-                                        .font(Font.custom("JosefinSans-Light", size: getScreenBounds().width/25))
+                                        .font(Font.custom("JosefinSans-Light", size: getScreenBounds().width/35))
                                         .foregroundColor(.black)
                                 }
                                 Spacer()
                             }//Hstack
-                                .padding(.top, 10)
                                 .padding(.bottom, 50)
-                            Text("\(distance) km away")
-                                .font(Font.custom("JosefinSans-Bold", size: getScreenBounds().width/22))
-                                .foregroundColor(Color("Black"))
+                            
+                            ZStack{
+                                RoundedRectangle(cornerRadius: 90)
+                                    .fill(Color("CustomDark"))
+                                    .frame(width: 200, height: 50)
+                                    .padding(.trailing, -22)
+                                    .clipped()
+                                HStack{
+                                    ZStack{
+                                        Circle()
+                                            .fill(Color(animal.species == "Lion" || animal.species == "Elephant" ? "CustomBrownLight" : animal.species == "Polar Bear" || animal.species == "Penguin" || animal.species == "Shark" ? "CustomBlueLighter" : animal.species == "Sea Turtle" ? "CustomGreenLighter" : "CustomGreenLighter"))
+                                            .frame(width: 50)
+                                        Image(animal.species == "Lion" ? "LionIcon" : animal.species == "Elephant" ? "ElephantIcon" : animal.species == "Lion" ? "LionIcon" : animal.species == "Polar Bear" ? "PolarBearIcon" : animal.species == "Penguin" ? "PenguinIcon" :  animal.species == "Shark" ? "SharkIcon" : animal.species == "Sea Turtle" ? "SeaTurtleIcon" : "")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(width: 25)
+                                    }//ZStack
+                                    .padding(.leading, 20)
+                                    VStack(alignment: .leading){
+                                        Text("My animal Friend")
+                                            .font(Font.custom("JosefinSans-Bold", size: getScreenBounds().width/35))
+                                            .foregroundColor(Color("White"))
+                                        Text("\(distance) km away")
+                                            .font(Font.custom("JosefinSans-regular", size: getScreenBounds().width/42))
+                                            .foregroundColor(Color("White"))
+                                            .padding(.top, 2)
+                                    }//VStack
+                                    Spacer()
+                                }//HStack
+                                
+                            }//ZStack
+                            .padding(.trailing, -35)
+                            
+                            
+
+                            
+                            
+                            
                         }//VStack
                         .padding(.leading, 15)
                     }//HStack

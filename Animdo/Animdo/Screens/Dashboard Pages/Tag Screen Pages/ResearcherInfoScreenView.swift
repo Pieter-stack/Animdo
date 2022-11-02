@@ -9,8 +9,8 @@ import SwiftUI
 
 struct ResearcherInfoScreenView: View {
     
-    @State var steps = ["Step 1", "Step 2"," Step 3", "Step 4", "Step 5", "Step 6"]
-    
+    @State var steps = ["Start", "Scan", "Analyse", "LongLat", "AgeGender", "TagAnimal"]
+    @AppStorage("ShowGuide") var ShowGuide: Bool = true
     init(){
         UIPageControl.appearance().currentPageIndicatorTintColor = .black
         UIPageControl.appearance().pageIndicatorTintColor = UIColor.black.withAlphaComponent(0.2)
@@ -25,18 +25,20 @@ struct ResearcherInfoScreenView: View {
                 .font(Font.custom("Aladin-regular", size: getScreenBounds().width/9))
                 .underline()
                 .padding(.bottom,getScreenBounds().width/100 )
-                .padding(.top, 40)
+                .padding(.top, 20)
                 
                 TabView{
                     ForEach(steps, id: \.self){step in
-                      Image("LoginBG")
-                          
-                    }
+                            Image(step)
+                    }//Foreach
                 }//Tabview
                 .tabViewStyle(PageTabViewStyle())
                 .ignoresSafeArea()
             }//VStack
         }//ZStack
+        .onAppear{
+            ShowGuide = false
+        }
     }
 }
 

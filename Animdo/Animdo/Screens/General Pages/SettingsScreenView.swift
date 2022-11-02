@@ -78,6 +78,7 @@ struct SettingsScreenView: View {
                             .font(Font.custom("JosefinSans-Regular", size: getScreenBounds().width/29))
                             .foregroundColor(Color("Black"))
                             .padding(.top, 1)
+                            .lineSpacing(1.2)
                     }//VStack
                       Spacer()
                     }//HStack
@@ -95,6 +96,7 @@ struct SettingsScreenView: View {
                                 .font(Font.custom("JosefinSans-Regular", size: getScreenBounds().width/29))
                                 .foregroundColor(Color("Black"))
                                 .padding(.top, 1)
+                                .lineSpacing(1.2)
                         }
                         .padding(.bottom, 35)
                     }//VStack

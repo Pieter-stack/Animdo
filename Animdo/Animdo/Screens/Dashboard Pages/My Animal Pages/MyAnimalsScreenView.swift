@@ -192,31 +192,37 @@ struct MyAnimalsScreenView: View {
                                         .font(Font.custom("JosefinSans-Regular", size: getScreenBounds().width/24))
                                         .foregroundColor(Color("CustomDark"))
                                         .padding(.horizontal, 30)
+                                        .lineSpacing(1.2)
                                 }else if filterSearch == "Polar Bear"{
                                     Text("The largest bear in the world and the Arctic's top predator, polar bears are a powerful symbol of the strength and endurance of the Arctic.")
                                         .font(Font.custom("JosefinSans-Regular", size: getScreenBounds().width/24))
                                         .foregroundColor(Color("CustomDark"))
                                         .padding(.horizontal, 30)
+                                        .lineSpacing(1.2)
                                 }else if filterSearch == "Elephant"{
                                     Text("Elephants are the largest existing land animals. Distinctive features of elephants include a long proboscis called a trunk, tusks, large ear flaps, pillar-like legs, and tough but sensitive skin.")
                                         .font(Font.custom("JosefinSans-Regular", size: getScreenBounds().width/24))
                                         .foregroundColor(Color("CustomDark"))
                                         .padding(.horizontal, 30)
+                                        .lineSpacing(1.2)
                                 }else if filterSearch == "Penguin"{
                                     Text("Penguins are flightless seabirds that live almost exclusively below the equator. Some island-dwellers can be found in warmer climates, but most penguins—reside in and around icy Antarctica.")
                                         .font(Font.custom("JosefinSans-Regular", size: getScreenBounds().width/24))
                                         .foregroundColor(Color("CustomDark"))
                                         .padding(.horizontal, 30)
+                                        .lineSpacing(1.2)
                                 }else if filterSearch == "Sea Turtle"{
                                     Text("Sea turtles, sometimes called marine turtles and are reptiles. The seven existing species of sea turtles are the flatback, green, hawksbill, leatherback, loggerhead, Kemp's ridley, and olive ridley sea turtles.")
                                         .font(Font.custom("JosefinSans-Regular", size: getScreenBounds().width/24))
                                         .foregroundColor(Color("CustomDark"))
                                         .padding(.horizontal, 30)
+                                        .lineSpacing(1.2)
                                 }else if filterSearch == "Shark"{
                                     Text("There are over 500 species of sharks. Like other fishes, sharks are cold-blooded, have fins, live in the water, and breathe with gills.")
                                         .font(Font.custom("JosefinSans-Regular", size: getScreenBounds().width/24))
                                         .foregroundColor(Color("CustomDark"))
                                         .padding(.horizontal, 30)
+                                        .lineSpacing(1.2)
                                 }
                             }.frame(height: 70)
                             Spacer()

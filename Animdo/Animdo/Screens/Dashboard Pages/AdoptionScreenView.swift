@@ -42,9 +42,9 @@ struct AdoptionScreenView: View {
                                     .aspectRatio(contentMode: .fit)
                                     .frame(width: 20)
                                     .padding(.top, -5)
-//                                Text("\(store.tokens.ConsumableCount)")
-//                                    .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/19))
-//                                    .foregroundColor(Color("White"))
+                                Text("\(store.tokens.ConsumableCount)")
+                                    .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/19))
+                                    .foregroundColor(Color("White"))
                             }
                             .padding(.top, -10)
                         }

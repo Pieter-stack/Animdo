@@ -133,6 +133,7 @@ struct PurchaseScreenView: View {
                                 .foregroundColor(Color("White"))
                                 .padding(.top, 2)
                                 .padding(.trailing, 25)
+                                .lineSpacing(1.2)
                         }//VStack
                         Spacer()
 

@@ -52,6 +52,7 @@ struct NameAnimalScreenView: View {
                     .padding(.top, 30)
                     .padding(.horizontal)
                     .multilineTextAlignment(.center)
+                    .lineSpacing(1.2)
 
                 ZStack(alignment: .leading){
                     if name.isEmpty{
@@ -115,10 +116,6 @@ struct NameAnimalScreenView: View {
                         vm.renameAnimal(animaluid: animal.uid, animalName: name)
                         self.presentationMode.wrappedValue.dismiss()
                     }
-                    
-//                    self.showAlert = true
-                    
-                    
                 }, label: {
                     ZStack{
                         RoundedRectangle(cornerRadius: 40)
@@ -133,39 +130,12 @@ struct NameAnimalScreenView: View {
                     }//ZStack
                 })
                 .padding(.bottom, 30)
-                Button(action: {
-                    presentationMode.wrappedValue.dismiss()
-                }, label: {
-                    Text("I remembered my Password")
-                        .foregroundColor(.white)
-                        .font(Font.custom("JosefinSans-Regular", size: getScreenBounds().width/23))
-                    
-                })
-                
             }//VStack
         }//ZStack
         .onAppear(){
             self.vm.fetchAllAnimals()
             
         }//onappear
-        .alertX(isPresented: $showAlert, content: {
-                            AlertX(title: Text("Animal renamed"),
-                                   message: Text("Welcoming a new member to the family!"), buttonStack: [AlertX.Button.default(Text("OK"), action: {
-                                self.presentationMode.wrappedValue.dismiss()
-                          })],
-     
-                                   theme: AlertX.Theme.custom(windowColor: Color("CustomBlue"),
-                                                              alertTextColor: .white,
-                                                             enableShadow: true,
-                                                             enableRoundedCorners: true,
-                                                             enableTransparency: true,
-                                                              cancelButtonColor: .red,
-                                                              cancelButtonTextColor: .red,
-                                                              defaultButtonColor: Color("CustomBlueLighter"),
-                                                              defaultButtonTextColor: .black,
-                                                             roundedCornerRadius: 20),
-                                   animation: .classicEffect())
-                        })
     }
 }
 

@@ -71,12 +71,37 @@ class AllAnimalsViewModel: ObservableObject{
     }
     
     
-    func giftAnimal(){
-        //get uid of user
-        //get uid of animal
-        //set adopter uid to new user uid
+    func giftAnimal(animaluid: String, userEmail: String){
+        
+        let users = self.db.collection("users")
+        users.whereField("email", isEqualTo: userEmail).limit(to: 1).getDocuments(completion: { querySnapshot, error in
+            if let err = error {
+                print(err.localizedDescription)
+                return
+            }
+            guard let docs = querySnapshot?.documents else { return }
+
+            for doc in docs {
+                let docId = doc.documentID
+                let uid = doc.get("uid")
+                
+                self.db.collection("animals").document(animaluid).setData([
+                    "adopter": uid as Any
+                ], merge: true){err in
+                    if let err = err{
+                        print(err)
+                    }else{
+                        print("Success")
+                    }
+                }
+
+            }
+            
+        })
+
     }
     
     
 }
+
 
