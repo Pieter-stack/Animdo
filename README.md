@@ -1,10 +1,10 @@
 <!-- PROJECT LOGO -->
 <br />
 
-![GitHub repo size](https://img.shields.io/github/repo-size/Pieter-stack/Animdo?color=EA5A66)
-![GitHub watchers](https://img.shields.io/github/watchers/Pieter-stack/Animdo?color=CCD5FF)
-![GitHub language count](https://img.shields.io/github/languages/count/Pieter-stack/Animdo?color=DDF4F6)
-![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/Pieter-stack/Animdo?color=EA5A66)
+![GitHub repo size](https://img.shields.io/github/repo-size/Pieter-stack/Animdo?color=125389)
+![GitHub watchers](https://img.shields.io/github/watchers/Pieter-stack/Animdo?color=628425)
+![GitHub language count](https://img.shields.io/github/languages/count/Pieter-stack/Animdo?color=125389)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/Pieter-stack/Animdo?color=628425)
 
 <h6 align="center">Pieter Venter Interactive Development 304</h6>
 <p align="center">
@@ -22,7 +22,7 @@ This app is for animal lovers, to help these animals from extinction, This app l
       <a href="https://github.com/Pieter-stack/Animdo"><strong>Explore the docs »</strong></a>
       <br />
       <br />
-      <a href="add video">View Demo</a>
+      <a href="https://youtu.be/3Ff2O-2MObk">View Demo</a>
        ·
        <a href="https://github.com/Pieter-stack/Animdo/issues">Report Bug</a>
        ·
@@ -223,7 +223,7 @@ The `Reviews and Testing` consists of `in class`, reviews.
 
 To see the promotional video, click below:
 
-[View Promotional Video](add video)
+[View Promotional Video](https://youtu.be/3Ff2O-2MObk)
 
 <!-- ROADMAP -->
 ## Roadmap
