@@ -17,6 +17,8 @@ struct AdoptionScreenView: View {
     @State private var showAlert = false
     @State private var AlertValue = ""
     @State private var filterSearch = "ALL"
+    @State private var renameAnimal = false
+    @State private var setAnimal = AllAnimals(uid: "", name: "", tagCode: "", species: "", longitude: "", latitude: "", gender: "", age: 0, animalImage: "", country: "", isoCode: "", ocean: "", adopted: false, adoper: "", tokens: "")
     
     init(){
         self.vm.fetchAllAnimals()
@@ -138,28 +140,33 @@ struct AdoptionScreenView: View {
                                     //if for filtering here
                                   
                                     if filterSearch == "ALL"{
-                                        Button(action: {
-                                            if store.tokens.ConsumableCount >= Int(animal.tokens)! {
-                                                showAlert = true
-                                                AlertValue = "Success"
-                                                vm.adoptAnimal(animaluid: animal.uid)
-                                                store.buyTokens(tokenamount: animal.tokens)
-                                            }else{
-                                                showAlert = true
-                                                AlertValue = "Error"
-                                            }
-                                            
-                                        }, label: {
-                                            AdoptionCard(image: animal.animalImage, species: animal.species, age: animal.age, country: animal.country, ocean: animal.ocean, isoCode: animal.isoCode, tokens: animal.tokens)
-                                        })
+                                            Button(action: {
+                                                if store.tokens.ConsumableCount >= Int(animal.tokens)! {
+                                                    AlertValue = "Success"
+                                                    vm.adoptAnimal(animaluid: animal.uid)
+                                                    store.buyTokens(tokenamount: animal.tokens)
+                                                    renameAnimal = true
+                                                    setAnimal = animal
+                                                }else{
+                                                    showAlert = true
+                                                    AlertValue = "Error"
+ 
+                                                }
+                                                
+                                            }, label: {
+                                                AdoptionCard(image: animal.animalImage, species: animal.species, age: animal.age, country: animal.country, ocean: animal.ocean, isoCode: animal.isoCode, tokens: animal.tokens)
+                                            })
+                                        
+
                                     }else if animal.species == filterSearch{
                                       
                                             Button(action: {
                                                 if store.tokens.ConsumableCount >= Int(animal.tokens)! {
-                                                    showAlert = true
                                                     AlertValue = "Success"
                                                     vm.adoptAnimal(animaluid: animal.uid)
                                                     store.buyTokens(tokenamount: animal.tokens)
+                                                    renameAnimal = true
+                                                    setAnimal = animal
                                                 }else{
                                                     showAlert = true
                                                     AlertValue = "Error"
@@ -185,6 +192,9 @@ struct AdoptionScreenView: View {
         .onAppear(){
             self.vm.fetchAllAnimals()
         }//onappear
+        .fullScreenCover(isPresented: $renameAnimal, content: {
+           NameAnimalScreenView(animal:setAnimal)
+        })
         .alertX(isPresented: $showAlert, content: {
                             
                             AlertX(title: Text(AlertValue == "Success" ? "Animal Adopted" : "Oops something went wrong!"),

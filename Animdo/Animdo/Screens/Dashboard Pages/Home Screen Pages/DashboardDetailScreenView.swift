@@ -93,13 +93,17 @@ struct DashboardDetailScreenView: View {
                 .padding(.top, 70)
                 ScrollView{
                     Text(animal.description)
+                        .foregroundColor(.black)
                     .multilineTextAlignment(.center)
                 }
                 .padding(.top)
                 .padding(.horizontal, 30)
                 
                 Spacer()
-                NavigationLink(destination: AdoptionDashScreenView( filterSearch: .constant(animal.animal)).navigationBarBackButtonHidden(true)){
+                
+                
+                
+                NavigationLink(destination: AdoptionDetailPurchaseScreenView(filterSearch: .constant(animal.animal)).navigationBarBackButtonHidden(true)){
                     ZStack{
                         RoundedRectangle(cornerRadius: 15)
                             .fill(Color("CustomDark"))

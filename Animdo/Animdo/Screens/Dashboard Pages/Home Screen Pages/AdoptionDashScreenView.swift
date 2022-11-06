@@ -16,7 +16,9 @@ struct AdoptionDashScreenView: View {
     @State private var showAlert = false
     @State private var AlertValue = ""
     @Binding var filterSearch: String
-    
+    @State private var renameAnimal = false
+    @State private var setAnimal = AllAnimals(uid: "", name: "", tagCode: "", species: "", longitude: "", latitude: "", gender: "", age: 0, animalImage: "", country: "", isoCode: "", ocean: "", adopted: false, adoper: "", tokens: "")
+
     var vGridLayout: [GridItem] = [GridItem(.adaptive(minimum: 200, maximum: 200),spacing: 10)]
     var body: some View {
         ZStack{
@@ -47,7 +49,7 @@ struct AdoptionDashScreenView: View {
                                     .aspectRatio(contentMode: .fit)
                                     .frame(width: 20)
                                     .padding(.top, -5)
-                                Text("\(store.tokens.ConsumableCount)")
+                               Text("\(store.tokens.ConsumableCount)")
                                     .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/19))
                                     .foregroundColor(Color("White"))
                             }
@@ -139,16 +141,18 @@ struct AdoptionDashScreenView: View {
                                 
                                 if animal.adopted == true{
                                   //if animal adopted take out of adoption pool
+                                  
                                 }else{
                                     //if for filtering here
                                   
                                     if filterSearch == "ALL"{
                                         Button(action: {
                                             if store.tokens.ConsumableCount >= Int(animal.tokens)! {
-                                                showAlert = true
                                                 AlertValue = "Success"
                                                 vm.adoptAnimal(animaluid: animal.uid)
                                                 store.buyTokens(tokenamount: animal.tokens)
+                                                renameAnimal = true
+                                                setAnimal = animal
                                             }else{
                                                 showAlert = true
                                                 AlertValue = "Error"
@@ -161,10 +165,11 @@ struct AdoptionDashScreenView: View {
                                       
                                             Button(action: {
                                                 if store.tokens.ConsumableCount >= Int(animal.tokens)! {
-                                                    showAlert = true
                                                     AlertValue = "Success"
                                                     vm.adoptAnimal(animaluid: animal.uid)
                                                     store.buyTokens(tokenamount: animal.tokens)
+                                                    renameAnimal = true
+                                                    setAnimal = animal
                                                 }else{
                                                     showAlert = true
                                                     AlertValue = "Error"
@@ -190,6 +195,9 @@ struct AdoptionDashScreenView: View {
         .onAppear(){
             self.vm.fetchAllAnimals()
         }//onappear
+        .fullScreenCover(isPresented: $renameAnimal, content: {
+           NameAnimalScreenView(animal:setAnimal)
+        })
         .alertX(isPresented: $showAlert, content: {
                             
                             AlertX(title: Text(AlertValue == "Success" ? "Animal Adopted" : "Oops something went wrong!"),

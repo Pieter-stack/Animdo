@@ -18,7 +18,9 @@ struct AdoptionPurchaseFailScreenView: View {
                 .task {
                     store = try? await .init()
                 }
-        }    }
+        }
+        
+    }
 }
 
 struct AdoptionPurchaseFailScreenView_Previews: PreviewProvider {

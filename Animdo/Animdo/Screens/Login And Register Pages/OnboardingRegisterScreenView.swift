@@ -38,6 +38,7 @@ struct OnboardingRegisterScreenView: View {
     private var genderArray = ["","Male", "Female", "Other"]
     @State private var selectedIndex = 0
     @State private var AllFields: Int = 0
+    @State private var loader: Bool = false
     
 
     
@@ -452,29 +453,46 @@ struct OnboardingRegisterScreenView: View {
                                     .opacity(0)
 
                         }
-
-                    Button(action:{
-                        if (name.isEmpty || surname.isEmpty || age == 0 && genderArray[selectedIndex] == "" || username.isEmpty || email.isEmpty || password.isEmpty || image == nil){
-                            AllFields = 1
+                        if loader == false{
+                            Button(action:{
+                                if (name.isEmpty || surname.isEmpty || age == 0 && genderArray[selectedIndex] == "" || username.isEmpty || email.isEmpty || password.isEmpty || image == nil){
+                                    AllFields = 1
+                                    
+                                }else{
+                                    AllFields = 0
+                                    loader = true
+                                    authManager.registerUser(email: email, password: password, name: name, surname: surname, age: age, gender: genderArray[selectedIndex], username: username, image: image!)
+                                }
+                                
+                            }, label: {
+                                ZStack{
+                                    RoundedRectangle(cornerRadius: 40)
+                                        .fill(Color("CustomBlueLight"))
+                                        .frame(height: 60)
+                                        .padding(.horizontal)
+                                        .padding(.top, 20)
+                                    Text("Register")
+                                        .foregroundColor(.white)
+                                        .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/20))
+                                        .padding(.top, 20)
+                                }//ZStack
+                            })
                             
                         }else{
-                            AllFields = 0
-                            authManager.registerUser(email: email, password: password, name: name, surname: surname, age: age, gender: genderArray[selectedIndex], username: username, image: image!)
-                        }
+
+                                ZStack{
+                                    RoundedRectangle(cornerRadius: 40)
+                                        .fill(Color("CustomBlueLighter"))
+                                        .frame(height: 60)
+                                        .padding(.horizontal)
+                                        .padding(.top, 20)
+                                    LottieView(filename: "Loading")
+                                        .aspectRatio(contentMode: .fit)
+                                          .frame(width: 80, height: 80)
+                                          .padding(.top, 20)
+                                }//ZStack
                         
-                    }, label: {
-                        ZStack{
-                            RoundedRectangle(cornerRadius: 40)
-                                .fill(Color("CustomBlueLight"))
-                                .frame(height: 60)
-                                .padding(.horizontal)
-                                .padding(.top, 20)
-                            Text("Register")
-                                .foregroundColor(.white)
-                                .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/20))
-                                .padding(.top, 20)
-                        }//ZStack
-                    })
+                        }
                         
                         HStack{
                             Text("Already have an account?")
@@ -501,6 +519,9 @@ struct OnboardingRegisterScreenView: View {
                 if user != nil {
                     withAnimation{
                             userIsLoggedIn.toggle()
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                            loader = false
+                        }
                         }
                     }//animation
                 }//if user is not nil

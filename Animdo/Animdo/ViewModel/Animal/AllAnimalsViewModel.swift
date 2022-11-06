@@ -15,6 +15,10 @@ class AllAnimalsViewModel: ObservableObject{
     private var auth = Auth.auth()
     private var db = Firestore.firestore()
     
+    init(){
+        fetchAllAnimals()
+    }
+    
     func fetchAllAnimals(){
         db.collection("animals").addSnapshotListener { (querySnapshot, error) in
             guard let documents = querySnapshot?.documents else{

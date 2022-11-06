@@ -351,23 +351,23 @@ struct MyAnimalsDetailScreenView: View {
                 
             }//VStack
         }//ZStack
-        .alertX(isPresented: $showAlert, content: {
-                            
-                            AlertX(title: Text(AlertValue == "Success" ? "Thank you for helping your animal" : "Oops something went wrong!"),
-                                   message: Text(AlertValue == "Success" ? "Donating comes a long way in helping these animals form extinction" : "Please buy some tokens to help support your animal!"),
-     
-                                   theme: AlertX.Theme.custom(windowColor: Color("CustomBlue"),
-                                                              alertTextColor: .white,
-                                                             enableShadow: true,
-                                                             enableRoundedCorners: true,
-                                                             enableTransparency: true,
-                                                              cancelButtonColor: .red,
-                                                              cancelButtonTextColor: .red,
-                                                              defaultButtonColor: Color("CustomBlueLighter"),
-                                                              defaultButtonTextColor: .black,
-                                                             roundedCornerRadius: 20),
-                                   animation: .classicEffect())
-                        })
+//        .alertX(isPresented: $showAlert, content: {
+//
+//                            AlertX(title: Text(AlertValue == "Success" ? "Thank you for helping your animal" : "Oops something went wrong!"),
+//                                   message: Text(AlertValue == "Success" ? "Donating comes a long way in helping these animals form extinction" : "Please buy some tokens to help support your animal!"),
+//
+//                                   theme: AlertX.Theme.custom(windowColor: Color("CustomBlue"),
+//                                                              alertTextColor: .white,
+//                                                             enableShadow: true,
+//                                                             enableRoundedCorners: true,
+//                                                             enableTransparency: true,
+//                                                              cancelButtonColor: .red,
+//                                                              cancelButtonTextColor: .red,
+//                                                              defaultButtonColor: Color("CustomBlueLighter"),
+//                                                              defaultButtonTextColor: .black,
+//                                                             roundedCornerRadius: 20),
+//                                   animation: .classicEffect())
+//                        })
         .onAppear(){
             self.vm.fetchAllAnimals()
             

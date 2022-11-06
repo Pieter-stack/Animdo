@@ -28,6 +28,11 @@ struct SplashScreenView: View {
                         .resizable()
                         .ignoresSafeArea()
                     VStack{
+//                        Button(action: {
+//                          isOnboarding = true
+//                        }, label: {
+//                            Text("reset")
+//                        })
                         Image("Icon")
                             .resizable()
                             .aspectRatio(contentMode: .fit)

@@ -13,6 +13,7 @@ import AlertX
 
 struct TagScreenView: View {
     @StateObject var tagManager = TagManager()
+    @ObservedObject private var vm = SignedInUser()
     //Device sizes
     var device = UIDevice.current.name
     //Image data
@@ -29,6 +30,7 @@ struct TagScreenView: View {
     @State private var selectedIndex = 0
     @State private var age: Int = 0
     @State private var showAlert = false
+    @State private var loader: Bool = false
     @AppStorage("ShowGuide") var ShowGuide: Bool = true
     @State private var showGuidebtn = false
     //Animal Recognition AI
@@ -563,46 +565,63 @@ struct TagScreenView: View {
                        
                     }//HStack
                     .padding(.top, -15)
-
-                    Button(action:{
-
-
+                    
+                    if loader == false{
                         
-                        if (tagCode.isEmpty || species.isEmpty || age == 0 && selectedIndex == 0 || longitude.isEmpty || latitude.isEmpty  || image == nil){
-                            showAlert = true
-                            
-                        }else{
-                            showAlert = false
-                            
-                            lm.get(longitude: Double(longitude)!, latitude: Double(latitude)!)
-
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                                tagManager.TagNewAnimal(tagCode: tagCode, species: species, longitude: longitude, latitude: latitude, gender: genderArray[selectedIndex], age: age, animalImage: image!, country: lm.Country ?? "", isoCode: lm.isoCode ?? "", ocean: lm.Ocean ?? "")
-                                tagCode = ""
-                                species = ""
-                                longitude = ""
-                                latitude = ""
-                                selectedIndex = 0
-                                age = 0
-                                image = nil
+                        Button(action:{
+                            if (tagCode.isEmpty || species.isEmpty || age == 0 && selectedIndex == 0 || longitude.isEmpty || latitude.isEmpty  || image == nil){
+                                showAlert = true
+                                
+                            }else{
+                                showAlert = false
+                                loader = true
+                                
+                                lm.get(longitude: Double(longitude)!, latitude: Double(latitude)!)
+                                
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                                    tagManager.TagNewAnimal(tagCode: tagCode, species: species, longitude: longitude, latitude: latitude, gender: genderArray[selectedIndex], age: age, animalImage: image!, country: lm.Country ?? "", isoCode: lm.isoCode ?? "", ocean: lm.Ocean ?? "")
+                                    tagCode = ""
+                                    species = ""
+                                    longitude = ""
+                                    latitude = ""
+                                    selectedIndex = 0
+                                    age = 0
+                                    image = nil
+                                    loader = false
+                                }
+                                
                             }
-
-                        }
+                            
+                        }, label: {
+                            ZStack{
+                                RoundedRectangle(cornerRadius: 40)
+                                    .fill(Color("CustomBlueLight"))
+                                    .frame(height: 60)
+                                    .padding(.horizontal)
+                                    .padding(.top, 20)
+                                Text("Tag")
+                                    .foregroundColor(.white)
+                                    .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/20))
+                                    .padding(.top, 20)
+                            }//ZStack
+                        })
+                        .padding(.top, -5)
                         
-                    }, label: {
+                    }else{
+                        
                         ZStack{
                             RoundedRectangle(cornerRadius: 40)
-                                .fill(Color("CustomBlueLight"))
+                                .fill(Color("CustomBlueLighter"))
                                 .frame(height: 60)
                                 .padding(.horizontal)
                                 .padding(.top, 20)
-                            Text("Tag")
-                                .foregroundColor(.white)
-                                .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/20))
-                                .padding(.top, 20)
+                            LottieView(filename: "Loading")
+                                .aspectRatio(contentMode: .fit)
+                                  .frame(width: 80, height: 80)
+                                  .padding(.top, 20)
                         }//ZStack
-                    })
-                    .padding(.top, -5)
+                        .padding(.top, -5)
+                    }
 
                    
                   Spacer()
@@ -612,7 +631,9 @@ struct TagScreenView: View {
         }//ZStack
         .onAppear{
             if ShowGuide == true{
-                showGuidebtn = true
+                if vm.user?.role == "Researcher"{
+                    showGuidebtn = true
+                }
             }else{
                 showGuidebtn = false
             }

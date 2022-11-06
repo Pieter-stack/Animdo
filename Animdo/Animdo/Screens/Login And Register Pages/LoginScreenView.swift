@@ -21,6 +21,7 @@ struct LoginScreenView: View {
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var AllFields: Int = 0
+    @State private var loader: Bool = false
     
     @State private var showForgotPassword = false
     
@@ -164,30 +165,50 @@ struct LoginScreenView: View {
                                 .padding(.horizontal)
                                 .multilineTextAlignment(.center)
                         }
-
-                    Button(action:{
-                        if (email.isEmpty || password.isEmpty ){
-                            AllFields = 1
-                            
-                        }else{
-                            AllFields = 0
-                            authManager.loginUser(email: email, password: password)
-                        }
                         
-                    }, label: {
-                        ZStack{
-                            RoundedRectangle(cornerRadius: 40)
-                                .fill(Color("CustomBlueLight"))
-                                .frame(height: 60)
-                                .padding(.horizontal)
-                                .padding(.top, 20)
-                            Text("Login")
-                                .foregroundColor(.white)
-                                .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/20))
-                                .padding(.top, 20)
-                        }//ZStack
-                    })
-                    .accessibilityIdentifier("loginButton")
+                        if loader == false{
+                        
+                        Button(action:{
+                            if (email.isEmpty || password.isEmpty ){
+                                AllFields = 1
+                                
+                            }else{
+                                AllFields = 0
+                                authManager.loginUser(email: email, password: password)
+                                loader = true
+                            }
+                            
+                        }, label: {
+                            ZStack{
+                                RoundedRectangle(cornerRadius: 40)
+                                    .fill(Color("CustomBlueLight"))
+                                    .frame(height: 60)
+                                    .padding(.horizontal)
+                                    .padding(.top, 20)
+                                Text("Login")
+                                    .foregroundColor(.white)
+                                    .font(Font.custom("JosefinSans-SemiBold", size: getScreenBounds().width/20))
+                                    .padding(.top, 20)
+                            }//ZStack
+                        })
+                        .accessibilityIdentifier("loginButton")
+                        
+                    }else{
+
+                            ZStack{
+                                RoundedRectangle(cornerRadius: 40)
+                                    .fill(Color("CustomBlueLighter"))
+                                    .frame(height: 60)
+                                    .padding(.horizontal)
+                                    .padding(.top, 20)
+                                LottieView(filename: "Loading")
+                                    .aspectRatio(contentMode: .fit)
+                                      .frame(width: 80, height: 80)
+                                      .padding(.top, 20)
+                            }//ZStack
+
+                        
+                    }
                         
                         HStack{
                             Text("Don't have an account?")
@@ -213,6 +234,9 @@ struct LoginScreenView: View {
                         withAnimation{
                                 userIsLoggedIn = true
                                 loggedIn = true
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                                loader = false
+                            }
                         }//animation
                     }//if user is not nil
             }else{
@@ -222,11 +246,14 @@ struct LoginScreenView: View {
                     withAnimation{
                             userIsLoggedIn = true
                             loggedIn = true
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                            loader = false
+                        }
+                        
                         }
                     }//animation
                 }//if user is not nil
             }
-                
                 
             }//listening state
         }//on appear
