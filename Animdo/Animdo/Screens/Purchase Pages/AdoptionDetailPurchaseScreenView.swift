@@ -14,7 +14,7 @@ struct AdoptionDetailPurchaseScreenView: View {
     @Binding var filterSearch: String
     var body: some View {
         if let store = store {
-        AdoptionDashScreenView(filterSearch: .constant(animal.animal))
+        AdoptionDashScreenView(filterSearch: .constant(filterSearch))
             .environmentObject(store)
         } else {
           LottieView(filename: "Loading")
